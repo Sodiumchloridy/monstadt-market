@@ -1,6 +1,7 @@
 header {
     background-color: red;
     color: white;
+    padding: 25px;
 }
 
 #pageHeaderTop {
@@ -11,7 +12,6 @@ header {
 }
 
 #pageHeaderBottom {
-    border:1px solid black; 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -20,6 +20,13 @@ header {
 
 #logo a{
     display:flex;
+}
+
+#search-bar input{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    width:max-content
 }
 
 
