@@ -45,6 +45,8 @@
 
     <!-- Bottom part of the header -->
     <div id="pageHeaderBottom">
+
+    <!-- Logo of the Market -->
         <div id="logo">
             <a href="/">
                 <img src="" alt="Logo is loading">
@@ -52,11 +54,13 @@
             </a>
         </div>
 
+    <!-- Search bar -->
         <div id="search-bar">
             <input type="text" placeholder="Search in Mondstadt Market">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
+    <!-- Cart -->
         <div id="cart">
             <a href="">
                 <img src="" alt="Cart image is loading">
