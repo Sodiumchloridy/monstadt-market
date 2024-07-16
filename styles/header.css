@@ -1,0 +1,25 @@
+header {
+    background-color: red;
+    color: white;
+}
+
+#pageHeaderTop {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    gap: 10px;
+}
+
+#pageHeaderBottom {
+    border:1px solid black; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logo a{
+    display:flex;
+}
+
+
