@@ -27,6 +27,18 @@ header {
     padding: 1.75rem 10%;
 }
 
+#pageHeaderBottom div#logo{
+    flex: 20%;
+}
+
+#pageHeaderBottom div#search-bar{
+    flex: 60%;
+}
+
+#pageHeaderBottom div#cart{
+    flex: 20%;
+}
+
 #logo a{
     display:flex;
     flex-direction: row;
@@ -71,6 +83,12 @@ header {
     background-color: #e34234; /* Darker shade of tomato */
 }
 
+#cart {
+    flex: 1; /* This makes the cart div take up available space */
+    display: flex;
+    justify-content: center; /* This centers the cart icon horizontally within its div */
+}
+
 /* Media Queries for mobile view */
 @media (max-width: 768px) {
     pageHeaderTop {
@@ -79,7 +97,7 @@ header {
 
     #pageHeaderBottom {
         padding: 1.75rem 5%;
-    }
+    }   
 
     #logo a h2{
         display: none;
