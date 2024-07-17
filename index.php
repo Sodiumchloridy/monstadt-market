@@ -14,6 +14,7 @@
 
 <body>
     <?php include ("includes/header.php"); ?>
+    <p>xxxx</p>
 </body>
 
 </html>
