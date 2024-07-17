@@ -2,41 +2,33 @@
     <!-- Top part of the header -->
     <div id="pageHeaderTop">
 
-    <!-- Notification link -->
-        <div>
+        <div id="notification"> <!-- Notification link -->
             <a href="">
-                <img src="" alt="image loading">
-                Notifications
+                <i class="fa-regular fa-bell"></i>
+                <span>Notifications</span>
             </a>
         </div>
 
-    <!-- Help link -->
-        <div>
+        <div id="help"> <!-- Help link -->
             <a href="">
-                <img src="" alt="image loading">
-                Help
+                <i class="fa-regular fa-circle-question"></i>
+                <span>Help</span>
             </a>
         </div>
 
-    <!-- Language Selector -->
-        <div>
-            <img src="" alt="image loading">
+        <div> <!-- Language Selector -->
+            <i class="fa-solid fa-globe"></i>
             <select name="" id="">
                 <option value="en">English</option>
                 <option value="ms">Bahasa Melayu</option>
                 <option value="zh">Chinese</option>
             </select>
         </div>
-    
-    <!-- Sign up link -->
-        <div>
-            <a href="">
+
+        <div> <!-- Sign up & login link -->
+            <a href="" id="signup">
                 Sign Up
             </a>
-        </div>
-
-    <!-- Login link -->
-        <div>
             <a href="">
                 Login
             </a>
@@ -46,26 +38,22 @@
     <!-- Bottom part of the header -->
     <div id="pageHeaderBottom">
 
-    <!-- Logo of the Market -->
-        <div id="logo">
+        <div id="logo"> <!-- Logo of the Market -->
             <a href="/">
-                <img src="" alt="Logo is loading">
-                <h2>Mondstadt Market</h1>
+                <i class="fa-solid fa-basket-shopping fa-2xl"></i>
+                <h2>Mondstadt Market</h2>
             </a>
         </div>
 
-    <!-- Search bar -->
-        <div id="search-bar">
-            <input type="text" placeholder="Search in Mondstadt Market">
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <div id="search-bar"> <!-- Search bar -->
+            <input type="text" placeholder="Search in Mondstadt Market...">
+            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
         </div>
 
-    <!-- Cart -->
-        <div id="cart">
+        <div id="cart"> <!-- Cart -->
             <a href="">
-                <img src="" alt="Cart image is loading">
+                <i class="fa-solid fa-cart-shopping fa-lg"></i>
             </a>
         </div>
-        
     </div>
 </header>
