@@ -46,8 +46,8 @@
         </div>
 
         <div id="search-bar"> <!-- Search bar -->
-            <form action="/search.php" method="GET"> <!--Search bar and icon-->
-                <input type="text" placeholder="Search in Mondstadt Market...">
+            <form action="search.php" method="GET"> <!--Search bar and icon-->
+                <input type="text" placeholder="Search in Mondstadt Market..." maxlength="128">
                 <button type="submit">  
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                 </button>
