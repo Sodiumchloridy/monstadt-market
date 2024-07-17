@@ -46,8 +46,12 @@
         </div>
 
         <div id="search-bar"> <!-- Search bar -->
-            <input type="text" placeholder="Search in Mondstadt Market...">
-            <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+            <form action="/search.php" method="get"> <!--Search bar and icon-->
+                <input type="text" placeholder="Search in Mondstadt Market...">
+                <button type="submit">  
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                </button>
+            </form>
         </div>
 
         <div id="cart"> <!-- Cart -->

@@ -37,9 +37,40 @@ header {
     font-family: 'Roboto', sans-serif; /* Logo Font */
 }
 
+#search-bar form{
+    background: white;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: flex;
+    height: 2.5rem;
+    justify-content: space-between;
+    padding: .1875rem;
+}
+
 #search-bar input{
     padding: 10px 20px;
     border: none;
+    margin-right: 5px;
+}
+
+#search-bar button {
+    border: none;
+    padding: 0.5rem 1rem;
+    background-color: tomato;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 2px 2px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#search-bar button i {
+    margin: 0.5rem;
+}
+
+#search-bar button:hover {
+    background-color: #e34234; /* Darker shade of tomato */
 }
 
 /* Media Queries for mobile view */
