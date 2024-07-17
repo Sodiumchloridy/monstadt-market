@@ -60,8 +60,10 @@ header {
 }
 
 #search-bar input{
+    flex : 1;
     padding: 10px 20px;
     border: none;
+    margin-right: .1875rem;
 }
 
 #search-bar button {
