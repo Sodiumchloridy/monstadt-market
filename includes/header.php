@@ -21,6 +21,7 @@
         <!-- About Link -->
         <div>
             <a href="">
+                <i class="fa-regular fa-circle-info"></i>
                 <span>About</span>
             </a>
         </div>
