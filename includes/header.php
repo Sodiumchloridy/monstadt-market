@@ -2,12 +2,29 @@
     <!-- Top part of the header -->
     <div id="pageHeaderTop">
 
+        
+
         <div id="notification"> <!-- Notification link -->
             <a href="">
                 <i class="fa-regular fa-bell"></i>
                 <span>Notifications</span>
             </a>
         </div>
+
+        <!-- Contact Link -->
+        <div>
+            <a href="">
+                <i class="fa-regular fa-phone"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+        <!-- About Link -->
+        <div>
+            <a href="">
+                <span>About</span>
+            </a>
+        </div>
+
 
         <div id="help"> <!-- Help link -->
             <a href="">
