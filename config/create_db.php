@@ -29,4 +29,3 @@ if ($conn->query($sql) === TRUE) {
 
 // Close the connection
 $conn->close();
-?>
