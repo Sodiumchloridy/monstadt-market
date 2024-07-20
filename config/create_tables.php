@@ -4,10 +4,13 @@ include 'config.php';
 //Create user table
 $sql = "CREATE TABLE IF NOT EXISTS Users (
     u_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(30) UNIQUE,
-    email VARCHAR(50) NOT NULL,
-    phone VARCHAR(50) NOT NULL,
-    reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    u_username VARCHAR(30) UNIQUE,
+    u_password VARCHAR(255) NOT NULL,
+    u_email VARCHAR(100) UNIQUE,
+    u_address VARCHAR(255),
+    u_phone VARCHAR(50),
+    u_profile_pic MEDIUMBLOB,
+    u_reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
 if ($conn->query($sql) === TRUE) {
@@ -21,10 +24,11 @@ $sql = "CREATE TABLE IF NOT EXISTS Product (
     prod_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     prod_img MEDIUMBLOB,
     prod_name VARCHAR(128) NOT NULL,
-    prod_desc VARCHAR(256),
+    prod_desc TEXT,
     prod_price DECIMAL(10,2) NOT NULL, 
     prod_numAvailable INT(6) NOT NULL,
-    prod_numSold INT(6) NOT NULL
+    prod_numSold INT(6) NOT NULL,
+    INDEX(prod_name)
 )";
 
 if ($conn->query($sql) === TRUE) {
