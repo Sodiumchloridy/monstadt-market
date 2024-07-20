@@ -1,6 +1,7 @@
 <?php
 include 'config.php';
 
+//Create user table
 $sql = "CREATE TABLE IF NOT EXISTS Users (
     u_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(30) UNIQUE,
@@ -15,6 +16,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+//Create product table
 $sql = "CREATE TABLE IF NOT EXISTS Product (
     prod_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     prod_img MEDIUMBLOB,
@@ -31,6 +33,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error;
 }
 
+//Create cart table
 $sql = "CREATE TABLE IF NOT EXISTS Cart(
     u_id INT(6) UNSIGNED,
     prod_id INT(6) UNSIGNED,
