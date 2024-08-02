@@ -5,11 +5,11 @@ $username = "root";
 $password = "";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password);
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
 $dbName = "mondstadt_market_db";
@@ -21,11 +21,11 @@ $dbName = "mondstadt_market_db";
 $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
 // Execute the SQL query
-if ($conn->query($sql) === TRUE) {
+if (mysqli_query($conn, $sql)) {
     echo "Database created successfully or already exists";
 } else {
-    echo "Error creating database: " . $conn->error;
+    echo "Error creating database: " . mysqli_error($conn);
 }
 
 // Close the connection
-$conn->close();
+mysqli_close($conn);

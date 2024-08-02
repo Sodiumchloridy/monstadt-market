@@ -13,28 +13,29 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
     u_reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 
-if ($conn->query($sql) === TRUE) {
+if (mysqli_query($conn, $sql)) {
     echo "Table Users created successfully\n";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table Users: " . mysqli_error($conn);
 }
 
 //Create product table
 $sql = "CREATE TABLE IF NOT EXISTS Product (
     prod_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prod_img MEDIUMBLOB,
+    prod_img_path VARCHAR(255),
     prod_name VARCHAR(128) NOT NULL,
     prod_desc TEXT,
     prod_price DECIMAL(10,2) NOT NULL, 
+    prod_region VARCHAR(128),
     prod_numAvailable INT(6) NOT NULL,
     prod_numSold INT(6) NOT NULL,
     INDEX(prod_name)
 )";
 
-if ($conn->query($sql) === TRUE) {
+if (mysqli_query($conn, $sql)) {
     echo "Table Product created successfully\n";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table Product: " . mysqli_error($conn);
 }
 
 //Create cart table
@@ -47,11 +48,11 @@ $sql = "CREATE TABLE IF NOT EXISTS Cart(
     FOREIGN KEY (prod_id) REFERENCES Product(prod_id) ON DELETE CASCADE
 )";
 
-if ($conn->query($sql) === TRUE) {
+if (mysqli_query($conn, $sql)) {
     echo "Table Cart created successfully\n";
 } else {
-    echo "Error creating table: " . $conn->error;
+    echo "Error creating table Cart: " . mysqli_error($conn);
 }
 
 //Close connection
-$conn->close();
+mysqli_close($conn);
