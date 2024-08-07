@@ -20,7 +20,7 @@ $sql = "DROP DATABASE IF EXISTS $dbName";
 if (mysqli_query($conn, $sql)) {
     echo "Database dropped successfully <br>";
 } else {
-    echo "Error creating database: " . mysqli_error($conn);
+    echo "Error dropping database: " . mysqli_error($conn);
 }
 
 // SQL query to create the database
