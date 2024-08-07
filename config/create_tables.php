@@ -56,3 +56,4 @@ if (mysqli_query($conn, $sql)) {
 
 //Close connection
 mysqli_close($conn);
+?>
