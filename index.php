@@ -15,6 +15,7 @@
     <?php include ("includes/header.php"); ?>
     <p>xxxx</p>
     <?php 
+    include ('config/setup.php');
     $filePath = 'images/';
     include('config/display_data.php'); ?>
     
