@@ -2,6 +2,16 @@
     $name = $pass = "";
     $nameErr = $passErr = "";
 
+    // TODO: load the data from db and store inside a result set
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        // validate name
+        if(empty($_POST['name'])) {
+            $nameErr = 'Name is required';
+        } // TODO: validate name
+
+    }
 
 ?>
 
