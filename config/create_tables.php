@@ -14,7 +14,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
 )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table Users created successfully\n";
+    echo "Table Users created successfully <br>";
 } else {
     echo "Error creating table Users: " . mysqli_error($conn);
 }
@@ -22,7 +22,7 @@ if (mysqli_query($conn, $sql)) {
 //Create product table
 $sql = "CREATE TABLE IF NOT EXISTS Product (
     prod_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    prod_img_path VARCHAR(255),
+    prod_img_name VARCHAR(255),
     prod_name VARCHAR(128) NOT NULL,
     prod_desc TEXT,
     prod_price DECIMAL(10,2) NOT NULL, 
@@ -33,7 +33,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Product (
 )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table Product created successfully\n";
+    echo "Table Product created successfully <br>";
 } else {
     echo "Error creating table Product: " . mysqli_error($conn);
 }
@@ -49,7 +49,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Cart(
 )";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Table Cart created successfully\n";
+    echo "Table Cart created successfully <br>  ";
 } else {
     echo "Error creating table Cart: " . mysqli_error($conn);
 }
