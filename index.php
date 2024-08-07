@@ -14,13 +14,17 @@
 <body>
     <?php include ("includes/header.php"); ?>
     <p>xxxx</p>
-    <?php 
-    include ('config/setup.php');
-    $filePath = 'images/';
-    include('config/display_data.php'); ?>
-    
+
+    <!-- grid list of shop items -->
+    <div class="product-grid">
+        <?php 
+        include ('config/setup.php');
+        $filePath = 'images/';
+        include('config/display_data.php'); ?>        
+    </div>
+
     <div id="search-results"></div>
-    <?php include("includes/footer.php"); ?>
+        <?php include("includes/footer.php"); ?>
 </body>
 
 </html>
