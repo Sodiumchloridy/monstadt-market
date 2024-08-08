@@ -64,10 +64,11 @@
                 }
             }
 
+            mysqli_free_result($result);
+            mysqli_close($conn);
         }
 
     ?>
-    <?php include('../includes/header.php') ?>
     
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" id="loginForm">
         <h2>Log In</h2>

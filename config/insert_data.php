@@ -72,5 +72,6 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
+$sql
 mysqli_close($conn);
 ?>
