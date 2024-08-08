@@ -2,7 +2,7 @@
     <!-- Top part of the header -->
     <div id="pageHeaderTop">
 
-        
+
 
         <div id="notification"> <!-- Notification link -->
             <a href="">
@@ -66,7 +66,7 @@
         <div id="search-bar"> <!-- Search bar -->
             <form id="search-form" action="/monstadt-market/search" method="GET"> <!--Search bar and icon-->
                 <input type="text" name="search_query" placeholder="Search in Mondstadt Market..." maxlength="128">
-                <button type="submit">  
+                <button type="submit">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                 </button>
             </form>

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include 'config.php';
 
@@ -80,11 +80,10 @@ INSERT INTO users (u_username, u_password, u_email, u_address, u_phone) VALUES
 ";
 
 //Execute query
-if(mysqli_query($conn,$sql)) {
+if (mysqli_query($conn, $sql)) {
     echo "New user inserted <br>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
 mysqli_close($conn);
-?>

@@ -12,18 +12,18 @@
 </head>
 
 <body>
-    <?php include ("includes/header.php"); ?>
+    <?php include("includes/header.php"); ?>
     <p>xxxx</p>
 
     <!-- grid list of shop items -->
     <div class="product-grid">
-        <?php 
-        include ('config/setup.php');
-        include('config/display_data.php'); ?>        
+        <?php
+        include('config/setup.php');
+        include('config/display_data.php'); ?>
     </div>
 
     <div id="search-results"></div>
-        <?php include("includes/footer.php"); ?>
+    <?php include("includes/footer.php"); ?>
 </body>
 
 </html>

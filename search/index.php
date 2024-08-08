@@ -14,17 +14,18 @@
 
 <body>
     <?php
-    include ('../includes/header.php');
+    include('../includes/header.php');
 
     //Content
-    include ('../config/config.php');
+    include('../config/config.php');
 
-    function test_input($data){
+    function test_input($data)
+    {
         return htmlspecialchars(stripslashes(trim($data)));
     }
 
     //Search query
-    if($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         //Check if query is empty
         if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
             //Add wildcard
@@ -55,7 +56,8 @@
 
     mysqli_close($conn);
 
-    include ('../includes/footer.php');
+    include('../includes/footer.php');
     ?>
 </body>
+
 </html>
