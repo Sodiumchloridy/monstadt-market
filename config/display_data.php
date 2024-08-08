@@ -5,7 +5,7 @@ include 'config.php';
 $prod_id = 1;
 
 // Prepare the SQL query to fetch the image path
-$sql = "SELECT `prod_img_name`, `prod_name` FROM `Product`";
+$sql = "SELECT `prod_img_name`, `prod_name`, `prod_id` FROM `Product`";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
@@ -17,10 +17,12 @@ if ($result) {
             $prodName = htmlspecialchars($row['prod_name'], ENT_QUOTES, 'UTF-8');
 
             // Output the image
+            echo '<a href="product?id=' . $row['prod_id'] . '">';
             echo '<div class="product">';
-            echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '">';
+            echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '"/>';
             echo '<p>' . $prodName . '</p>';
             echo '</div>';
+            echo '</a>';
         }
     } else {
         echo "No products found.";
