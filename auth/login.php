@@ -36,6 +36,7 @@
 
                 // loop through each row
                 while($row = mysqli_fetch_assoc($result)) {
+                    echo $row['u_username'] . $row['u_password'] . "<br>"; //TODO: fix the invalid password problem even if its entered correctly
                     if($name === $row['u_username']) {
                         $validName = true;
                     }
