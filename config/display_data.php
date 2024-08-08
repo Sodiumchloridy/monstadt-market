@@ -18,7 +18,7 @@ if ($result) {
 
             // Output the image
             echo '<div class="product">';
-            echo '<img src="'. $filePath . $imgFileName . '" alt="' . $prodName . '">';
+            echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '">';
             echo '<p>' . $prodName . '</p>';
             echo '</div>';
         }
