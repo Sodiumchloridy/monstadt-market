@@ -64,7 +64,7 @@
         </div>
 
         <div id="search-bar"> <!-- Search bar -->
-            <form id="search-form" action="search.php" method="GET"> <!--Search bar and icon-->
+            <form id="search-form" action="/monstadt-market/search" method="GET"> <!--Search bar and icon-->
                 <input type="text" name="search_query" placeholder="Search in Mondstadt Market..." maxlength="128">
                 <button type="submit">  
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
