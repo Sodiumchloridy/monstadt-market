@@ -1,15 +1,52 @@
 <?php 
     $name = $pass = "";
     $nameErr = $passErr = "";
+    $validName = $validPass = false;
 
     // TODO: load the data from db and store inside a result set
+    include '../config/config.php';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // validate name
+        $sql = "SELECT * FROM Users";
+        $result = mysqli_query($conn, $sql);
+
+        // check if name is empty
         if(empty($_POST['name'])) {
             $nameErr = 'Name is required';
-        } // TODO: validate name
+
+            // check is there any rows
+        } else if(mysqli_num_rows($result) > 0) {
+            $name = $_POST['name'];
+
+            // loop through each row
+            while($row = mysqli_fetch_assoc($result)) {
+                if($name === $row['u_username']) {
+                    $validName = true;
+                }
+            }
+            if($validName === false) {
+                $nameErr = "Invalid name";
+            }
+        }
+
+        // check if password is empty
+        if(empty($_POST['password'])) {
+            $passErr = 'Password is required';
+
+            // check is there any rows
+        } else if(mysqli_num_rows($result) > 0) {
+            $pass = $_POST['password'];
+            // loop through each row
+            while($row = mysqli_fetch_assoc($result)) {
+                if($pass === $row['u_password']) {
+                    $validPass = true;
+                }
+            }
+            if($validPass === false) {
+                $passErr = "Invalid password";
+            }
+        }
 
     }
 
