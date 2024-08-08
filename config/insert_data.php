@@ -2,6 +2,7 @@
 
 include 'config.php';
 
+//Insert data for product
 $sql = "
 INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `prod_price`, `prod_region`, `prod_numAvailable`, `prod_numSold`) VALUES 
 ('1', 'Item_Pile_Em_Up.webp', 'Pile ''Em Up', 'A rich, meaty dish. Originally a Mondstadt dish made of steaks, potatoes, and cheese, it has since become synonymous with Ludi Harpastum.', '13.7', 'Mondstadt', '99', '300'),
@@ -65,17 +66,20 @@ INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `pr
 ('57', 'Item_Wakatakeni.webp', 'Wakatakeni', 'A light-colored vegetarian dish. Broth is first poured into the pot before the bamboo shoots, and then the seaweed, are added in. The result is an elegant product with a light mouthfeel that agrees well with all palates. Suitable as a pre-meal appetizer or as a side to a main dish.', '11.4', 'Inazuma', '99', '300')
 ";
 
-// Execute the query
+//Execute the query
 if (mysqli_query($conn, $sql)) {
     echo "New products added successfully <br>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-// insert user data
-$sql = "INSERT INTO users (u_username, u_password, u_email, u_address, u_phone) VALUES ('jinhao','123456','jh@gmail.com', 'jalan mahkota bmc', '0123456789')";
+//Insert data for users
+$sql = "
+INSERT INTO users (u_username, u_password, u_email, u_address, u_phone) VALUES 
+('jinhao','123456','jh@gmail.com', 'jalan mahkota bmc', '0123456789')
+";
 
-// execute query
+//Execute query
 if(mysqli_query($conn,$sql)) {
     echo "New user inserted <br>";
 } else {
