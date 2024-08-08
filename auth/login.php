@@ -1,64 +1,89 @@
-<?php 
-    $name = $pass = "";
-    $nameErr = $passErr = "";
-    $validName = $validPass = false;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/error.css">
+    <link rel="stylesheet" href="../styles/loginForm.css">
+</head>
+<body>
 
-    // TODO: load the data from db and store inside a result set
-    include '../config/config.php';
+    <?php 
+        $name = $pass = "";
+        $nameErr = $passErr = "";
+        $validName = $validPass = false;
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        // connecting to server using config.php script
+        include '../config/config.php';
 
-        $sql = "SELECT * FROM Users";
-        $result = mysqli_query($conn, $sql);
+        if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // check if name is empty
-        if(empty($_POST['name'])) {
-            $nameErr = 'Name is required';
+            $sql = "SELECT u_username, u_password FROM Users";  
+            $result = mysqli_query($conn, $sql);
 
-            // check is there any rows
-        } else if(mysqli_num_rows($result) > 0) {
-            $name = $_POST['name'];
+            // check if name is empty
+            if(empty($_POST['name'])) {
+                $nameErr = 'Name is required';
 
-            // loop through each row
-            while($row = mysqli_fetch_assoc($result)) {
-                if($name === $row['u_username']) {
-                    $validName = true;
+                // check is there any rows
+            } else if(mysqli_num_rows($result) > 0) {
+                $name = $_POST['name'];
+
+                // loop through each row
+                while($row = mysqli_fetch_assoc($result)) {
+                    if($name === $row['u_username']) {
+                        $validName = true;
+                    }
+                }
+                if($validName === false) {
+                    $nameErr = "Invalid name";
                 }
             }
-            if($validName === false) {
-                $nameErr = "Invalid name";
-            }
-        }
 
-        // check if password is empty
-        if(empty($_POST['password'])) {
-            $passErr = 'Password is required';
+            // check if password is empty
+            if(empty($_POST['password'])) {
+                $passErr = 'Password is required';
 
-            // check is there any rows
-        } else if(mysqli_num_rows($result) > 0) {
-            $pass = $_POST['password'];
-            // loop through each row
-            while($row = mysqli_fetch_assoc($result)) {
-                if($pass === $row['u_password']) {
-                    $validPass = true;
+                // check is there any rows
+            } else if(mysqli_num_rows($result) > 0) {
+                $pass = $_POST['password'];
+
+                // loop through each row
+                while($row = mysqli_fetch_assoc($result)) {
+                    if($pass === $row['u_password']) {
+                        $validPass = true;
+                    }
+                }
+                if($validPass === false) {
+                    $passErr = "Invalid password";
                 }
             }
-            if($validPass === false) {
-                $passErr = "Invalid password";
-            }
+
         }
 
-    }
+    ?>
+    <?php include('../includes/header.php') ?>
+    
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" id="loginForm">
+        <h2>Log In</h2>
+        <div id="nameInput">
+            <input type="text" id="name" name="name" placeholder="Username"> <div class="error"> <?php echo $nameErr; ?> </div>
+        </div>
+        <br>
+        <div id="passInput">
+            <input type="password" name="password" id="password" placeholder="Password"> <div class="error"> <?php echo $passErr; ?> </div>
+        </div>
+        <br>
+        <input type="submit" value="Submit" id="submit-button">
+    </form>
+</body>
+</html>
 
-?>
 
-<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post">
 
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name"> <span class="error"> <?php echo $nameErr; ?> </span>
 
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password"> <span class="error"> <?php echo $passErr; ?> </span>
-
-    <input type="submit" value="Submit">
-</form>

@@ -1,0 +1,21 @@
+#loginForm {
+    border: 1px solid red;
+    border-radius: 10%;
+    margin-inline: auto;
+    width: 30vw;
+    min-height: 15vw;
+    text-align: center;
+}
+
+#loginForm input {
+    width: 70%;
+    padding: 8px;
+}
+
+#submit-button {
+    margin-bottom: 5vh;
+}
+
+h2 {
+    margin-bottom: 5vh;
+}

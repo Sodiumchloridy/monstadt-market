@@ -47,7 +47,7 @@
             <a href="" id="signup">
                 Sign Up
             </a>
-            <a href="">
+            <a href="auth/login.php">
                 Login
             </a>
         </div>
