@@ -72,6 +72,15 @@ if (mysqli_query($conn, $sql)) {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
 
-$sql
+// insert user data
+$sql = "INSERT INTO users (u_username, u_password, u_email, u_address, u_phone) VALUES ('jinhao','123456','jh@gmail.com', 'jalan mahkota bmc', '0123456789')";
+
+// execute query
+if(mysqli_query($conn,$sql)) {
+    echo "New user inserted <br>";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
 mysqli_close($conn);
 ?>
