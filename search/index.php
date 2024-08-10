@@ -13,51 +13,112 @@
 </head>
 
 <body>
-    <?php
-    include('../includes/header.php');
+    <?php include('../includes/header.php'); ?>
+    <div>
+        <!--Filter for product category/region-->
+        <div class="filter">
+            <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <fieldset>
+                    <legend>Category</legend>
+                    <?php
+                    include('../config/config.php');
+                    
+                    //Find all category available
+                    $category_sql = "SELECT DISTINCT prod_region FROM product";
+                    $category_result = mysqli_query($conn, $category_sql);
 
-    //Content
-    include('../config/config.php');
+                    if (mysqli_num_rows($category_result) > 0){
+                        foreach($category_result as $category)
+                        {   
+                            //Store category list
+                            $checked = [];
+                            if (isset($_GET['category'])){
+                                $checked = $_GET['category'];
+                            }
 
-    function test_input($data)
-    {
-        return htmlspecialchars(stripslashes(trim($data)));
-    }
+                            //Display each category
+                            ?>
+                            <div>
+                                <input type="checkbox" name="category[]" id="category_<?=$category['prod_region']; ?>" 
+                                value="<?= $category['prod_region']; ?>"
+                                <?php if(in_array($category['prod_region'], $checked)) echo 'checked'; ?>>
+                                <label for="category_<?=$category['prod_region']; ?>"> <?=$category['prod_region']; ?> </label>
+                            </div>
+                            <?php
+                        }
+                    } else {
+                        echo "No brand found";
+                    }
 
-    //Search query
-    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-        //Check if query is empty
-        if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
-            //Add wildcard
-            $query = "%" . test_input($_GET['search_query']) . "%";
+                    mysqli_close($conn);
+                    ?>
+                    <input type="submit" value="Apply">
+                </fieldset>
+            </form>
+        </div>
 
-            //Prepare and bind statement
-            $stmt = mysqli_prepare($conn, "SELECT * FROM `product` WHERE `prod_name` LIKE ?");
-            mysqli_stmt_bind_param($stmt, "s", $query);
+        <!--Display products found-->
+        <div class="TODO"> 
+        <?php
+            //Content
+            include('../config/config.php');
 
-            //Execute query
-            mysqli_stmt_execute($stmt);
-
-            //Get result
-            $result = mysqli_stmt_get_result($stmt);
-
-            if (mysqli_num_rows($result) > 0) {
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "Product Name: " . $row['prod_name'] . "<br>";
-                }
-            } else {
-                echo "No products are found";
+            function test_input($data){
+                return htmlspecialchars(stripslashes(trim($data)));
             }
 
-            mysqli_stmt_close($stmt);
-            mysqli_free_result($result);
-        }
-    }
+            function display_product($row){
+                $imgFileName = htmlspecialchars($row['prod_img_name'], ENT_QUOTES, 'UTF-8');
+                $prodName = htmlspecialchars($row['prod_name'], ENT_QUOTES, 'UTF-8');
+    
+                // Output the image
+                echo '<a href="product?id=' . $row['prod_id'] . '">';
+                echo '<div class="product">';
+                echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '"/>';
+                echo '<p>' . $prodName . '</p>';
+                echo '</div>';
+                echo '</a>';
+            }
 
-    mysqli_close($conn);
+            //Search query
+            if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                //Check if query is empty
+                if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
+                    //Add wildcard
+                    $query = "%" . test_input($_GET['search_query']) . "%";
 
-    include('../includes/footer.php');
-    ?>
+                    //Prepare and bind statement
+                    $stmt = mysqli_prepare($conn, "SELECT * FROM `product` WHERE `prod_name` LIKE ?");
+                    mysqli_stmt_bind_param($stmt, "s", $query);
+
+                    //Execute query
+                    mysqli_stmt_execute($stmt);
+
+                    //Get result
+                    $result = mysqli_stmt_get_result($stmt);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        echo '<div class="product-grid">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            display_product($row);
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<h1 align="center">No products are found.</h1>';
+                    }
+
+                    mysqli_stmt_close($stmt);
+                    mysqli_free_result($result);
+                }
+            }
+
+            mysqli_close($conn);
+
+            ?>
+        </div>
+    </div>
+
+    <?php include('../includes/footer.php'); ?>
 </body>
 
 </html>
