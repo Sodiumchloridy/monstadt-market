@@ -28,9 +28,10 @@
                     $category_result = mysqli_query($conn, $category_sql);
 
                     if (mysqli_num_rows($category_result) > 0){
-                        foreach($category_result as $category)
-                        {   
-                            //Store category list
+                        while($category = mysqli_fetch_assoc($category_result)) {
+                            //Store all available categories
+                            $all_categories[] = $category['prod_region'];
+                            //Store category checked
                             $checked = [];
                             if (isset($_GET['category'])){
                                 $checked = $_GET['category'];
@@ -80,9 +81,64 @@
                 echo '</a>';
             }
 
-            //Search query
+            //Search query and filter
             if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+                //For prepared statement
+                $sql =  "SELECT * FROM `product` WHERE 1 ";
+                $param_type = "";
+                $params = [];
+
+                //Category filter
+                if (isset($_GET['category'])){
+                    $categorychecks = [];
+                    $categorychecks = $_GET['category'];
+
+                    //Create a placeholder of ? for each category
+                    $placeholders = implode(',', array_fill(0, count($categorychecks), '?')); 
+                    $sql = "SELECT * FROM `product` WHERE `prod_region` IN ($placeholders)";
+                    $param_type .= str_repeat('s', count($categorychecks));  //Add types for categories
+                    $params = array_merge($params, $categorychecks);
+                }
+
+                //Search query
+                if (isset($_GET['search_query']) && !empty($_GET['search_query'])){
+                    //Add wildcard
+                    $search_query = "%" . test_input($_GET['search_query']) . "%";
+                    //Add to query
+                    $sql .= "AND `prod_name` LIKE ?";
+                    $param_type .= "s";
+                    $params[] = $search_query;
+                } 
+
+                //Execute query
+                if ((isset($_GET['search_query']) && !empty($_GET['search_query'])) || isset($_GET['category'])){
+                    //Prepare and bind statement
+                    $stmt = mysqli_prepare($conn, $sql);
+                    mysqli_stmt_bind_param($stmt, $param_type, ...$params);
+
+                    //Execute query
+                    mysqli_stmt_execute($stmt);
+
+                    //Get result
+                    $result = mysqli_stmt_get_result($stmt);
+                    if (mysqli_num_rows($result) > 0) {
+                        echo '<div class="product-grid">';
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            display_product($row);
+                        }
+                        echo '</div>';
+                    } else {
+                        echo '<h1 align="center">No products are found.</h1>';
+                    }
+
+                    mysqli_stmt_close($stmt);
+                    mysqli_free_result($result);
+                } else {
+                    echo '<h1 align="center">No products are found.</h1>';
+                }
+
                 //Check if query is empty
+                /*
                 if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
                     //Add wildcard
                     $query = "%" . test_input($_GET['search_query']) . "%";
@@ -109,7 +165,8 @@
 
                     mysqli_stmt_close($stmt);
                     mysqli_free_result($result);
-                }
+                }*/
+
             }
 
             mysqli_close($conn);
