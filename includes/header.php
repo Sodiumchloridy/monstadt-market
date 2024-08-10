@@ -57,7 +57,7 @@
     <div id="pageHeaderBottom">
 
         <div id="logo"> <!-- Logo of the Market -->
-            <a href="/">
+            <a href="/monstadt-market/">
                 <i class="fa-solid fa-basket-shopping fa-2xl"></i>
                 <h2>Mondstadt Market</h2>
             </a>
