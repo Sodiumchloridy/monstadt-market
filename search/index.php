@@ -136,37 +136,6 @@
                 } else {
                     echo '<h1 align="center">No products are found.</h1>';
                 }
-
-                //Check if query is empty
-                /*
-                if (isset($_GET['search_query']) && !empty($_GET['search_query'])) {
-                    //Add wildcard
-                    $query = "%" . test_input($_GET['search_query']) . "%";
-
-                    //Prepare and bind statement
-                    $stmt = mysqli_prepare($conn, "SELECT * FROM `product` WHERE `prod_name` LIKE ?");
-                    mysqli_stmt_bind_param($stmt, "s", $query);
-
-                    //Execute query
-                    mysqli_stmt_execute($stmt);
-
-                    //Get result
-                    $result = mysqli_stmt_get_result($stmt);
-
-                    if (mysqli_num_rows($result) > 0) {
-                        echo '<div class="product-grid">';
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            display_product($row);
-                        }
-                        echo '</div>';
-                    } else {
-                        echo '<h1 align="center">No products are found.</h1>';
-                    }
-
-                    mysqli_stmt_close($stmt);
-                    mysqli_free_result($result);
-                }*/
-
             }
 
             mysqli_close($conn);
