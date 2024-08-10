@@ -18,6 +18,7 @@
         <!--Filter for product category/region-->
         <div class="filter">
             <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                <!--Input for category filter-->
                 <fieldset>
                     <legend>Category</legend>
                     <?php
@@ -34,7 +35,7 @@
                             //Store category checked
                             $checked = [];
                             if (isset($_GET['category'])){
-                                $checked = $_GET['category'];
+                                $checked = isset($_GET['category']) ? (array) $_GET['category'] : [];
                             }
 
                             //Display each category
@@ -48,20 +49,24 @@
                             <?php
                         }
                     } else {
-                        echo "No brand found";
+                        echo "No category is found";
                     }
 
                     mysqli_close($conn);
                     ?>
                     <input type="submit" value="Apply">
                 </fieldset>
+
+                <!--Hidden input field to store search query-->
+                <?php if (isset($_GET['search_query'])): ?>
+                <input type="hidden" name="search_query" value="<?php echo htmlspecialchars($_GET['search_query']); ?>">
+                <?php endif; ?>
             </form>
         </div>
 
         <!--Display products found-->
-        <div class="TODO"> 
+        <div class="products-display"> 
         <?php
-            //Content
             include('../config/config.php');
 
             function test_input($data){
@@ -71,7 +76,7 @@
             function display_product($row){
                 $imgFileName = htmlspecialchars($row['prod_img_name'], ENT_QUOTES, 'UTF-8');
                 $prodName = htmlspecialchars($row['prod_name'], ENT_QUOTES, 'UTF-8');
-    
+
                 // Output the image
                 echo '<a href="product?id=' . $row['prod_id'] . '">';
                 echo '<div class="product">';
@@ -91,12 +96,12 @@
                 //Category filter
                 if (isset($_GET['category'])){
                     $categorychecks = [];
-                    $categorychecks = $_GET['category'];
+                    $categorychecks = isset($_GET['category']) ? (array) $_GET['category'] : [];
 
                     //Create a placeholder of ? for each category
                     $placeholders = implode(',', array_fill(0, count($categorychecks), '?')); 
-                    $sql = "SELECT * FROM `product` WHERE `prod_region` IN ($placeholders)";
-                    $param_type .= str_repeat('s', count($categorychecks));  //Add types for categories
+                    $sql .= " AND `prod_region` IN ($placeholders) ";
+                    $param_type .= str_repeat('s', count($categorychecks));  //Add "s" for each categories
                     $params = array_merge($params, $categorychecks);
                 }
 
