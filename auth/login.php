@@ -25,25 +25,25 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $sql = "SELECT u_username, u_password FROM Users";
-        $result = mysqli_query($conn, $sql);
-
         // check if name is empty
         if (empty($_POST['name'])) {
             $nameErr = 'Name is required';
 
             // check is there any rows
-        } else if (mysqli_num_rows($result) > 0) {
+        } else {
             $name = $_POST['name'];
 
-            // loop through each row
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo $row['u_username'] . $row['u_password'] . "<br>"; //TODO: fix the invalid password problem even if its entered correctly
-                if ($name === $row['u_username']) {
-                    $validName = true;
-                }
-            }
-            if ($validName === false) {
+            // Check if the name exist in database
+            $stmt = mysqli_prepare($conn, "SELECT u_password FROM users WHERE u_username=?");
+            mysqli_stmt_bind_param($stmt, "s", $name);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_bind_result($stmt, $pass);
+            mysqli_stmt_fetch($stmt);
+            mysqli_stmt_close($stmt);
+
+            if($pass) {
+                $validName = true;
+            } else {
                 $nameErr = "Invalid name";
             }
         }
@@ -53,21 +53,13 @@
             $passErr = 'Password is required';
 
             // check is there any rows
-        } else if (mysqli_num_rows($result) > 0) {
-            $pass = $_POST['password'];
-
-            // loop through each row
-            while ($row = mysqli_fetch_assoc($result)) {
-                if ($pass === $row['u_password']) {
-                    $validPass = true;
-                }
-            }
-            if ($validPass === false) {
+        } else if($validName){
+            if($pass === $_POST['password']) {
+                $validPass = true;
+            } else {
                 $passErr = "Invalid password";
             }
         }
-
-        mysqli_free_result($result);
         mysqli_close($conn);
     }
 
