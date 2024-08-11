@@ -54,6 +54,7 @@
 
             // check is there any rows
         } else if($validName){
+            // TODO: password hashing -> if(password_verify($_POST['password'], $pass)) {
             if($pass === $_POST['password']) {
                 $validPass = true;
             } else {
