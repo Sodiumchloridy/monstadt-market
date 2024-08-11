@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
+
+    <script src="search/validation.js"></script>
 </head>
 
 <body>
@@ -17,7 +19,7 @@
     <div>
         <!--Filter for product category/region-->
         <div class="filter">
-            <form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <form id="filter-form" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!--Input for category filter-->
                 <fieldset>
                     <legend>Category</legend>
@@ -54,7 +56,17 @@
 
                     mysqli_close($conn);
                     ?>
-                    <input type="submit" value="Apply">
+                </fieldset>
+                
+                <!--Input for min pirce and max price-->
+                <fieldset>
+                    <legend>Price</legend>
+                    <input name="min" id="min" placeholder="Min" type="number" min="0" class="filter-price-input" pattern="[0-9]*" 
+                    value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                    <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*" 
+                    value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                    <div id="price-filter-error" class="error"></div>
+                    <input id="price-filter-button" type="submit" value="Apply">
                 </fieldset>
 
                 <!--Hidden input field to store search query-->
@@ -115,8 +127,22 @@
                     $params[] = $search_query;
                 } 
 
+                //Min price filter
+                if (isset($_GET['min']) && !empty($_GET['min'])){
+                    $sql .= " AND `prod_price` >= ?";
+                    $param_type .= "d"; 
+                    $params[] = (double) $_GET['min'];
+                }
+
+                //Max price filter
+                if (isset($_GET['max']) && !empty($_GET['max'])){
+                    $sql .= " AND `prod_price` <= ?";
+                    $param_type .= "d"; 
+                    $params[] = (double) $_GET['max'];
+                }
+
                 //Execute query
-                if ((isset($_GET['search_query']) && !empty($_GET['search_query'])) || isset($_GET['category'])){
+                if (!empty($params)){
                     //Prepare and bind statement
                     $stmt = mysqli_prepare($conn, $sql);
                     mysqli_stmt_bind_param($stmt, $param_type, ...$params);
