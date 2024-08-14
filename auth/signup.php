@@ -1,6 +1,6 @@
 <?php
 
-$name = $pass = $email = $phone = $address = $message = $result = "";
+$name = $pass = $email = $phone = $address = $unit = $street = $poskod = $state = $message = $result = "";
 $nameErr = $passErr = $emailErr = $phoneErr = $unitErr = $streetErr = $poskodErr = $stateErr = "";
 $addressErr = [];
 
@@ -8,7 +8,7 @@ $addressErr = [];
 include ("../config/config.php");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if(!isset($_POST['name'])) {
+    if(empty($_POST['name'])) {
         $nameErr = "Name is required";
     } else {
         $name = test_input($_POST['name']);
@@ -25,34 +25,34 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nameErr = "Duplicated name. Please try another username.";
         }
     }
-    if(!isset($_POST['password'])) {
+    if(empty($_POST['password'])) {
         $passErr = "Password is required";
     } else {
         $pass = test_input($_POST['password']);
     }
-    if(!isset($_POST['email'])) {
+    if(empty($_POST['email'])) {
         $emailErr = "Email is required";
     } else {
         $email = test_input($_POST['email']);
     }
-    if(!isset($_POST['phone'])) {
+    if(empty($_POST['phone'])) {
         $phoneErr = "Phone is required";
     } else {
         $phone = test_input($_POST['phone']);
     }
-    if(!isset($_POST['unit'])) {
+    if(empty($_POST['unit'])) {
         $unitErr = "Unit is required";
         $addressErr[] = $unitErr;
     }
-    if(!isset($_POST['street'])) {
+    if(empty($_POST['street'])) {
         $streetErr = "Street is required";
         $addressErr[] = $streetErr;
     }
-    if(!isset($_POST['poskod'])) {
+    if(empty($_POST['poskod'])) {
         $poskodErr = "Poskod is required";
         $addressErr[] = $poskodErr;
     }
-    if(!isset($_POST['state'])) {
+    if(empty($_POST['state'])) {
         $stateErr = "State is required";
         $addressErr[] = $stateErr;
     }
@@ -114,40 +114,40 @@ function test_input($data) {
             <tr>
                 <td>
                     <!-- Name input -->
-                    <input type="text" name="name" placeholder="Username">
+                    <input type="text" name="name" placeholder="Username" value="<?php echo htmlspecialchars($name)?>">
                     <div class="error"><?php echo $nameErr;?></div>
                     
                 </td>
                 <td>
                     <!-- Password input -->
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password" value="<?php echo htmlspecialchars($pass)?>">
                     <div class="error"><?php echo $passErr?></div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <!-- Email input -->
-                    <input type="email" name="email" placeholder="Email">
+                    <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email)?>">
                     <div class="error"><?php echo $emailErr?></div>
                 </td>
                 <td>
                     <!-- Telephone input -->
-                    <input type="tel" name="phone" placeholder="Phone">
+                    <input type="tel" name="phone" placeholder="Phone" value="<?php echo htmlspecialchars($phone)?>">
                     <div class="error"><?php echo $phoneErr?></div>
                 </td>
             </tr>
             <!-- Address input -->
             <tr>
                 <td>
-                    <input type="text" name="unit" placeholder="Unit">
+                    <input type="text" name="unit" placeholder="Unit" value="<?php echo htmlspecialchars($unit)?>">
                     <div class="error"><?php echo $unitErr?></div>
                 </td>
                 <td>
-                    <input type="text" name="street" placeholder="Street">
+                    <input type="text" name="street" placeholder="Street" value="<?php echo htmlspecialchars($street)?>">
                     <div class="error"><?php echo $streetErr?></div>
                 </td>
                 <td>
-                    <input type="text" name="poskod" placeholder="Poskod">
+                    <input type="text" name="poskod" placeholder="Poskod" value="<?php echo htmlspecialchars($poskod)?>">
                     <div class="error"><?php echo $poskodErr?></div>
                 </td>
             </tr>
