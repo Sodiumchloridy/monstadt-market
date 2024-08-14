@@ -15,13 +15,13 @@ if (!$conn) {
 $dbName = "mondstadt_market_db";
 
 // SQL query to drop database
-$sql = "DROP DATABASE IF EXISTS $dbName";
+// $sql = "DROP DATABASE IF EXISTS $dbName";
 
-if (mysqli_query($conn, $sql)) {
-    echo "Database dropped successfully <br>";
-} else {
-    echo "Error dropping database: " . mysqli_error($conn);
-}
+// if (mysqli_query($conn, $sql)) {
+//     echo "Database dropped successfully <br>";
+// } else {
+//     echo "Error dropping database: " . mysqli_error($conn);
+// }
 
 // SQL query to create the database
 $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
