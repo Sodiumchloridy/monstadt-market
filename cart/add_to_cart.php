@@ -22,7 +22,7 @@ if($quantity <= 0) {
 include("../config/config.php");
 
 // check if the product already exist in the cart
-$stmt = mysqli_prepare($conn, "SELECT id FROM cart WHERE prod_id=? AND u_id=?");
+$stmt = mysqli_prepare($conn, "SELECT quantity FROM cart WHERE prod_id=? AND u_id=?");
 mysqli_stmt_bind_param($stmt, "ss", $productId, $_SESSION['user_id']);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_store_result($stmt);
@@ -42,6 +42,8 @@ if(mysqli_stmt_num_rows($stmt) > 0) {
 if(mysqli_stmt_execute($stmt)) {
     $message = "Product added to cart successfully";
     echo "<script>alert('$message')</script>";
+    header("Location: view_cart.php");
+    exit();
 } else {
     echo "Error: " . mysqli_error($stmt);
 }
