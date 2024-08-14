@@ -104,7 +104,7 @@
         </div>
 
         <div id="cart"> <!-- Cart -->
-            <a href="">
+            <a href="cart/view_cart.php">
                 <i class="fa-solid fa-cart-shopping fa-lg"></i>
             </a>
         </div>
