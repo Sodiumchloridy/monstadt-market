@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/error.css">
-    <link rel="stylesheet" href="../styles/loginForm.css">
-</head>
-
-<body>
-
-    <?php
+<?php
     $name = $pass = "";
     $nameErr = $passErr = "";
     $validName = $validPass = false;
@@ -54,8 +37,9 @@
 
             // check is there any rows
         } else if($validName){
-            // TODO: password hashing -> if(password_verify($_POST['password'], $pass)) {
-            if($pass === $_POST['password']) {
+            // TODO: password hashing -> 
+            // if($pass === $_POST['password']) {
+            if(password_verify($_POST['password'], $pass)) {
                 $validPass = true;
             } else {
                 $passErr = "Invalid password";
@@ -64,21 +48,39 @@
         mysqli_close($conn);
     }
 
-    ?>
+?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/error.css">
+    <link rel="stylesheet" href="../styles/loginForm.css">
+</head>
+
+<body>
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" id="loginForm">
         <h2>Log In</h2>
-        <div id="nameInput">
-            <input type="text" id="name" name="name" placeholder="Username">
+        <!-- Name input -->
+        <div>
+            <input type="text" name="name" placeholder="Username">
             <div class="error"> <?php echo $nameErr; ?> </div>
         </div>
         <br>
-        <div id="passInput">
-            <input type="password" name="password" id="password" placeholder="Password">
+        <!-- Password input -->
+        <div>
+            <input type="password" name="password" placeholder="Password">
             <div class="error"> <?php echo $passErr; ?> </div>
         </div>
         <br>
-        <input type="submit" value="Submit" id="submit-button">
+        <input type="submit" value="Login" id="submit-button">
     </form>
 </body>
 

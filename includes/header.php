@@ -1,9 +1,6 @@
 <header>
     <!-- Top part of the header -->
-    <div id="pageHeaderTop">
-
-
-
+    <nav id="pageHeaderTop">
         <div id="notification"> <!-- Notification link -->
             <a href="">
                 <i class="fa-regular fa-bell"></i>
@@ -44,14 +41,14 @@
         </div>
 
         <div> <!-- Sign up & login link -->
-            <a href="" id="signup">
+            <a href="auth/signup.php" id="signup">
                 Sign Up
             </a>
             <a href="auth/login.php">
                 Login
             </a>
         </div>
-    </div>
+    </nav>
 
     <!-- Bottom part of the header -->
     <div id="pageHeaderBottom">
