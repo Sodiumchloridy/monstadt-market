@@ -6,7 +6,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
     u_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     u_username VARCHAR(30) UNIQUE,
     u_password VARCHAR(255) NOT NULL,
-    u_email VARCHAR(100) UNIQUE,
+    u_email VARCHAR(100),
     u_address VARCHAR(255),
     u_phone VARCHAR(50),
     u_profile_pic LONGBLOB,
