@@ -49,12 +49,14 @@
                 echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
             ?>
 
-            <form action="">
+            <form action="../monstadt-market/cart/add_to_cart.php" method="post">
             <!--Quantity -->
-            <input min="1" max="200" step="1" autocomplete="off" type="number" value="">
+            <input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off"   >
+            <!-- Product id -->
+            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
             <!--Add to cart -->
-            <input name="buyParams" type="hidden" value="{}">
-            <!--Buy now -->
+            <input type="hidden" name="buyParams" value="{}">
+            <input type="submit" value="Add to cart">
             </form>
 
             <?php
