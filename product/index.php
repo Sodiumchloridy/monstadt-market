@@ -30,26 +30,39 @@
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
 
-    echo '<div class="product-container">';
-    echo '<div class="product-card">';
+
     if (mysqli_num_rows($result) > 0) {
-        $row = mysqli_fetch_assoc($result);
-        echo "<div class='product-col-image'>";
-        echo "<img src='images/" . $row['prod_img_name'] . "' alt='" . $row['prod_name'] . "'>";
-        echo "</div>";
+        echo '<div class="product-container">';
+            echo '<div class="product-card">';
 
-        echo "<div class='product-col-details'>";
-        echo "<h1 align='center'>" . $row['prod_name'] . "</h1>";
-        echo "<p align='center'>Description: " . $row['prod_desc'] . "</p>";
-        echo "<p align='center'>Price: " . $row['prod_price'] . "</p>";
-        echo "<p align='center'>Region: " . $row['prod_region'] . "</p>";
-        echo "<p align='center'>Available: " . $row['prod_numAvailable'] . "</p>";
-        echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
-        echo "</div>";
+            $row = mysqli_fetch_assoc($result);
+            echo "<section class='product-col-image'>";
+                echo "<img src='images/" . $row['prod_img_name'] . "' alt='" . $row['prod_name'] . "'>";
+            echo "</section>";
+
+            echo "<section class='product-col-details'>";
+                echo "<h1 align='center'>" . $row['prod_name'] . "</h1>";
+                echo "<p align='center'>Description: " . $row['prod_desc'] . "</p>";
+                echo "<p align='center'>Price: " . $row['prod_price'] . "</p>";
+                echo "<p align='center'>Region: " . $row['prod_region'] . "</p>";
+                echo "<p align='center'>Available: " . $row['prod_numAvailable'] . "</p>";
+                echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
+            ?>
+
+            <form action="">
+            <!--Quantity -->
+            <input min="1" max="200" step="1" autocomplete="off" type="number" value="">
+            <!--Add to cart -->
+            <input name="buyParams" type="hidden" value="{}">
+            <!--Buy now -->
+            </form>
+
+            <?php
+            echo "</section>";
+
+            echo '</div>';
+        echo '</div>';
     }
-    echo '</div>';
-
-    echo '</div>';
     ?>
 </body>
 
