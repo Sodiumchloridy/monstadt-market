@@ -46,7 +46,8 @@ $sql = "CREATE TABLE IF NOT EXISTS Cart(
     quantity INT(6) NOT NULL,
     PRIMARY KEY (u_id, prod_id),
     FOREIGN KEY (u_id) REFERENCES Users(u_id) ON DELETE CASCADE,
-    FOREIGN KEY (prod_id) REFERENCES Product(prod_id) ON DELETE CASCADE
+    FOREIGN KEY (prod_id) REFERENCES Product(prod_id) ON DELETE CASCADE,
+    UNIQUE KEY unique_cart_item (u_id, prod_id)
 )";
 
 if (mysqli_query($conn, $sql)) {

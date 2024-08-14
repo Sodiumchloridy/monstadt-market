@@ -195,7 +195,10 @@ function test_input($data) {
                 </td>
             </tr>
             <tr>
-                <td colspan = "3">
+                <td>
+                    Profile pic:
+                </td>
+                <td colspan = "2">
                     <input type="file" name="image" accept="image/*">
                 </td>
             </tr>
