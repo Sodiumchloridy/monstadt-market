@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 $name = $pass = $email = $phone = $address = $unit = $street = $poskod = $state = $message = $result = "";
 $nameErr = $passErr = $emailErr = $phoneErr = $unitErr = $streetErr = $poskodErr = $stateErr = "";
@@ -67,9 +68,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $imgTmpPath = $_FILES['image']['tmp_name'];
         $imgData = file_get_contents($imgTmpPath);
+        $imgType = $_FILES['image']['type'];
     } else {
         // use default picture if no file is uploaded
         $imgData = file_get_contents("../default_images/default_profile.jpg");
+        $imgType = mime_content_type("../default_images/default_profile.jpg");
     }
 
     if(count($addressErr) === 0 && empty($nameErr) && empty($passErr) && empty($emailErr) && empty($phoneErr)) {
@@ -87,8 +90,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $state = test_input($_POST['state']);
         $address = "$unit $street $poskod $state";
 
-        $stmt = mysqli_prepare($conn, "INSERT INTO users (u_username, u_password, u_email, u_address, u_phone, u_profile_pic) VALUES (?, ?, ?, ?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, "ssssss", $name, $hashedPass, $email, $address, $phone, $imgData);
+        $stmt = mysqli_prepare($conn, "INSERT INTO users (u_username, u_password, u_email, u_address, u_phone, u_profile_pic, u_profile_pic_type) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        mysqli_stmt_bind_param($stmt, "sssssss", $name, $hashedPass, $email, $address, $phone, $imgData, $imgType);
 
     
         if(mysqli_stmt_execute($stmt)) {
@@ -101,6 +104,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         // closing statement and connection
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
+        header("Location: login.php");
+        exit();
 
     }
 
@@ -191,7 +196,7 @@ function test_input($data) {
             </tr>
             <tr>
                 <td colspan = "3">
-                    <input type="file" accept="image/*">
+                    <input type="file" name="image" accept="image/*">
                 </td>
             </tr>
         </table>

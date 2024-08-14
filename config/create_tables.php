@@ -10,6 +10,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Users (
     u_address VARCHAR(255),
     u_phone VARCHAR(50),
     u_profile_pic LONGBLOB,
+    u_profile_pic_type VARCHAR(50),
     u_reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 )";
 

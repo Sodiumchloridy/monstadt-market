@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     $name = $pass = "";
     $nameErr = $passErr = "";
     $validName = $validPass = false;
@@ -17,10 +19,10 @@
             $name = $_POST['name'];
 
             // Check if the name exist in database
-            $stmt = mysqli_prepare($conn, "SELECT u_password FROM users WHERE u_username=?");
+            $stmt = mysqli_prepare($conn, "SELECT u_password, u_profile_pic, u_profile_pic FROM users WHERE u_username=?");
             mysqli_stmt_bind_param($stmt, "s", $name);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $pass);
+            mysqli_stmt_bind_result($stmt, $pass, $profilePic, $profilePicType);
             mysqli_stmt_fetch($stmt);
             mysqli_stmt_close($stmt);
 
@@ -45,7 +47,16 @@
                 $passErr = "Invalid password";
             }
         }
+
         mysqli_close($conn);
+        if(empty($nameErr) && empty($passErr) && $validName && $validPass) {
+            $_SESSION['username'] = $name;
+            $_SESSION['profile_pic'] = $profilePic;
+            $_SESSION['profile_pic_type'] = $profilePicType;
+
+            header("Location: ../index.php");
+            exit();
+        }
     }
 
 ?>
