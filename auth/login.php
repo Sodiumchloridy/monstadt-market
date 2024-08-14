@@ -19,10 +19,10 @@
             $name = $_POST['name'];
 
             // Check if the name exist in database
-            $stmt = mysqli_prepare($conn, "SELECT u_password, u_profile_pic, u_profile_pic_type FROM users WHERE u_username=?");
+            $stmt = mysqli_prepare($conn, "SELECT u_id, u_password, u_profile_pic, u_profile_pic_type FROM users WHERE u_username=?");
             mysqli_stmt_bind_param($stmt, "s", $name);
             mysqli_stmt_execute($stmt);
-            mysqli_stmt_bind_result($stmt, $pass, $profilePic, $profilePicType);
+            mysqli_stmt_bind_result($stmt, $userId, $pass, $profilePic, $profilePicType);
             mysqli_stmt_fetch($stmt);
             mysqli_stmt_close($stmt);
 
@@ -48,6 +48,7 @@
 
         mysqli_close($conn);
         if(empty($nameErr) && empty($passErr) && $validName && $validPass) {
+            $_SESSION['user_id'] = $userId; 
             $_SESSION['username'] = $name;
             $_SESSION['profile_pic'] = $profilePic;
             $_SESSION['profile_pic_type'] = $profilePicType;
