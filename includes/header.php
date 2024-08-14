@@ -42,13 +42,14 @@
 
         <?php 
         if(isset($_SESSION['username'])) {
+
             // user is logged in, display personalized content
             echo "
             <div> 
                 <img src='data:" . 
                 htmlspecialchars($_SESSION['profile_pic_type']) . 
                 ";base64," . base64_encode($_SESSION['profile_pic']) . 
-                "'/>" . 
+                "' width='20px'/>" . 
                 htmlspecialchars($_SESSION['username']) . 
             "</div>";
             echo "

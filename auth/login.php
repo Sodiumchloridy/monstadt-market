@@ -19,7 +19,7 @@
             $name = $_POST['name'];
 
             // Check if the name exist in database
-            $stmt = mysqli_prepare($conn, "SELECT u_password, u_profile_pic, u_profile_pic FROM users WHERE u_username=?");
+            $stmt = mysqli_prepare($conn, "SELECT u_password, u_profile_pic, u_profile_pic_type FROM users WHERE u_username=?");
             mysqli_stmt_bind_param($stmt, "s", $name);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_bind_result($stmt, $pass, $profilePic, $profilePicType);
