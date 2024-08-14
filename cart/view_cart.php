@@ -27,6 +27,7 @@ mysqli_stmt_store_result($stmt);
 // fetch the result and display them
 if(mysqli_stmt_num_rows($stmt) === 0) {
     echo "<p>Your cart is empty</p>";
+    echo "<a href='../'>Add item to cart</a>";
 } else {
     echo "<h2>Your cart</h2>";
     while(mysqli_stmt_fetch($stmt)) {
