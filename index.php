@@ -23,7 +23,6 @@
         include('config/display_data.php'); ?>
     </div>
 
-    <div id="search-results"></div>
     <?php include("includes/footer.php"); ?>
 </body>
 
