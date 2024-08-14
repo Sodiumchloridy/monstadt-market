@@ -1,0 +1,25 @@
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.product-col-image{
+    display: inline-block;
+    width: 338px;
+    vertical-align: top;
+}
+
+.product-col-details{
+    display: inline-block;
+    width: calc(100%-338px);
+    vertical-align: top;
+}
