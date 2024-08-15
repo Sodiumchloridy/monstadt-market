@@ -62,8 +62,6 @@
                 <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
                 <!-- Max Available -->
                 <input type="hidden" id="maxAvailable" value="<?php echo $row['prod_numAvailable']; ?>">
-                <!--Add to cart -->
-                <input type="hidden" name="buyParams" value="{}">
 
                 <input type="submit" value="Add to cart">
             </form>
