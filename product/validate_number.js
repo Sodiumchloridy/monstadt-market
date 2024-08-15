@@ -2,6 +2,8 @@ window.onload = function() {
     const maxAvailable = Number(document.getElementById('maxAvailable').value);
     const quantityInputField = document.getElementById('quantity');
     const errorMessageDiv = document.getElementById('quantity-error');
+    const increaseQuantityButton = document.getElementById('increase-quantity');
+    const decreaseQuantityButton = document.getElementById('decrease-quantity');
 
     //Prevent text input in number field
     quantityInputField.addEventListener("input", function() {
@@ -46,4 +48,31 @@ window.onload = function() {
         cart_form.submit();
     });
 
+    //Increase and decrease function for button
+    function updateQuantity(change) {
+        let currentValue = Number(quantityInputField.value);
+
+        //Apply the change (increase or decrease)
+        let newValue = currentValue + change;
+
+        //Ensure the new value is within valid bounds
+        if (newValue < 1) {
+            newValue = 1; //Minimum quantity is 1
+        } else if (newValue > maxAvailable) {
+            newValue = maxAvailable; //Maximum quantity should not exceed the available stock
+        } else {
+            errorMessageDiv.textContent = ""; // Clear any error message
+        }
+
+        // Update the quantity input field
+        quantityInputField.value = newValue;
+    }
+
+    //Add event listeners to the plus and minus icons
+    increaseQuantityButton.addEventListener('click', function() {
+        updateQuantity(1); 
+    });
+    decreaseQuantityButton.addEventListener('click', function() {
+        updateQuantity(-1); 
+    });
 }

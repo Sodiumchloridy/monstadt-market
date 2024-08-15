@@ -53,9 +53,9 @@
             <form id="add-to-cart-form" action="../monstadt-market/cart/add_to_cart.php" method="post">
                 <!--Quantity -->
                 <label for="quantity">Quantity: </label>
-                <i class="fa-regular fa-plus"></i>
+                <i class="fa-regular fa-minus" id="decrease-quantity"></i> 
                 <input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="1">
-                <i class="fa-regular fa-minus"></i> 
+                <i class="fa-regular fa-plus" id="increase-quantity"></i>
                 <div class="error" id="quantity-error"></div>
 
                 <!-- Product id -->
