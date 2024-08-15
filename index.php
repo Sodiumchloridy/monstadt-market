@@ -19,7 +19,6 @@
     <!-- grid list of shop items -->
     <div class="product-grid">
         <?php
-        include('config/setup.php');
         include('config/display_data.php'); ?>
     </div>
 
