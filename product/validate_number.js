@@ -1,16 +1,49 @@
 window.onload = function() {
-    const numericInputs = document.querySelectorAll("[inputmode='numeric']");
+    const maxAvailable = Number(document.getElementById('maxAvailable').value);
+    const quantityInputField = document.getElementById('quantity');
+    const errorMessageDiv = document.getElementById('quantity-error');
 
-    numericInputs.forEach((input) => {
-        input.addEventListener("input", function(e) {
-            //Save the current value in case the new value is invalid
-            const previousValue = input.value;
+    //Prevent text input in number field
+    quantityInputField.addEventListener("input", function() {
+        let currentValue = Number(quantityInputField.value);
 
-            //Validate input against the pattern
-            if (!input.validity.valid) {
-                //Revert to the previous value if invalid input is detected
-                input.value = previousValue.slice(0, -1);
-            }
-        });
+        //Clear any error message
+        errorMessageDiv.textContent = "";
+
+        //Validate input against the pattern
+        if (!quantityInputField.validity.valid) {
+            //Remove last character if invalid input
+            quantityInputField.value = quantityInputField.value.slice(0, -1);
+        } else if (currentValue > maxAvailable) {
+            //If the value exceeds the maximum available, set it to maxAvailable
+            quantityInputField.value = maxAvailable;
+        }
     });
+
+    //Validate number input
+    const cart_form = document.getElementById("add-to-cart-form");
+    cart_form.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        let quantityInput = Number(quantityInputField.value);
+
+        //Set quantity to 1 if it is not a number or is 0
+        if (isNaN(quantityInput) || quantityInput < 1){
+            quantityInput = 1;
+            quantityInputField.value = 1;
+        }
+
+        //Display error if quantity > Max available
+        if (quantityInput > maxAvailable){
+            const errorMessageDiv = document.getElementById('quantity-error');
+            errorMessageDiv.textContent = "Quantity has exceeded the number available.";
+            return;
+        }
+
+        errorMessageDiv.textContent = "";
+
+        //Submit form if no error
+        cart_form.submit();
+    });
+
 }

@@ -50,31 +50,23 @@
                 echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
             ?>
 
-            <form action="../monstadt-market/cart/add_to_cart.php" method="post">
-            <!--Quantity -->
-            <!--input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off"-->
-            <input type="text" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="<?php echo isset($_POST['quantity']) ? $_POST['quantity'] : ""; ?>"> 
-            <!-- Product id -->
-            <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
-            <!--Add to cart -->
-            <input type="hidden" name="buyParams" value="{}">
-
-            <input type="submit" value="Add to cart">
-            </form>
-            
-            <!--Quantity >
-            <form action="">
-            <div class="quantity-input">
-                <p>Quantity: </p>
+            <form id="add-to-cart-form" action="../monstadt-market/cart/add_to_cart.php" method="post">
+                <!--Quantity -->
+                <label for="quantity">Quantity: </label>
                 <i class="fa-regular fa-plus"></i>
-                <input type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""> 
-                <i class="fa-regular fa-minus"></i>
-            </div>
-            <Add to cart >
-            <input name="buyParams" type="hidden" value="{}">
-            <Buy now -->
-            
-            
+                <input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="1">
+                <i class="fa-regular fa-minus"></i> 
+                <div class="error" id="quantity-error"></div>
+
+                <!-- Product id -->
+                <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
+                <!-- Max Available -->
+                <input type="hidden" id="maxAvailable" value="<?php echo $row['prod_numAvailable']; ?>">
+                <!--Add to cart -->
+                <input type="hidden" name="buyParams" value="{}">
+
+                <input type="submit" value="Add to cart">
+            </form>
 
             <?php
             echo "</section>";
