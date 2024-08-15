@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/product.css">
+    <script src="validate_number.js"></script>
 </head>
 
 <body>
@@ -51,13 +52,29 @@
 
             <form action="../monstadt-market/cart/add_to_cart.php" method="post">
             <!--Quantity -->
-            <input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off"   >
+            <input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off">
+            <input type="text" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""> 
             <!-- Product id -->
             <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
             <!--Add to cart -->
             <input type="hidden" name="buyParams" value="{}">
+
             <input type="submit" value="Add to cart">
             </form>
+            
+            <!--Quantity >
+            <form action="">
+            <div class="quantity-input">
+                <p>Quantity: </p>
+                <i class="fa-regular fa-plus"></i>
+                <input type="text" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""> 
+                <i class="fa-regular fa-minus"></i>
+            </div>
+            <Add to cart >
+            <input name="buyParams" type="hidden" value="{}">
+            <Buy now -->
+            
+            
 
             <?php
             echo "</section>";
@@ -65,7 +82,11 @@
             echo '</div>';
         echo '</div>';
     }
+
+    //Footer
+    include('../includes/footer.php');
     ?>
+    
 </body>
 
 </html>
