@@ -52,8 +52,8 @@
 
             <form action="../monstadt-market/cart/add_to_cart.php" method="post">
             <!--Quantity -->
-            <input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off">
-            <input type="text" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""> 
+            <!--input type="number" name="quantity" value="1" min="1" max="200" step="1" autocomplete="off"-->
+            <input type="text" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="<?php echo isset($_POST['quantity']) ? $_POST['quantity'] : ""; ?>"> 
             <!-- Product id -->
             <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($row['prod_id'])?>">
             <!--Add to cart -->
