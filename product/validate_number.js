@@ -12,8 +12,8 @@ window.onload = function() {
 
         //Validate input against the pattern
         if (!quantityInputField.validity.valid) {
-            //Remove last character if invalid input
-            quantityInputField.value = quantityInputField.value.slice(0, -1);
+            //Replace invalid character with empty character
+            quantityInputField.value = quantityInputField.value.replace(/[^0-9]/g, '');
         } else if (currentValue > maxAvailable) {
             //If the value exceeds the maximum available, set it to maxAvailable
             quantityInputField.value = maxAvailable;
