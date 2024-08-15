@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/product.css">
-    <script src="validate_number.js"></script>
+    <script src="product/validate_number.js"></script>
 </head>
 
 <body>

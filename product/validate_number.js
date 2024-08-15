@@ -1,18 +1,16 @@
-const numericInputs = document.querySelectorAll("[inputmode='numeric']");
+window.onload = function() {
+    const numericInputs = document.querySelectorAll("[inputmode='numeric']");
 
-numericInputs.forEach((input) =>{
-    validateInput(input);
-})
+    numericInputs.forEach((input) => {
+        input.addEventListener("input", function(e) {
+            //Save the current value in case the new value is invalid
+            const previousValue = input.value;
 
-function validateInput(el){
-    el.addEventListener("beforeInput", function(e){
-        let beforeValue = el.value;
-        e.target.addEventListener("input", function(){
-            if (el.validity.patternMismatch){
-                el.value = beforeValue;
+            //Validate input against the pattern
+            if (!input.validity.valid) {
+                //Revert to the previous value if invalid input is detected
+                input.value = previousValue.slice(0, -1);
             }
-        }, {once : true}
-    );
+        });
     });
-
 }
