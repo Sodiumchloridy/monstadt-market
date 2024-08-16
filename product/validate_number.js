@@ -61,10 +61,10 @@ window.onload = function() {
         } else if (newValue > maxAvailable) {
             newValue = maxAvailable; //Maximum quantity should not exceed the available stock
         } else {
-            errorMessageDiv.textContent = ""; // Clear any error message
+            errorMessageDiv.textContent = ""; 
         }
 
-        // Update the quantity input field
+        //Update the quantity input field
         quantityInputField.value = newValue;
     }
 
