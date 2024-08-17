@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,7 +14,6 @@
 
 <body>
     <?php include("includes/header.php"); ?>
-    <p>xxxx</p>
 
     <!-- grid list of shop items -->
     <div class="product-grid">
