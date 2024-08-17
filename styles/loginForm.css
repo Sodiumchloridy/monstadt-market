@@ -9,7 +9,7 @@ main {
 #loginForm {
     position: relative;
     backdrop-filter: blur(10px);
-    padding: 20px;
+    padding: 20px 20px 50px 20px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin-inline: auto;
     width: clamp(300px, 60vw, 600px);
@@ -37,11 +37,13 @@ main {
     padding: 15px;
     border: 2px solid rgba(255, 255, 255, 0.2);
     outline: none;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: clamp(1rem, 5vw, 1.5rem);
 }
 
 #loginForm input::placeholder {
     font-weight: 100;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 5vw, 1.5rem);
     color: white;
     margin-left: 25px;
 }
@@ -84,7 +86,7 @@ input[type="password"]:focus~#anya {
 #anya {
     width: clamp(100px, 10vw, 150px);
     position: absolute;
-    bottom: -7px;
+    bottom: -5px;
     right: -10px;
     transition: all ease-in-out 0.5s;
 }

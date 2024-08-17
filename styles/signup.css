@@ -109,7 +109,7 @@ select[name="state"] {
 #anya {
     width: clamp(100px, 10vw, 150px);
     position: absolute;
-    bottom: -7px;
+    bottom: -5px;
     right: -10px;
     transition: all ease-in-out 0.5s;
 }
