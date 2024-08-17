@@ -2,7 +2,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    min-height: 70vh;
     background: url("https://i.redd.it/bpxxqqvps4h91.gif");
 }
 
@@ -18,6 +18,15 @@ main {
     overflow-x: clip;
     border-radius: 20px 20px 0 0;
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+}
+
+#loginForm h2 {
+    font-size: 3rem;
+    color: white;
+    font-weight: 300;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 5vh;
+    text-shadow: 5px 5px 0 black;
 }
 
 #loginForm input {
@@ -42,6 +51,7 @@ input[type="password"]:focus~#anya {
 }
 
 #submit-button[type="submit"] {
+    padding: 10px 50px;
     margin: 50px 0;
     background-color: white;
     border: 3px solid black;
@@ -56,14 +66,6 @@ input[type="password"]:focus~#anya {
     color: white;
 }
 
-#loginForm h2 {
-    font-size: 3rem;
-    color: white;
-    font-weight: 300;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    margin-bottom: 5vh;
-    text-shadow: 5px 5px 0 black;
-}
 
 #loginForm p {
     color: white;
@@ -80,7 +82,7 @@ input[type="password"]:focus~#anya {
 }
 
 #anya {
-    width: 150px;
+    width: clamp(100px, 10vw, 150px);
     position: absolute;
     bottom: -7px;
     right: -10px;

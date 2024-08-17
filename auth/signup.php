@@ -123,61 +123,64 @@ function test_input($data)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/error.css">
+    <link rel="stylesheet" href="../styles/signup.css">
     <title>Sign Up</title>
 </head>
 
 <body>
     <?php include("../includes/header.php"); ?>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data" id="signupForm">
-        <h2>Sign Up</h2>
-        <?php echo $message; ?>
-        <table>
-            <tr>
-                <td>
-                    <!-- Name input -->
+    <main>
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" enctype="multipart/form-data" id="signupForm">
+            <div>
+                <h2>Sign Up</h2>
+            </div>
+            <?php echo $message; ?>
+            <div class="grid">
+                <!-- Name input -->
+                <label for="name">Name</label>
+                <div>
                     <input type="text" name="name" placeholder="Username" value="<?php echo htmlspecialchars($name) ?>">
                     <div class="error"><?php echo $nameErr; ?></div>
+                </div>
 
-                </td>
-                <td>
-                    <!-- Password input -->
+                <!-- Password input -->
+                <label for="password">Password</label>
+                <div id="passwordParent">
                     <input type="password" name="password" id="password" placeholder="Password" value="<?php echo htmlspecialchars($pass) ?>">
                     <div class="error"><?php echo $passErr ?></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <!-- Email input -->
+                </div>
+
+                <!-- Email input -->
+                <label for="email">Email</label>
+                <div>
                     <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email) ?>">
                     <div class="error"><?php echo $emailErr ?></div>
-                </td>
-                <td>
-                    <!-- Telephone input -->
+                </div>
+
+                <!-- Telephone input -->
+                <label for="phone">Phone</label>
+                <div>
                     <input type="tel" name="phone" placeholder="Phone" value="<?php echo htmlspecialchars($phone) ?>">
                     <div class="error"><?php echo $phoneErr ?></div>
-                </td>
-            </tr>
-            <!-- Address input -->
-            <tr>
-                <td>
+                </div>
+
+                <!-- Address input -->
+                <label for="address">Address</label>
+                <div>
                     <input type="text" name="unit" placeholder="Unit" value="<?php echo htmlspecialchars($unit) ?>">
                     <div class="error"><?php echo $unitErr ?></div>
-                </td>
-                <td>
+
                     <input type="text" name="street" placeholder="Street" value="<?php echo htmlspecialchars($street) ?>">
                     <div class="error"><?php echo $streetErr ?></div>
-                </td>
-                <td>
+
                     <input type="text" name="poskod" placeholder="Poskod" value="<?php echo htmlspecialchars($poskod) ?>">
                     <div class="error"><?php echo $poskodErr ?></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
+
                     <select name="state" required>
                         <option value="" disabled <?php if ($state == "") echo 'selected'; ?>>Select State</option>
                         <option value="Johor" <?php if ($state == "Johor") echo 'selected'; ?>>Johor</option>
@@ -198,20 +201,18 @@ function test_input($data)
                         <option value="Terengganu" <?php if ($state == "Terengganu") echo 'selected'; ?>>Terengganu</option>
                     </select>
                     <div class="error"><?php echo $stateErr ?></div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Profile pic:
-                </td>
-                <td colspan="2">
+                </div>
+
+                <label>Profile pic</label>
+                <div>
                     <input type="file" name="image" accept="image/*">
-                </td>
-            </tr>
-        </table>
-        <br>
-        <input type="submit" value="Sign Up" id="submit-button">
-    </form>
+                </div>
+                <br>
+                <input type="submit" value="Sign Up" id="submit-button">
+                <image src="../default_images/anya-peek.png" alt="anya peeking" id="anya">
+            </div>
+        </form>
+    </main>
     <?php include("../includes/footer.php"); ?>
 </body>
 

@@ -5,7 +5,15 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 10%;
+    padding: 15px clamp(1rem, 10%, 10%);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.75rem 5%;
+        gap: 1rem;
+        flex-direction: column;
+    }
 }
 
 #menu-icon {
@@ -35,13 +43,23 @@ header {
 /* Search and Cart */
 #search-bar {
     flex: 40%;
+    display: flex;
+    align-items: center;
 }
 
 #cart {
-    flex: 20%;
+    width: fit-content;
+    margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+    #cart {
+        margin: 0;
+    }
 }
 
 #cart a {
+    padding: 5px 10px;
     display: grid;
     place-items: center;
     width: 50px;
@@ -54,10 +72,11 @@ header {
     color: white;
     background-color: black;
     border-radius: 25px;
-    padding: 0.5rem;
 }
 
 #search-bar form {
+    flex: 1;
+    margin: auto 0;
     background: white;
     border-radius: 5px;
     box-sizing: border-box;
@@ -75,6 +94,7 @@ header {
 }
 
 #search-bar button {
+    padding: 5px 10px;
     border: none;
     color: black;
     cursor: pointer;
@@ -84,21 +104,9 @@ header {
     justify-content: center;
 }
 
-#search-bar button i {
-    margin: 0.5rem;
-}
-
 #search-bar button:hover {
     color: white;
     background-color: black;
-}
-
-#cart {
-    flex: 1;
-    /* This makes the cart div take up available space */
-    display: flex;
-    justify-content: center;
-    /* This centers the cart icon horizontally within its div */
 }
 
 /* Auth Buttons */
@@ -107,12 +115,13 @@ header {
 }
 
 #auth-button-group a {
+    text-wrap: nowrap;
     padding: 10px 20px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color: black;
     text-decoration: none;
     background-color: white;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     border: black solid 3px;
 }
 
@@ -129,24 +138,4 @@ header {
 #auth-button-group a:hover {
     background-color: black;
     color: white;
-}
-
-/* Media Queries for mobile view */
-@media (max-width: 768px) {
-    header {
-        padding: 1.75rem 5%;
-        gap: 1rem;
-    }
-
-    #logo {
-        display: none;
-    }
-
-    #cart {
-        display: none;
-    }
-
-    #auth-button-group {
-        display: none;
-    }
 }
