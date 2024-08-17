@@ -1,0 +1,115 @@
+main {
+    padding: 20px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background: url("https://i.redd.it/bpxxqqvps4h91.gif");
+}
+
+#signupForm {
+    position: relative;
+    backdrop-filter: blur(10px);
+    padding: 20px 20px 8rem 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: clamp(300px, 60vw, 600px);
+    min-height: 15vw;
+    text-align: center;
+    overflow-x: clip;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.grid {
+    display: grid;
+    padding: 0 clamp(20px, 5vw, 50px);
+    place-items: normal end;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .grid {
+        place-items: center;
+        grid-template-columns: 1fr;
+    }
+}
+
+.grid>div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#signupForm h2 {
+    font-size: 3rem;
+    color: white;
+    font-weight: 300;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 5vh;
+    text-shadow: 5px 5px 0 black;
+}
+
+#signupForm label {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    font-weight: 100;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#signupForm input {
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    width: 100%;
+}
+
+#signupForm input::placeholder {
+    color: lightgray;
+}
+
+#passwordParent:focus-within~#anya {
+    transform: translateX(100%);
+}
+
+select[name="state"] {
+    width: 100%;
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    font-size: 1rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#submit-button[type="submit"] {
+    width: clamp(200px, 20vw, 400px);
+    position: absolute;
+    bottom: 60px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 10px 50px;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    color: black;
+    font-size: 1.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#submit-button[type="submit"]:hover {
+    background-color: black;
+    color: white;
+}
+
+#anya {
+    width: clamp(100px, 10vw, 150px);
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+    transition: all ease-in-out 0.5s;
+}

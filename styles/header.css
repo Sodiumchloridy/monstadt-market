@@ -1,58 +1,84 @@
 header {
     background-color: tomato;
     color: white;
-}
-
-#pageHeaderTop {
-    background-color: rgb(44, 44, 44);
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
-    align-items: center;
-    gap: 10px;
-    padding: 0.75rem 10%;
-    font-size: clamp(0.75rem, 1.5vw, 1rem);
-}
-
-#signup {
-    border-right: solid 1px gray;
-    margin-right: 5px;
-}
-
-#pageHeaderBottom {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1.75rem 10%;
+    padding: 15px clamp(1rem, 10%, 10%);
 }
 
-#pageHeaderBottom div#logo {
+@media (max-width: 768px) {
+    header {
+        padding: 1.75rem 5%;
+        gap: 1rem;
+        flex-direction: column;
+    }
+}
+
+#menu-icon {
+    display: none;
+    color: black;
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+}
+
+/* Logo */
+#logo {
     flex: 20%;
 }
 
-#pageHeaderBottom div#search-bar {
-    flex: 60%;
-}
-
-#pageHeaderBottom div#cart {
-    flex: 20%;
-}
-
-#logo a {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    text-decoration: none;
+#logo h2 {
+    font-size: 2rem;
     color: white;
-    gap: 10px;
-    font-family: 'Roboto', sans-serif;
-    /* Logo Font */
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+/* Search and Cart */
+#search-bar {
+    flex: 40%;
+    display: flex;
+    align-items: center;
+}
+
+#cart {
+    width: fit-content;
+    margin: 0 20px;
+}
+
+@media (max-width: 768px) {
+    #cart {
+        margin: 0;
+    }
+}
+
+#cart a {
+    padding: 5px 10px;
+    display: grid;
+    place-items: center;
+    width: 50px;
+    height: 30px;
+    color: black;
+    text-decoration: none;
+}
+
+#cart a:hover {
+    color: white;
+    background-color: black;
+    border-radius: 25px;
 }
 
 #search-bar form {
+    flex: 1;
+    margin: auto 0;
     background: white;
-    border-radius: 2px;
+    border-radius: 5px;
     box-sizing: border-box;
     display: flex;
     height: 2.5rem;
@@ -68,52 +94,48 @@ header {
 }
 
 #search-bar button {
+    padding: 5px 10px;
     border: none;
-    background-color: tomato;
-    color: white;
+    color: black;
     cursor: pointer;
-    border-radius: 0 2px 2px 0;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#search-bar button i {
-    margin: 0.5rem;
-}
-
 #search-bar button:hover {
-    background-color: #e34234;
-    /* Darker shade of tomato */
+    color: white;
+    background-color: black;
 }
 
-#cart {
-    flex: 1;
-    /* This makes the cart div take up available space */
+/* Auth Buttons */
+#auth-button-group {
     display: flex;
-    justify-content: center;
-    /* This centers the cart icon horizontally within its div */
 }
 
-/* Media Queries for mobile view */
-@media (max-width: 768px) {
-    pageHeaderTop {
-        padding: 0.75rem 5%;
-    }
+#auth-button-group a {
+    text-wrap: nowrap;
+    padding: 10px 20px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+    text-decoration: none;
+    background-color: white;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    border: black solid 3px;
+}
 
-    #pageHeaderBottom {
-        padding: 1.75rem 5%;
-    }
+#auth-button-group a:first-child {
+    border-radius: 15px 0 0 15px;
+    border-right: black solid 2px;
+}
 
-    #logo a h2 {
-        display: none;
-    }
+#auth-button-group a:last-child {
+    border-left: none;
+    border-radius: 0 15px 15px 0;
+}
 
-    #notification a span {
-        display: none;
-    }
-
-    #help a span {
-        display: none;
-    }
+#auth-button-group a:hover {
+    background-color: black;
+    color: white;
 }

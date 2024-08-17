@@ -1,4 +1,9 @@
 <footer>
-    <i class="fa-solid fa-basket-shopping fa-2xl" id="footerIcon"></i>
-    <p>Mondstadt Market &#169; 2024</p>
+    <h1>MONSTADT MARKET</h1>
+    <div class="footer-container">
+        <a>About Us</a>
+        <a>Contact Us</a>
+        <a>Help</a>
+    </div>
+    <p>Copyright &#169; MONSTADT MARKET. All rights reserved.</p>
 </footer>
