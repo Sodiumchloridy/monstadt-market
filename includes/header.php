@@ -33,7 +33,7 @@
             htmlspecialchars($_SESSION['username']) .
             "</div>";
         echo "
-            <div>
+            <div id='signout-button'>
                 <a href='auth/logout.php'> Logout </a>
             </div>";
     } else {
@@ -47,7 +47,7 @@
                 <a href='/monstadt-market/auth/login.php'>
                     Login
                 </a>
-            </button>
+            </div>
             ";
     }
 

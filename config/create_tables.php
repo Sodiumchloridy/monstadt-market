@@ -26,7 +26,7 @@ $sql = "CREATE TABLE IF NOT EXISTS Product (
     prod_img_name VARCHAR(255),
     prod_name VARCHAR(128) NOT NULL,
     prod_desc TEXT,
-    prod_price DECIMAL(10,2) NOT NULL, 
+    prod_price DECIMAL(10,2) NOT NULL,
     prod_region VARCHAR(128),
     prod_numAvailable INT(6) NOT NULL,
     prod_numSold INT(6) NOT NULL,

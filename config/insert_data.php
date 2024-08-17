@@ -4,7 +4,7 @@ include 'config.php';
 
 //Insert data for product
 $sql = "
-INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `prod_price`, `prod_region`, `prod_numAvailable`, `prod_numSold`) VALUES 
+INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `prod_price`, `prod_region`, `prod_numAvailable`, `prod_numSold`) VALUES
 ('1', 'Item_Pile_Em_Up.webp', 'Pile ''Em Up', 'A rich, meaty dish. Originally a Mondstadt dish made of steaks, potatoes, and cheese, it has since become synonymous with Ludi Harpastum.', '13.7', 'Mondstadt', '99', '300'),
 ('2', 'Item_Apple_Cider.webp', 'Apple Cider', 'A freshly squeezed, fashionable, and fruity non-alcoholic beverage. Said to have a strong sobering effect, tavern patrons often order this as the last drink of the night.', '15.3', 'Mondstadt', '99', '300'),
 ('3', 'Item_Barbatos_Ratatouille.webp', 'Barbatos Ratatouille', 'A simple chowder with a long history. After much careful stewing, the flavors of three different vegetables have been blended to perfection. Like this, it is not hard to imagine why someone once called it \"the best chowder I\'ve ever tasted.\"', '11.2', 'Mondstadt', '99', '300'),
@@ -23,7 +23,6 @@ INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `pr
 ('16', 'Item_Sticky_Honey_Roast.webp', 'Sticky Honey Roast', 'A meat dish in a sweet honey sauce. The carrots take the gamey edge off the meat, and the sauce brings it all together sweetly. The perfect warm dish for a cold winter night.', '14.4', 'Mondstadt', '99', '300'),
 ('17', 'Item_Tea_Break_Pancake.webp', 'Tea Break Pancake', 'A stack of round pancakes. Tender and fluffy, the sweet-smelling pancakes taste like clouds. A heavenly delicacy, no doubt.', '16.9', 'Mondstadt', '99', '300'),
 ('18', 'Item_Wolfhook_Juice.webp', 'Wolfhook Juice', 'A freshly squeezed, fashionable, and fruity non-alcoholic beverage. Iced Wolfhook juice mixed with a pinch of other ingredients, forming a dreamy shade of violet.', '18.2', 'Mondstadt', '99', '300'),
-
 ('19', 'Item_Adeptus_Temptation.webp', 'Adeptus\' Temptation', 'A complex, famous type of Liyue cuisine, in which specially selected ingredients are submerged and slowly bowled into soup stock. The recipe scribbled from memory alone was enough to urge the adepti to once again return to the world of men.', '18.4', 'Liyue', '99', '300'),
 ('20', 'Item_Almond_Tofu.webp', 'Almond Tofu', 'A dessert made out of almond. It has a silky-smooth texture with a long-lasting aroma of almond. It\'s named tofu only because of its tofu-like shape.', '10.8', 'Liyue', '99', '300'),
 ('21', 'Item_Black-Back_Perch_Stew.webp', 'Black-Back Perch Stew', 'A poached fish dish. The fresh and tasty fish fillets are tender and juicy. The secret to this recipe is adding powdered Violetgrass into the heated oil to give the dish that aromatic scent. It\'s spicy, but not too spicy.', '12.7', 'Liyue', '99', '300'),
@@ -48,7 +47,6 @@ INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `pr
 ('40', 'Item_Zhongyuan_Chop_Suey.webp', 'Zhongyuan Chop Suey', 'A seasoned and cooked meat dish. The authentic \"Liyue taste\" of this aromatic dish makes it a comfort food for golden-agers that may bring a tear to their eyes.', '18.1', 'Liyue', '99', '300'),
 ('41', 'Item_Stone_Harbor_Delicacies.webp', 'Stone Harbor Delicacies', 'Wok-fried vegetarian food. A stir-fried selection of three ingredients hailing from Liyue. Though the methodology is simple, it brings out the intense, innate flavors of the ingredients, and does not fade in brilliance when compared to some high-class delicacy.', '13.4', 'Liyue', '99', '300'),
 ('42', 'Item_Tea-Smoked_Squab.webp', 'Tea-Smoked Squab', 'A very popular dish. Squab is marinated in tea and sauce overnight before being dried and deep-fried, suffusing the meat with the wonderful aroma of tea. This technique has been passed down for many years and is a banquet delicacy.', '19.7', 'Liyue', '99', '300'),
-
 ('43', 'Item_Berry_Mizu_Manjuu.webp', 'Berry Mizu Manjuu', 'A crystal-clear snack. The transparent skin wraps the yellow filling. It is said that some vendors will put these snacks into a small clay bowl and immerse it in water to ensure that the cool mouthfeel is retained. This dish is as transparent as water, but it will not be washed away by flowing water — this is probably the origin of the name.', '17.6', 'Inazuma', '99', '300'),
 ('44', 'Item_Crab_Roe_Kourayaki.webp', 'Crab Roe Kourayaki', 'A crab meat dish that has been cooked directly over the flames. The meat and roe are mixed evenly, before being garnished with plump crab legs. The happiness that flows forth from that first bite imparts meaning upon your prior forbearance.', '18.9', 'Inazuma', '99', '300'),
 ('45', 'Item_Dango_Milk.webp', 'Dango Milk', 'A creative snack made by adding sticky dango to milk. It is sweet and has a dense mouthfeel. All the customers who have tried it love it. Still, it is dango that\'s been added in — drink too much and you might lose your appetite.', '13.7', 'Inazuma', '99', '300'),
@@ -66,11 +64,11 @@ INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `pr
 ('57', 'Item_Wakatakeni.webp', 'Wakatakeni', 'A light-colored vegetarian dish. Broth is first poured into the pot before the bamboo shoots, and then the seaweed, are added in. The result is an elegant product with a light mouthfeel that agrees well with all palates. Suitable as a pre-meal appetizer or as a side to a main dish.', '11.4', 'Inazuma', '99', '300')
 ";
 
-//Execute the query
+//Execute the query to add products
 if (mysqli_query($conn, $sql)) {
     echo "New products added successfully <br>";
 } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-}
+};
 
 mysqli_close($conn);

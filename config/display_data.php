@@ -5,7 +5,7 @@ include 'config.php';
 $prod_id = 1;
 
 // Prepare the SQL query to fetch the image path
-$sql = "SELECT `prod_img_name`, `prod_name`, `prod_id` FROM `Product`";
+$sql = "SELECT `prod_img_name`, `prod_name`, `prod_id` FROM `Product` LIMIT 20";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
