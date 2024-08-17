@@ -1,5 +1,4 @@
 <header>
-    <link rel="stylesheet" href="styles/header.css">
     <div id="menu-icon">
         <i class="fa-solid fa-bars fa-xl"></i>
     </div>
