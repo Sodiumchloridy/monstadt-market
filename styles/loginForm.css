@@ -1,21 +1,86 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    background: url("https://i.redd.it/bpxxqqvps4h91.gif");
+}
+
 #loginForm {
-    border: 1px solid red;
-    border-radius: 10%;
+    position: relative;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     margin-inline: auto;
-    width: 30vw;
+    width: clamp(300px, 60vw, 600px);
     min-height: 15vw;
     text-align: center;
+    overflow-x: clip;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
 }
 
 #loginForm input {
-    width: 70%;
-    padding: 8px;
+    color: white;
+    border-radius: 30px;
+    background: transparent;
+    width: 80%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    outline: none;
 }
 
-#submit-button {
+#loginForm input::placeholder {
+    font-weight: 100;
+    font-size: 1.1rem;
+    color: white;
+    margin-left: 25px;
+}
+
+input[type="password"]:focus~#anya {
+    transform: translateX(100%);
+}
+
+#submit-button[type="submit"] {
+    margin: 50px 0;
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    color: black;
+    font-size: 1.5rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#submit-button[type="submit"]:hover {
+    background-color: black;
+    color: white;
+}
+
+#loginForm h2 {
+    font-size: 3rem;
+    color: white;
+    font-weight: 300;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin-bottom: 5vh;
 }
 
-h2 {
-    margin-bottom: 5vh;
+#loginForm p {
+    color: white;
+    font-weight: 100;
+}
+
+#loginForm a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#loginForm a:hover {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+#anya {
+    width: 150px;
+    position: absolute;
+    bottom: -7px;
+    right: -10px;
+    transition: all ease-in-out 0.5s;
 }
