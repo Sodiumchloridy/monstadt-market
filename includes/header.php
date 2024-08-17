@@ -31,37 +31,27 @@
             </a>
         </div>
 
-        <div> <!-- Language Selector -->
-            <i class="fa-solid fa-globe"></i>
-            <select name="" id="">
-                <option value="en">English</option>
-                <option value="ms">Bahasa Melayu</option>
-                <option value="zh">Chinese</option>
-            </select>
-        </div>
-
-        <?php 
-        if(isset($_SESSION['username'])) {
+        <?php
+        if (isset($_SESSION['username'])) {
 
             // user is logged in, display personalized content
             echo "
-            <div> 
-                <img src='data:" . 
-                htmlspecialchars($_SESSION['profile_pic_type']) . 
-                ";base64," . base64_encode($_SESSION['profile_pic']) . 
-                "' width='20px'/>" . 
-                htmlspecialchars($_SESSION['username']) . 
-            "</div>";
+            <div>
+                <img src='data:" .
+                htmlspecialchars($_SESSION['profile_pic_type']) .
+                ";base64," . base64_encode($_SESSION['profile_pic']) .
+                "' width='20px'/>" .
+                htmlspecialchars($_SESSION['username']) .
+                "</div>";
             echo "
-            <div> 
+            <div>
                 <a href='auth/logout.php'> Logout </a>
             </div>";
-            
         } else {
 
             // user is not logged in
             echo "
-            <div> 
+            <div>
                 <a href='auth/signup.php' id='signup'>
                     Sign Up
                 </a>
@@ -74,7 +64,7 @@
 
         ?>
         <!-- Sign up & login link
-        <div> 
+        <div>
             <a href="auth/signup.php" id="signup">
                 Sign Up
             </a>
