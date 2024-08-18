@@ -1,6 +1,6 @@
 <header>
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
-        <h2>Monstadt Market</h2>
+        <h2 data-value="MONSTADT MARKET" id="name">Monstadt Market</h2>
     </a>
 
     <div id="search-bar"> <!-- Search bar -->
@@ -52,5 +52,43 @@
     }
 
     ?>
+    <script>
+        // Animation for the logo
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let interval = null;
+        const name = document.querySelector("#name");
 
+        function shuffleText() {
+            let iteration = 0;
+
+            clearInterval(interval);
+
+            interval = setInterval(() => {
+                name.innerText = name.innerText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return name.dataset.value[index];
+                        }
+
+                        return letters[Math.floor(Math.random() * 26)]
+                    })
+                    .join("");
+
+                if (iteration >= name.dataset.value.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 3;
+            }, 30);
+        }
+
+        name.onmouseenter = event => {
+            shuffleText();
+        }
+
+        window.onload = () => {
+            shuffleText();
+        }
+    </script>
 </header>
