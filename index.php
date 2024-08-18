@@ -14,12 +14,17 @@
 
 <body>
     <?php include("includes/header.php"); ?>
-
-    <!-- grid list of shop items -->
-    <div class="product-grid">
-        <?php
-        include('config/display_data.php'); ?>
+    <div class="banner">
+        <div class="banner-backdrop"></div>
+        <img src="https://fastcdn.hoyoverse.com/content-v2/nap/124305/517f4336e4a3819dee6f9ec4d18fb94c_3292181308204717228.png" alt="banner image">
     </div>
+    <!-- grid list of shop items -->
+    <main class="main">
+        <div class="product-grid">
+            <?php
+            include('config/display_data.php'); ?>
+        </div>
+    </main>
 
     <?php include("includes/footer.php"); ?>
 </body>
