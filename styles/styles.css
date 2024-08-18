@@ -15,6 +15,45 @@ a {
     color: white;
 }
 
+.banner {
+    overflow: clip;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner .banner-backdrop {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #202020 25%, #303030 25%, #303030 50%, #202020 50%, #202020 75%, #303030 75%, #303030);
+    background-size: 20px 20px;
+    background-repeat: repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    animation: backdrop-scroll 22s infinite linear;
+}
+
+@keyframes backdrop-scroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 0 -100%;
+    }
+}
+
+.banner img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

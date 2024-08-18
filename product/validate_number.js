@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
     const maxAvailable = Number(document.getElementById('maxAvailable').value);
     const quantityInputField = document.getElementById('quantity');
     const errorMessageDiv = document.getElementById('quantity-error');
@@ -6,7 +6,7 @@ window.onload = function() {
     const decreaseQuantityButton = document.getElementById('decrease-quantity');
 
     //Prevent text input in number field
-    quantityInputField.addEventListener("input", function() {
+    quantityInputField.addEventListener("input", function () {
         let currentValue = Number(quantityInputField.value);
 
         //Clear any error message
@@ -24,19 +24,19 @@ window.onload = function() {
 
     //Validate number input
     const cart_form = document.getElementById("add-to-cart-form");
-    cart_form.addEventListener('submit', function(event){
+    cart_form.addEventListener('submit', function (event) {
         event.preventDefault();
 
         let quantityInput = Number(quantityInputField.value);
 
         //Set quantity to 1 if it is not a number or is 0
-        if (isNaN(quantityInput) || quantityInput < 1){
+        if (isNaN(quantityInput) || quantityInput < 1) {
             quantityInput = 1;
             quantityInputField.value = 1;
         }
 
         //Display error if quantity > Max available
-        if (quantityInput > maxAvailable){
+        if (quantityInput > maxAvailable) {
             const errorMessageDiv = document.getElementById('quantity-error');
             errorMessageDiv.textContent = "Quantity has exceeded the number available.";
             return;
@@ -61,7 +61,7 @@ window.onload = function() {
         } else if (newValue > maxAvailable) {
             newValue = maxAvailable; //Maximum quantity should not exceed the available stock
         } else {
-            errorMessageDiv.textContent = ""; 
+            errorMessageDiv.textContent = "";
         }
 
         //Update the quantity input field
@@ -69,10 +69,10 @@ window.onload = function() {
     }
 
     //Add event listeners to the plus and minus icons
-    increaseQuantityButton.addEventListener('click', function() {
-        updateQuantity(1); 
+    increaseQuantityButton.addEventListener('click', function () {
+        updateQuantity(1);
     });
-    decreaseQuantityButton.addEventListener('click', function() {
-        updateQuantity(-1); 
+    decreaseQuantityButton.addEventListener('click', function () {
+        updateQuantity(-1);
     });
 }
