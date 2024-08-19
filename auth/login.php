@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(isset($_SESSION['user_id'])){
+    die("You already logged in");
+}
+
 $name = $pass = "";
 $nameErr = $passErr = "";
 $validName = $validPass = false;
