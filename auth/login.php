@@ -89,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="error"> <?php echo $passErr; ?> </div>
             <br>
             <input type="submit" value="Login" id="submit-button">
-            <p>Don't have an account? <a href="signup.php">Resigter</a></p>
+            <p>Don't have an account? <a href="signup.php">Register</a></p>
             <image src="../default_images/anya-peek.png" alt="anya peeking" id="anya">
         </form>
     </main>
