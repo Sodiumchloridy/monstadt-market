@@ -1,4 +1,11 @@
-<?php session_start();?>
+<?php session_start();
+if (!isset($_SESSION['user_id'])) {
+    die('Session lost, user not logged in.');
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -49,7 +56,7 @@
                 echo "<p align='center'>Available: " . $row['prod_numAvailable'] . "</p>";
                 echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
             ?>
-
+            <!-- action="../monstadt-market/cart/add_to_cart.php" -->
             <form id="add-to-cart-form" action="../monstadt-market/cart/add_to_cart.php" method="post">
                 <!--Quantity -->
                 <label for="quantity">Quantity: </label>
