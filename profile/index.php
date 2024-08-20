@@ -33,6 +33,7 @@ $userData = [
     <title>Profile</title>
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 
