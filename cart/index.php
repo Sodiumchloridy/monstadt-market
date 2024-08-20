@@ -15,12 +15,14 @@ session_start();
     <?php include("../includes/header.php")?>
 
     <h1>Your cart</h1>
-    <section id="cart-container">
-        <?php include("view_cart.php")?>
-    </section>
-    
+    <section id="cart-container"></section>
 
+    <?php include("view_cart.php")?>
     <?php include("../includes/footer.php")?>
-
+    <script>
+        const cartItems = <?php echo json_encode($cartItems); ?>;
+        console.log(cartItems);
+    </script>
+    <script src="viewCart.js"></script>
 </body>
 </html>

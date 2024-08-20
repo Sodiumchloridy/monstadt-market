@@ -1,0 +1,78 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const cartContainer = document.getElementById("cart-container");
+
+    if(cartItems.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty</p><a href='../'>Add items</a>";
+    } else {
+        cartItems.forEach(item => {
+            const cartItemDiv = document.createElement("div");
+            cartItemDiv.classList.add("cart-item");
+
+            const img = document.createElement("img");
+            img.src = `../images/${item.prodImgName}`;
+            img.alt = item.prodName;
+
+            const prodName = document.createElement("p");
+            prodName.textContent = `Product: ${item.prodName}`;
+            
+            const prodPrice = document.createElement("p");
+            prodPrice.textContent = `Price: ${item.prodPrice0}`;
+
+            const prodQuantity = document.createElement("p");
+            prodQuantity.textContent = `Quantity: ${item.prodQuantity}`;
+
+            // form elements for add to cart
+            const addToCartForm = document.createElement("form");
+            addToCartForm.action = "add_to_cart.php";
+            addToCartForm.method = "post";
+            addToCartForm.style.display = "inline";
+
+            const prodIdInput = document.createElement("input");
+            prodIdInput.type = "hidden";
+            prodIdInput.name = "product_id";
+            prodIdInput.value = item.prodId;
+
+            const quantityInput = document.createElement("input");
+            quantityInput.type = "number";
+            quantityInput.name = "quantity";
+            quantityInput.min = `1`;
+            quantityInput.value = "1";
+
+            const addButton = document.createElement("button");
+            addButton.type = "submit";
+            addButton.innerHTML = '<i class="fa-solid fa-cart-plus" style="color: #63E6BE;"></i>';
+
+            addToCartForm.appendChild(prodIdInput);
+            addToCartForm.appendChild(quantityInput);
+            addToCartForm.appendChild(addButton);
+
+            // form elements for delete from cart
+            const deleteForm = document.createElement("form");
+            deleteForm.action = 'delete_from_cart.php';
+            deleteForm.method = 'post';
+            deleteForm.style.display = 'inline';
+
+            const deleteProdIdInput = document.createElement("input");
+            deleteProdIdInput.type = 'hidden';
+            deleteProdIdInput.name = 'product_id';
+            deleteProdIdInput.value = item.prodId;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = 'submit';
+            deleteButton.innerHTML = '<i class="fa-duotone fa-solid fa-trash" style="--fa-primary-color: #ff0000; --fa-secondary-color: #ff0000;"></i>';
+
+            deleteForm.appendChild(deleteProdIdInput);
+            deleteForm.appendChild(deleteButton);
+
+            cartItemDiv.appendChild(img);
+            cartItemDiv.appendChild(prodName);
+            cartItemDiv.appendChild(prodPrice);
+            cartItemDiv.appendChild(prodQuantity);
+            cartItemDiv.appendChild(addToCartForm);
+            cartItemDiv.appendChild(deleteForm);
+
+            cartContainer.appendChild(cartItemDiv);
+
+        })
+    }
+})
