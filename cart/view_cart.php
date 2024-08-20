@@ -19,6 +19,7 @@ WHERE c.u_id = ?
 mysqli_stmt_bind_param($stmt, "s", $_SESSION['user_id']);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_bind_result($stmt, $prodId, $prodName, $prodPrice, $prodImgName, $prodQuantity);
+//store the result in client memory to use mysqli_stmt_num_rows()
 mysqli_stmt_store_result($stmt);
 
 // fetch the result and display them
