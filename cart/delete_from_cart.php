@@ -19,7 +19,7 @@ mysqli_stmt_bind_param($stmt, "ss", $_SESSION['user_id'], $productId);
 if(mysqli_stmt_execute($stmt)) {
     $message = "Product removed successfully";
     echo "<script>alert('$message')</script>";
-    header("Location: view_cart.php");
+    header("Location: index.php");
 } else {
     echo "Error: " . mysqli_error($conn);
 }

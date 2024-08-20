@@ -12,7 +12,7 @@
         </form>
 
         <div id="cart"> <!-- Cart -->
-            <a href="cart/index.php">
+            <a href="/monstadt-market/cart/index.php">
                 <i class="fa-solid fa-cart-shopping fa-xl"></i>
             </a>
         </div>

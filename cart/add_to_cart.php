@@ -69,7 +69,7 @@ mysqli_stmt_bind_param($stmt, "ssii", $_SESSION['user_id'], $productId, $quantit
 if(mysqli_stmt_execute($stmt)) {
     $message = "Product added to cart successfully";
     echo "<script>alert('$message')</script>";
-    header("Location: view_cart.php");
+    header("Location: index.php");
     exit();
 } else {
     echo "Error: " . mysqli_error($conn);
