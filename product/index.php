@@ -1,10 +1,9 @@
-<?php session_start();
+<?php 
+session_start();
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../auth/login.php");
     exit();
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +19,6 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/product.css">
-    <script src="product/validate_number.js"></script>
 </head>
 
 <body>
@@ -84,7 +82,7 @@ if (!isset($_SESSION['user_id'])) {
     //Footer
     include('../includes/footer.php');
     ?>
-    
+    <script src="product/validate_number.js"></script>
 </body>
 
 </html>

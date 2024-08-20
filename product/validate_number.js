@@ -1,4 +1,4 @@
-window.onload = function () {
+document.addEventListener('DOMContentLoaded', function () {
     const maxAvailable = Number(document.getElementById('maxAvailable').value);
     const quantityInputField = document.getElementById('quantity');
     const errorMessageDiv = document.getElementById('quantity-error');
@@ -75,4 +75,4 @@ window.onload = function () {
     decreaseQuantityButton.addEventListener('click', function () {
         updateQuantity(-1);
     });
-}
+});
