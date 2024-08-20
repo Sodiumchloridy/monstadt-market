@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px;
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+h1, h2 {
+    color: #2c3e50;
+}
+h2 {
+    margin-top: 20px;
+}
+p {
+    margin-bottom: 15px;
+}
+ul {
+    margin: 15px 0;
+    padding: 0 20px;
+}
+ul li {
+    margin-bottom: 10px;
+}
+mark {
+    color: #e74c3c;
+    font-weight: bold;
+}

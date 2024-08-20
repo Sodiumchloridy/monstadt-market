@@ -1,4 +1,4 @@
-header {
+#websiteHeader {
     background: url("../default_images/background.jpg") no-repeat top center/cover;
     color: white;
     display: flex;

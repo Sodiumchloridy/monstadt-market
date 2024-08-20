@@ -1,4 +1,4 @@
-<header>
+<header id="websiteHeader">
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
         <h2 data-value="MONSTADT MARKET" id="name">Monstadt Market</h2>
     </a>
