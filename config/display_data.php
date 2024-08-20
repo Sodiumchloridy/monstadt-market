@@ -17,12 +17,12 @@ if ($result) {
             $prodName = htmlspecialchars($row['prod_name'], ENT_QUOTES, 'UTF-8');
 
             // Output the image
-            echo '<a href="product?id=' . $row['prod_id'] . '">';
-            echo '<div class="product">';
-            echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '"/>';
-            echo '<p>' . $prodName . '</p>';
-            echo '</div>';
-            echo '</a>';
+            echo "<a href='product.php?prod_id={$row['prod_id']}'>";
+            echo "<div class='product' title='{$prodName}''>";
+            echo "<img src='images/{$imgFileName}' alt='{$prodName}'/>";
+            echo "<p>{$prodName}</p>";
+            echo "</div>";
+            echo "</a>";
         }
     } else {
         echo "No products found.";
