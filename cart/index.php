@@ -14,7 +14,11 @@
 </head>
 <body>
     <?php include("../includes/header.php")?>
-    <?php include("view_cart.php")?>
+
+    <h1>Your cart</h1>
+    <section id="cart-container">
+        <?php include("view_cart.php")?>
+    </section>
     
 
     <?php include("../includes/footer.php")?>
