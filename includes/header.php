@@ -26,7 +26,7 @@
         // user is logged in, display personalized content
         echo "
             <div>
-            <a href='../monstadt-market/profile/index.php'>
+            <a href='/monstadt-market/profile/index.php'>
                 <img src='data:" .
             htmlspecialchars($_SESSION['profile_pic_type']) .
             ";base64," . base64_encode($_SESSION['profile_pic']) .
@@ -35,7 +35,7 @@
             "</a></div>";
         echo "
             <div id='signout-button'>
-                <a href='auth/logout.php'> Logout </a>
+                <a href='/monstadt-market/auth/logout.php'> Logout </a>
             </div>";
     } else {
 

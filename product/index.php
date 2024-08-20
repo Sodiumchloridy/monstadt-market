@@ -13,12 +13,11 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mondstadt Market </title>
-    <base href="../">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="styles/styles.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/product.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/product.css">
 </head>
 
 <body>
@@ -44,7 +43,7 @@ if (!isset($_SESSION['user_id'])) {
 
             $row = mysqli_fetch_assoc($result);
             echo "<section class='product-col-image'>";
-                echo "<img src='images/" . $row['prod_img_name'] . "' alt='" . $row['prod_name'] . "'>";
+                echo "<img src='../images/" . $row['prod_img_name'] . "' alt='" . $row['prod_name'] . "'>";
             echo "</section>";
 
             echo "<section class='product-col-details'>";
@@ -56,7 +55,7 @@ if (!isset($_SESSION['user_id'])) {
                 echo "<p align='center'>Sold: " . $row['prod_numSold'] . "</p>";
             ?>
             <!-- action="../monstadt-market/cart/add_to_cart.php" -->
-            <form id="add-to-cart-form" action="../monstadt-market/cart/add_to_cart.php" method="post">
+            <form id="add-to-cart-form" action="../cart/add_to_cart.php" method="post">
                 <!--Quantity -->
                 <label for="quantity">Quantity: </label>
                 <i class="fa-regular fa-minus" id="decrease-quantity"></i> 
@@ -82,7 +81,7 @@ if (!isset($_SESSION['user_id'])) {
     //Footer
     include('../includes/footer.php');
     ?>
-    <script src="product/validate_number.js"></script>
+    <script src="validate_number.js"></script>
 </body>
 
 </html>
