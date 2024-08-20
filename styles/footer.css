@@ -1,4 +1,4 @@
-footer {
+#websiteFooter {
     padding: clamp(0.5rem, 5vw, 2rem);
     display: flex;
     flex-wrap: wrap;

@@ -1,5 +1,5 @@
-<header>
-    <link rel="stylesheet" href="/monstadt-market/styles/header.css">
+<header id="websiteHeader">
+  <link rel="stylesheet" href="/monstadt-market/styles/header.css">
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
         <h2 data-value="MONSTADT MARKET" id="name">Monstadt Market</h2>
     </a>
@@ -13,7 +13,7 @@
         </form>
 
         <div id="cart"> <!-- Cart -->
-            <a href="cart/view_cart.php">
+            <a href="/monstadt-market/cart/index.php">
                 <i class="fa-solid fa-cart-shopping fa-xl"></i>
             </a>
         </div>
@@ -27,15 +27,16 @@
         // user is logged in, display personalized content
         echo "
             <div>
+            <a href='/monstadt-market/profile/index.php'>
                 <img src='data:" .
             htmlspecialchars($_SESSION['profile_pic_type']) .
             ";base64," . base64_encode($_SESSION['profile_pic']) .
             "' width='20px'/>" .
             htmlspecialchars($_SESSION['username']) .
-            "</div>";
+            "</a></div>";
         echo "
             <div id='signout-button'>
-                <a href='auth/logout.php'> Logout </a>
+                <a href='/monstadt-market/auth/logout.php'> Logout </a>
             </div>";
     } else {
 

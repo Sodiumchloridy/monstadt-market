@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mondstadt Market </title>
-    <base href="../">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
     <link rel="stylesheet" href="styles/styles.css">
     <script defer src="search/validation.js"></script>
@@ -90,9 +89,9 @@
                 $prodName = htmlspecialchars($row['prod_name'], ENT_QUOTES, 'UTF-8');
 
                 // Output the image
-                echo '<a href="product?id=' . $row['prod_id'] . '">';
+                echo '<a href="../product?id=' . $row['prod_id'] . '">';
                 echo '<div class="product">';
-                echo '<img src="images/' . $imgFileName . '" alt="' . $prodName . '"/>';
+                echo '<img src="../images/' . $imgFileName . '" alt="' . $prodName . '"/>';
                 echo '<p>' . $prodName . '</p>';
                 echo '</div>';
                 echo '</a>';

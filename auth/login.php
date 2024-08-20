@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(isset($_SESSION['user_id'])){
+    die("You already logged in");
+}
+
 $name = $pass = "";
 $nameErr = $passErr = "";
 $validName = $validPass = false;
@@ -53,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['profile_pic'] = $profilePic;
         $_SESSION['profile_pic_type'] = $profilePicType;
 
-        header("Location: ../index.php");
+        $redirectUrl = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '../index.php';
+        unset($_SESSION['redirect_after_login']);
+        header("Location: $redirectUrl");
         exit();
     }
 }
@@ -87,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="error"> <?php echo $passErr; ?> </div>
             <br>
             <input type="submit" value="Login" id="submit-button">
-            <p>Don't have an account? <a href="signup.php">Resigter</a></p>
+            <p>Don't have an account? <a href="signup.php">Register</a></p>
             <image src="../default_images/anya-peek.png" alt="anya peeking" id="anya">
         </form>
     </main>
