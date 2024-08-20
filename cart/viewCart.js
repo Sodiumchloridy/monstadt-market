@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
             prodName.textContent = `Product: ${item.prodName}`;
             
             const prodPrice = document.createElement("p");
-            prodPrice.textContent = `Price: ${item.prodPrice0}`;
+            prodPrice.textContent = `Price: ${item.prodPrice}`;
 
             const prodQuantity = document.createElement("p");
             prodQuantity.textContent = `Quantity: ${item.prodQuantity}`;
