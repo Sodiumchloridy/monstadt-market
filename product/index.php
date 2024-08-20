@@ -1,6 +1,7 @@
 <?php session_start();
 if (!isset($_SESSION['user_id'])) {
-    die('Session lost, user not logged in.');
+    header("Location: ../auth/login.php");
+    exit();
 }
 
 
