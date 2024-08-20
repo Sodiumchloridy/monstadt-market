@@ -7,6 +7,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -15,10 +16,11 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mondstadt Market </title>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
+
+    <link rel="stylesheet" href="styles/product.css">
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/header.css">
-    <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/product.css">
+    <script defer src="product/validate_number.js"></script>
 </head>
 
 <body>
@@ -82,7 +84,6 @@ if (!isset($_SESSION['user_id'])) {
     //Footer
     include('../includes/footer.php');
     ?>
-    <script src="validate_number.js"></script>
 </body>
 
 </html>
