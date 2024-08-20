@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['profile_pic'] = $profilePic;
         $_SESSION['profile_pic_type'] = $profilePicType;
 
-        header("Location: ../index.php");
+        $redirectUrl = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '../index.php';
+        unset($_SESSION['redirect_after_login']);
+        header("Location: $redirectUrl");
         exit();
     }
 }
