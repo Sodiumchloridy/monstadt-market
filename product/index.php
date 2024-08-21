@@ -20,7 +20,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="styles/product.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/product.css">
-    <script defer src="product/validate_number.js"></script>
+    <script defer src="validate_number.js"></script>
 </head>
 
 <body>
