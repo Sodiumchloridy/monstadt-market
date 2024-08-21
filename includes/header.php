@@ -1,5 +1,5 @@
 <header id="websiteHeader">
-  <link rel="stylesheet" href="/monstadt-market/styles/header.css">
+    <link rel="stylesheet" href="/monstadt-market/styles/header.css">
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
         <h2 data-value="MONSTADT MARKET" id="name">Monstadt Market</h2>
     </a>
@@ -56,11 +56,11 @@
     ?>
     <script>
         // Animation for the logo
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         let interval = null;
         const name = document.querySelector("#name");
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-        function shuffleText() {
+        function shuffleText(name, interval) {
             let iteration = 0;
 
             clearInterval(interval);
@@ -86,11 +86,11 @@
         }
 
         name.onmouseenter = event => {
-            shuffleText();
+            shuffleText(name);
         }
 
         window.onload = () => {
-            shuffleText();
+            shuffleText(name);
         }
     </script>
 </header>
