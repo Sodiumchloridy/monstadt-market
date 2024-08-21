@@ -21,12 +21,12 @@ session_start();
     <section id="checkout-container">
         <h2>Order Summary</h2>
         <div class="checkout-summary">
-            <p>Subtotal: <span></span></p>
-            <p>Shipping fee: <span></span></p>
-            <p>Total: <span></span></p>
+            <p>Subtotal: <span id="subtotal-price"></span></p>
+            <p>Shipping fee: <span id="shipping-price"></span></p>
+            <p>Total: <span id="total-price"></span></p>
         </div>
-        <form action="checkout.php" method="POST">
-            <input type="hidden" name="buyParams" value="">
+        <form id="checkout-form" action="checkout.php" method="POST">
+            <input type="hidden" name="buyParams">
             <input type="submit" value="Checkout">
         </form>
     </section>
@@ -39,5 +39,6 @@ session_start();
         console.log(cartItems);
     </script>
     <script src="viewCart.js"></script>
+    <script src="checkout.js" defer></script>
 </body>
 </html>

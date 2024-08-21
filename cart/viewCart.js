@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const cartItemDiv = document.createElement("div");
             cartItemDiv.classList.add("cart-item");
 
+            const cartDetailsDiv = document.createElement("div");
+            cartDetailsDiv.classList.add("product-details");
+
             const checkbox = document.createElement("input");
             checkbox.type = "checkbox";
             checkbox.name = "prod_selected";
@@ -68,13 +71,15 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteForm.appendChild(deleteProdIdInput);
             deleteForm.appendChild(deleteButton);
 
+            cartDetailsDiv.appendChild(prodName)
+            cartDetailsDiv.appendChild(prodPrice);
+            cartDetailsDiv.appendChild(prodQuantity);
+            cartDetailsDiv.appendChild(addToCartForm);
+            cartDetailsDiv.appendChild(deleteForm);
+
             cartItemDiv.appendChild(checkbox);
             cartItemDiv.appendChild(img);
-            cartItemDiv.appendChild(prodName);
-            cartItemDiv.appendChild(prodPrice);
-            cartItemDiv.appendChild(prodQuantity);
-            cartItemDiv.appendChild(addToCartForm);
-            cartItemDiv.appendChild(deleteForm);
+            cartItemDiv.appendChild(cartDetailsDiv);
 
             cartContainer.appendChild(cartItemDiv);
 
