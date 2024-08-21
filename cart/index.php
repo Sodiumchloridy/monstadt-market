@@ -14,8 +14,12 @@ session_start();
 <body>
     <?php include("../includes/header.php")?>
 
-    <h1>Your cart</h1>
-    <section id="cart-container"></section>
+    <main class="main">
+    <section id="cart-container">
+        <h1 class="cart-header">Your Cart</h1>
+    </section>
+    <section id="checkout-container"></section>
+    </main>
 
     <?php include("view_cart.php")?>
     <?php include("../includes/footer.php")?>
