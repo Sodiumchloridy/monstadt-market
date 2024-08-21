@@ -9,7 +9,7 @@
 }
 
 @media (max-width: 768px) {
-    header {
+    #websiteHeader {
         padding: 1.75rem 5%;
         gap: 1rem;
         flex-direction: column;

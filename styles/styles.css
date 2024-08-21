@@ -15,6 +15,7 @@ a {
     color: white;
 }
 
+/* Banner */
 .banner {
     overflow: clip;
     position: relative;
@@ -70,11 +71,10 @@ a {
     transform: translateX(2%) translateY(7%);
 }
 
-.main {
-    background: radial-gradient(circle, slategray, black);
-}
 
 .product-grid {
+    background: radial-gradient(circle, slategray, black);
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 20px;
@@ -89,13 +89,75 @@ a {
     }
 }
 
+/* Region Filter */
+#region-filter {
+    width: 100%;
+    background: black;
+    box-sizing: border-box;
+    padding: 25px 10px;
+}
+
+.region-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .region-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.region {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: clamp(2rem, 5vw, 3rem);
+    background-size: cover !important;
+    background-position: center center !important;
+    transition: all 0.3s;
+}
+
+.region:hover {
+    transform: scale(1.1);
+}
+
+#monstadt:hover,
+#monstadt[data-value="Mondstadt"] {
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url("https://genshin.global/wp-content/uploads/2022/10/2nd-anniversary-mondstadt-official-desktop-wallpaper-genshin.jpg");
+}
+
+#liyue:hover,
+#liyue[data-value="Liyue"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url("https://miro.medium.com/v2/resize:fit:1200/1*A6LEMHym9aWRkHMHMYTTlQ.jpeg");
+}
+
+#inazuma:hover,
+#inazuma[data-value="Inazuma"] {
+    background: linear-gradient(rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)),
+        url("https://genshin.global/wp-content/uploads/2022/06/tartaglia-thoma-key-visual-official-desktop-wallpaper-genshin-1200x675.jpg");
+}
+
+/* Product Grid and Product Cards */
 .product {
     aspect-ratio: 1/1;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    background: linear-gradient(45deg, #202020 25%, #303030 25%, #303030 50%, #202020 50%, #202020 75%, #303030 75%, #303030);
+    background: linear-gradient(45deg, black 25%, #BF8F00 25%, #BF8F00 50%, black 50%, black 75%, #BF8F00 75%, #BF8F00);
     background-size: 30px 30px;
     background-repeat: repeat;
     animation: backdrop-scroll 15s infinite linear;
