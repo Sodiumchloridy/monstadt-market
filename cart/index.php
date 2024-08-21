@@ -18,7 +18,18 @@ session_start();
     <section id="cart-container">
         <h1 class="cart-header">Your Cart</h1>
     </section>
-    <section id="checkout-container"></section>
+    <section id="checkout-container">
+        <h2>Order Summary</h2>
+        <div class="checkout-summary">
+            <p>Subtotal: <span></span></p>
+            <p>Shipping fee: <span></span></p>
+            <p>Total: <span></span></p>
+        </div>
+        <form action="checkout.php" method="POST">
+            <input type="hidden" name="buyParams" value="">
+            <input type="submit" value="Checkout">
+        </form>
+    </section>
     </main>
 
     <?php include("view_cart.php")?>

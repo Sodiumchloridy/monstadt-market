@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const cartItemDiv = document.createElement("div");
             cartItemDiv.classList.add("cart-item");
 
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = "prod_selected";
+
             const img = document.createElement("img");
             img.src = `../images/${item.prodImgName}`;
             img.alt = item.prodName;
@@ -64,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
             deleteForm.appendChild(deleteProdIdInput);
             deleteForm.appendChild(deleteButton);
 
+            cartItemDiv.appendChild(checkbox);
             cartItemDiv.appendChild(img);
             cartItemDiv.appendChild(prodName);
             cartItemDiv.appendChild(prodPrice);

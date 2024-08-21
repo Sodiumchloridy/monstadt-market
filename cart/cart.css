@@ -11,6 +11,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: #f4f4f4;
 }
 
 #cart-container{
@@ -24,15 +25,13 @@ body {
     background-color: #f4f4f4;
 }
 
-#checkout-container{
+#checkout-container {
     box-sizing: border-box;
-    display: flex;
-    float: right;
+    position: sticky;
+    top: 0; 
     width: 30%;
+    height: 300px;
     padding: 20px;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
     background-color: #f4f4f4;
 }
 
