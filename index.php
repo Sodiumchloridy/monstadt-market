@@ -1,6 +1,7 @@
 <?php
 session_start();
 include 'config/config.php';
+$region = "";
 
 // Prepare the SQL query to fetch the image path
 $sql = "SELECT `prod_img_name`, `prod_name`, `prod_id` FROM `Product`";
