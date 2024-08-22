@@ -1,0 +1,23 @@
+.filter {
+    padding: 20px clamp(20px, 5vw, 10%);
+}
+
+.filter>form {
+    display: flex;
+}
+
+.price-filter {
+    display: flex;
+}
+
+.price-filter>.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-filter>input[type="submit"] {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);
+}

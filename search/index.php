@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,12 +8,14 @@
     <title> Mondstadt Market </title>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/search.css">
     <script defer src="validation.js"></script>
 </head>
 
 <body>
     <?php include('../includes/header.php'); ?>
-    <div>
+
+    <main>
         <!--Filter for product category/region-->
         <div class="filter">
             <form id="filter-form" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
@@ -58,12 +60,16 @@
                 <!--Input for min pirce and max price-->
                 <fieldset>
                     <legend>Price</legend>
-                    <input name="min" id="min" placeholder="Min" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
-                        value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
-                    <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
-                        value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
-                    <div id="price-filter-error" class="error"></div>
-                    <input id="price-filter-button" type="submit" value="Apply">
+                    <div class="price-filter">
+                        <div class="flex">
+                            <input name="min" id="min" placeholder="Min" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
+                                value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                            <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
+                                value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                            <div id="price-filter-error" class="error"></div>
+                        </div>
+                        <input id="price-filter-button" type="submit" value="Apply">
+                    </div>
                 </fieldset>
 
                 <!--Hidden input field to store search query-->
@@ -172,7 +178,7 @@
 
             ?>
         </div>
-    </div>
+    </main>
 
     <?php include('../includes/footer.php'); ?>
 </body>
