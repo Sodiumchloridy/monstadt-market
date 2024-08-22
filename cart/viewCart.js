@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function() {
             prodPrice.textContent = `Price: ${item.prodPrice}`;
 
             const prodQuantity = document.createElement("p");
-            prodQuantity.textContent = `Quantity: ${item.prodQuantity}`;
+            prodQuantity.textContent = `Quantity: `;
+            prodQuantity.style.display = "inline";
 
             // form elements for add to cart
             const addToCartForm = document.createElement("form");
@@ -39,25 +40,40 @@ document.addEventListener("DOMContentLoaded", function() {
             prodIdInput.name = "product_id";
             prodIdInput.value = item.prodId;
 
+            const increaseQttButton = document.createElement("i");
+            increaseQttButton.classList.add("fa-regular");
+            increaseQttButton.classList.add("fa-minus");
+            increaseQttButton.classList.add("increase-quantity");
+
+            //<input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""></input>
             const quantityInput = document.createElement("input");
-            quantityInput.type = "number";
+            quantityInput.type = "text";
             quantityInput.name = "quantity";
-            quantityInput.min = `1`;
-            quantityInput.value = "1";
+            quantityInput.inputMode = "numeric";
+            quantityInput.pattern = "[0-9]+";
+            quantityInput.autocomplete = "off";
+            quantityInput.value = item.prodQuantity;
+
+            const decreaseQttButton = document.createElement("i");
+            decreaseQttButton.classList.add("fa-regular");
+            decreaseQttButton.classList.add("fa-plus");
+            decreaseQttButton.classList.add("decrease-quantity");
 
             const addButton = document.createElement("button");
             addButton.type = "submit";
             addButton.innerHTML = '<i class="fa-solid fa-cart-plus" style="color: #63E6BE;"></i>';
 
             addToCartForm.appendChild(prodIdInput);
+            addToCartForm.appendChild(increaseQttButton);
             addToCartForm.appendChild(quantityInput);
+            addToCartForm.appendChild(decreaseQttButton);
             addToCartForm.appendChild(addButton);
 
             // form elements for delete from cart
             const deleteForm = document.createElement("form");
             deleteForm.action = 'delete_from_cart.php';
             deleteForm.method = 'post';
-            deleteForm.style.display = 'inline';
+            //deleteForm.style.display = 'inline';
 
             const deleteProdIdInput = document.createElement("input");
             deleteProdIdInput.type = 'hidden';
