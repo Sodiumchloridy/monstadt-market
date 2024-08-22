@@ -9,13 +9,22 @@ document.addEventListener("DOMContentLoaded", function() {
         let params = [];
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
+                //Get product id
                 const cartItemDiv = checkbox.closest('.cart-item');
                 const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
-                const quantity = cartItemDiv.querySelector('input[name="quantity"]').value;
-                params.push({
-                    productId: prodId,
-                    quantity: quantity
-                });
+                console.log(prodId);
+                //Find the corresponding product in cartItems using prodId
+                const cartItem = cartItems.find(item => item.prodId == prodId);
+                console.log(cartItem);
+                if (cartItem) {
+                    const p_quantity = parseInt(cartItem.prodQuantity);
+                    params.push({
+                        productId: prodId,
+                        quantity: p_quantity
+                    });
+                } else {
+                    console.error(`Product with ID ${prodId} not found in cartItems.`);
+                }
             }
         });
         return JSON.stringify(params);
@@ -32,15 +41,16 @@ document.addEventListener("DOMContentLoaded", function() {
         let totalPrice = 0;
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
+                //Get product id
                 const cartItemDiv = checkbox.closest('.cart-item');
                 const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
-                const quantity = parseInt(cartItemDiv.querySelector('input[name="quantity"]').value, 10);
 
                 // Find the corresponding product in cartItems using prodId
                 const cartItem = cartItems.find(item => item.prodId == prodId);
 
                 if (cartItem) {
-                    const price = parseFloat(cartItem.prodPrice); // Make sure this is correctly accessed
+                    const price = parseFloat(cartItem.prodPrice);
+                    const quantity = parseInt(cartItem.prodQuantity); //Get quantity directly from cartItems
                     totalPrice += price * quantity;
                 } else {
                     console.error(`Product with ID ${prodId} not found in cartItems.`);
@@ -53,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //For price adjustment
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", function(){
-            console.log("checkbox changed");
+            console.log("checkbox changes");
             updateBuyParams();
             updatePrice();
         })
