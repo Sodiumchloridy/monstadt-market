@@ -30,9 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
             prodQuantity.textContent = `Quantity: `;
             prodQuantity.style.display = "inline";
             
-            //Store the original quantity
-            item.originalQuantity = item.prodQuantity;
-
             // form elements for add to cart
             const addToCartForm = document.createElement("form");
             addToCartForm.action = "add_to_cart.php";
@@ -43,15 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
             prodIdInput.type = "hidden";
             prodIdInput.name = "product_id";
             prodIdInput.value = item.prodId;
-
-            const increaseQttButton = document.createElement("i");
-            increaseQttButton.classList.add("fa-regular");
-            increaseQttButton.classList.add("fa-plus");
-            increaseQttButton.classList.add("increase-quantity");
-            increaseQttButton.addEventListener('click', function () {
-                updateQuantity(1, quantityInput, item);
-            });
-                
+     
             //<input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""></input>
             const quantityInput = document.createElement("input");
             quantityInput.type = "text";
@@ -65,23 +54,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
 
+            const increaseQttButton = document.createElement("i");
+            increaseQttButton.classList.add("fa-regular");
+            increaseQttButton.classList.add("fa-plus");
+            increaseQttButton.classList.add("increase-quantity");
+            increaseQttButton.addEventListener('click', function () {
+                updateQuantity(1, quantityInput, item);
+                handleFormSubmission(addToCartForm, item, quantityInput);
+            });
+
             const decreaseQttButton = document.createElement("i");
             decreaseQttButton.classList.add("fa-regular");
             decreaseQttButton.classList.add("fa-minus");
             decreaseQttButton.classList.add("decrease-quantity");
             decreaseQttButton.addEventListener('click', function () {
                 updateQuantity(-1, quantityInput, item);
+                handleFormSubmission(addToCartForm, item, quantityInput);
             });
-
-            const addButton = document.createElement("button");
-            addButton.type = "submit";
-            addButton.innerHTML = '<i class="fa-solid fa-cart-plus" style="color: #63E6BE;"></i>';
 
             addToCartForm.appendChild(prodIdInput);
             addToCartForm.appendChild(decreaseQttButton);
             addToCartForm.appendChild(quantityInput);
             addToCartForm.appendChild(increaseQttButton);
-            addToCartForm.appendChild(addButton);
             addToCartForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 handleFormSubmission(addToCartForm, item, quantityInput);
