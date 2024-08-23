@@ -7,7 +7,7 @@ $region = "";
 $sql = "SELECT `prod_img_name`, `prod_name`, `prod_id` FROM `Product`";
 if (isset($_GET['region'])) { //region check
     $region = $_GET['region'];
-    if ($region == 'Mondstadt' || $region == 'Liyue' || $region == 'Inazuma' || $region == 'Fontaine' || $region == 'Sumeru') {
+    if ($region == 'Mondstadt' || $region == 'Liyue' || $region == 'Inazuma' || $region == 'Penacony') {
         $sql .= " WHERE `prod_region` = '{$region}'";
     }
 }
@@ -45,6 +45,9 @@ mysqli_close($conn);
                 </a>
                 <a href="/monstadt-market/?region=Inazuma">
                     <div class="region" id="inazuma" <?php echo "data-value='{$region}'" ?>>Inazuma</div>
+                </a>
+                <a href="/monstadt-market/?region=Penacony">
+                    <div class="region" id="penacony" <?php echo "data-value='{$region}'" ?>>Penacony</div>
                 </a>
             </div>
         </section>
