@@ -2,22 +2,60 @@
     padding: 20px clamp(20px, 5vw, 10%);
 }
 
-.filter>form {
+fieldset {
+    border: 2px solid black;
+    border-radius: 30px;
+    padding: 20px;
     display: flex;
+    background-color: rgb(248, 248, 248);
 }
 
+legend {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: black;
+}
+
+/* Price filter */
 .price-filter {
     display: flex;
+    gap: 10px;
 }
 
-.price-filter>.flex {
-    display: flex;
-    flex-direction: column;
+@media (max-width: 768px) {
+    .filter {
+        padding: 20px 10px;
+    }
+
+    fieldset {
+        padding: 10px;
+    }
+
+    .price-filter {
+        flex-direction: column;
+    }
+}
+
+.price-filter>input {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 30px;
+}
+
+.price-filter>input[type="number"] {
+    border: 2px solid rgb(231, 231, 231);
+    border-radius: 40px;
+    color: rgb(51, 51, 51);
 }
 
 .price-filter>input[type="submit"] {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    writing-mode: tb-rl;
-    transform: rotate(-180deg);
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 40px;
+}
+
+.price-filter>input[type="submit"]:hover {
+    background-color: rgba(255, 222, 0, 1);
+    color: black;
 }
