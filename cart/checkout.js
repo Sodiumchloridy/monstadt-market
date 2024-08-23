@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (checkbox.checked) {
                 //Get product id
                 const cartItemDiv = checkbox.closest('.cart-item');
-                const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
+                const prodId = checkbox.parentElement.dataset.id;
+                //const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
                 console.log(prodId);
                 //Find the corresponding product in cartItems using prodId
                 const cartItem = cartItems.find(item => item.prodId == prodId);
@@ -42,8 +43,9 @@ document.addEventListener("DOMContentLoaded", function() {
         checkboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 //Get product id
-                const cartItemDiv = checkbox.closest('.cart-item');
-                const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
+                const prodId = checkbox.parentElement.dataset.id;
+                //const cartItemDiv = checkbox.closest('.cart-item');
+                //const prodId = cartItemDiv.querySelector('input[name="product_id"]').value;
 
                 // Find the corresponding product in cartItems using prodId
                 const cartItem = cartItems.find(item => item.prodId == prodId);

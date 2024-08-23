@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cartItems.forEach(item => {
             const cartItemDiv = document.createElement("div");
             cartItemDiv.classList.add("cart-item");
+            cartItemDiv.dataset.id = item.prodId;
 
             const cartDetailsDiv = document.createElement("div");
             cartDetailsDiv.classList.add("product-details");
@@ -42,9 +43,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const increaseQttButton = document.createElement("i");
             increaseQttButton.classList.add("fa-regular");
-            increaseQttButton.classList.add("fa-minus");
+            increaseQttButton.classList.add("fa-plus");
             increaseQttButton.classList.add("increase-quantity");
-
+            increaseQttButton.addEventListener('click', function () {
+                updateQuantity(1, quantityInput, item);
+            });
+                
             //<input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""></input>
             const quantityInput = document.createElement("input");
             quantityInput.type = "text";
@@ -53,21 +57,26 @@ document.addEventListener("DOMContentLoaded", function() {
             quantityInput.pattern = "[0-9]+";
             quantityInput.autocomplete = "off";
             quantityInput.value = item.prodQuantity;
+            quantityInput.addEventListener("input", () => validate_number(quantityInput, item));
 
             const decreaseQttButton = document.createElement("i");
             decreaseQttButton.classList.add("fa-regular");
-            decreaseQttButton.classList.add("fa-plus");
+            decreaseQttButton.classList.add("fa-minus");
             decreaseQttButton.classList.add("decrease-quantity");
+            decreaseQttButton.addEventListener('click', function () {
+                updateQuantity(-1, quantityInput, item);
+            });
 
             const addButton = document.createElement("button");
             addButton.type = "submit";
             addButton.innerHTML = '<i class="fa-solid fa-cart-plus" style="color: #63E6BE;"></i>';
 
             addToCartForm.appendChild(prodIdInput);
-            addToCartForm.appendChild(increaseQttButton);
-            addToCartForm.appendChild(quantityInput);
             addToCartForm.appendChild(decreaseQttButton);
+            addToCartForm.appendChild(quantityInput);
+            addToCartForm.appendChild(increaseQttButton);
             addToCartForm.appendChild(addButton);
+            addToCartForm.addEventListener('submit', (event) => validate_form_submission(addToCartForm, quantityInput, item));
 
             // form elements for delete from cart
             const deleteForm = document.createElement("form");
@@ -98,7 +107,67 @@ document.addEventListener("DOMContentLoaded", function() {
             cartItemDiv.appendChild(cartDetailsDiv);
 
             cartContainer.appendChild(cartItemDiv);
-
         })
     }
+
+    //Prevent text input in number field
+    function validate_number(quantityInput, item){
+        const maxAvailable = item.prodMaxAvailable;
+        let currentValue = Number(quantityInput.value);
+
+        //Validate input against the pattern
+        if (!quantityInput.validity.valid) {
+            //Replace invalid character with empty character
+            quantityInput.value = quantityInput.value.replace(/[^0-9]/g, '');
+        } else if (currentValue > maxAvailable) {
+            //If the value exceeds the maximum available, set it to maxAvailable
+            quantityInput.value = maxAvailable;
+        } else if (currentValue === 0) {
+            quantityInput.value = 1;
+        }
+    }; 
+
+    //Validate number input
+    function validate_form_submission(add_cart_form, quantityInput, item){
+        add_cart_form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            let quantity = Number(quantityInput.value);
+
+            //Set quantity to 1 if it is not a number or is 0
+            if (isNaN(quantity) || quantity < 1) {
+                quantity = 1;
+                quantity.value = 1;
+            }
+
+            //Display error if quantity > Max available
+            if (quantityInput > item.prodMaxAvailable) {
+                //const errorMessageDiv = document.getElementById('quantity-error');
+                //errorMessageDiv.textContent = "Quantity has exceeded the number available.";
+                return;
+            }
+
+            //Submit form if no error
+            add_cart_form.submit();
+        });
+    }
+
+    //Increase and decrease function for button
+    function updateQuantity(change, quantityInput, item) {
+        let currentValue = Number(quantityInput.value);
+
+        //Apply the change (increase or decrease)
+        let newValue = currentValue + change;
+
+        //Ensure the new value is within valid bounds
+        if (newValue < 1) {
+            newValue = 1; //Minimum quantity is 1
+        } else if (newValue > item.prodMaxAvailable) {
+            newValue = maxAvailable; //Maximum quantity should not exceed the available stock
+        } else {
+            //errorMessageDiv.textContent = "";
+        }
+        //Update the quantity input field
+        quantityInput.value = newValue;
+    }
+
 })
