@@ -21,8 +21,6 @@ session_start();
     <section id="checkout-container">
         <h2>Order Summary</h2>
         <div class="checkout-summary">
-            <p>Subtotal: <span id="subtotal-price"></span></p>
-            <p>Shipping fee: <span id="shipping-price"></span></p>
             <p>Total: <span id="total-price"></span></p>
         </div>
         <form id="checkout-form" action="checkout.php" method="POST">
