@@ -18,7 +18,7 @@ $productId = $_POST['product_id'];
 $quantity = intval($_POST['quantity']);
 
 //Validate product id and quantity
-if($quantity <= 0) {
+if($quantity == 0) {
     echo "Invalid product id or quantity";
     exit();
 }
@@ -45,6 +45,15 @@ mysqli_stmt_close($stmt);
 
 //Calculate total quantity
 $totalQuantity = $productInCart ? $currentCartQuantity + $quantity : $quantity;
+
+// Ensure the new cart quantity is within valid limits
+if ($totalQuantity < 0) {
+    echo "<script>
+        alert('You cannot have a negative quantity in your cart.');
+        window.history.back();
+    </script>";
+    exit();
+}
 
 //Check if total quantity is more than available products
 if ($totalQuantity > $availableQuantity) {

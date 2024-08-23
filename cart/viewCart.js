@@ -29,6 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
             const prodQuantity = document.createElement("p");
             prodQuantity.textContent = `Quantity: `;
             prodQuantity.style.display = "inline";
+            
+            //Store the original quantity
+            item.originalQuantity = item.prodQuantity;
 
             // form elements for add to cart
             const addToCartForm = document.createElement("form");
@@ -58,6 +61,9 @@ document.addEventListener("DOMContentLoaded", function() {
             quantityInput.autocomplete = "off";
             quantityInput.value = item.prodQuantity;
             quantityInput.addEventListener("input", () => validate_number(quantityInput, item));
+            quantityInput.addEventListener("change", function () {
+                handleFormSubmission(addToCartForm, item, quantityInput);
+            });
 
             const decreaseQttButton = document.createElement("i");
             decreaseQttButton.classList.add("fa-regular");
@@ -76,7 +82,10 @@ document.addEventListener("DOMContentLoaded", function() {
             addToCartForm.appendChild(quantityInput);
             addToCartForm.appendChild(increaseQttButton);
             addToCartForm.appendChild(addButton);
-            addToCartForm.addEventListener('submit', (event) => validate_form_submission(addToCartForm, quantityInput, item));
+            addToCartForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                handleFormSubmission(addToCartForm, item, quantityInput);
+            });
 
             // form elements for delete from cart
             const deleteForm = document.createElement("form");
@@ -110,6 +119,8 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
+
+    
     //Prevent text input in number field
     function validate_number(quantityInput, item){
         const maxAvailable = item.prodMaxAvailable;
@@ -127,6 +138,34 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }; 
 
+    function handleFormSubmission(form, item, quantityInput) {
+        const hasError = validate_form_submission(form, quantityInput, item);
+        const formData = new FormData(form);
+
+        if (hasError){
+            return;
+        } else {
+            //Send the difference in value
+            quantityInput.value = quantityInput.value - item.prodQuantity;
+            form.submit();/*
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Update cart UI or give a success message
+                    console.log("Item added to cart successfully:", data.message);
+                } else {
+                    // Handle any error messages
+                    console.error("Error adding item to cart:", data.error);
+                }
+            })
+            .catch(error => console.error('Error:', error));*/
+        }
+    }
+
     //Validate number input
     function validate_form_submission(add_cart_form, quantityInput, item){
         add_cart_form.addEventListener('submit', function (event) {
@@ -137,17 +176,17 @@ document.addEventListener("DOMContentLoaded", function() {
             if (isNaN(quantity) || quantity < 1) {
                 quantity = 1;
                 quantity.value = 1;
+                return false;
             }
 
             //Display error if quantity > Max available
             if (quantityInput > item.prodMaxAvailable) {
                 //const errorMessageDiv = document.getElementById('quantity-error');
                 //errorMessageDiv.textContent = "Quantity has exceeded the number available.";
-                return;
+                return false;
             }
 
-            //Submit form if no error
-            add_cart_form.submit();
+            return true;
         });
     }
 
