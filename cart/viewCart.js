@@ -64,7 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const increaseIcon = document.createElement("i");
             increaseIcon.classList.add("fa-regular", "fa-plus");
             increaseQttButton.appendChild(increaseIcon);
-            increaseQttButton.addEventListener('click', function () {
+            increaseQttButton.addEventListener('click', function (event) {
+                event.preventDefault();
                 updateQuantity(1, quantityInput, item);
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
@@ -79,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const decreaseIcon = document.createElement("i");
             decreaseIcon.classList.add("fa-regular", "fa-minus");
             decreaseQttButton.appendChild(decreaseIcon);
-            decreaseQttButton.addEventListener('click', function () {
+            decreaseQttButton.addEventListener('click', function (event) {
+                event.preventDefault();
                 updateQuantity(-1, quantityInput, item);
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
@@ -145,55 +147,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }; 
 
     function handleFormSubmission(form, item, quantityInput) {
-        const hasError = validate_form_submission(form, quantityInput, item);
-        const formData = new FormData(form);
-
-        if (hasError){
-            return;
-        } else {
-            //Send the difference in value
-            quantityInput.value = quantityInput.value - item.prodQuantity;
-            form.submit();/*
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Update cart UI or give a success message
-                    console.log("Item added to cart successfully:", data.message);
-                } else {
-                    // Handle any error messages
-                    console.error("Error adding item to cart:", data.error);
-                }
-            })
-            .catch(error => console.error('Error:', error));*/
+        if (validate_form_submission(quantityInput, item)) {
+            const difference = quantityInput.value - item.prodQuantity;
+            if (difference !== 0){
+                quantityInput.value = quantityInput.value - item.prodQuantity;
+                form.submit();
+            }
         }
     }
 
     //Validate number input
-    function validate_form_submission(add_cart_form, quantityInput, item){
-        add_cart_form.addEventListener('submit', function (event) {
-            event.preventDefault();
-            let quantity = Number(quantityInput.value);
+    function validate_form_submission(quantityInput, item){
+        let quantity = Number(quantityInput.value);
 
-            //Set quantity to 1 if it is not a number or is 0
-            if (isNaN(quantity) || quantity < 1) {
-                quantity = 1;
-                quantity.value = 1;
-                return false;
-            }
+        //Set quantity to 1 if it is not a number or is 0
+        if (isNaN(quantity) || quantity < 1) {
+            quantity = 1;
+            quantity.value = 1;
+            return false;
+        }
 
-            //Display error if quantity > Max available
-            if (quantityInput > item.prodMaxAvailable) {
-                //const errorMessageDiv = document.getElementById('quantity-error');
-                //errorMessageDiv.textContent = "Quantity has exceeded the number available.";
-                return false;
-            }
-
-            return true;
-        });
+        //Display error if quantity > Max available
+        if (quantityInput > item.prodMaxAvailable) {
+            quantityInput.value = item.prodMaxAvailable;
+            //const errorMessageDiv = document.getElementById('quantity-error');
+            //errorMessageDiv.textContent = "Quantity has exceeded the number available.";
+            return false;
+        }
+        return true;
     }
 
     //Increase and decrease function for button
@@ -207,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (newValue < 1) {
             newValue = 1; //Minimum quantity is 1
         } else if (newValue > item.prodMaxAvailable) {
-            newValue = maxAvailable; //Maximum quantity should not exceed the available stock
+            newValue = item.prodMaxAvailable; //Maximum quantity should not exceed the available stock
         } else {
             //errorMessageDiv.textContent = "";
         }
