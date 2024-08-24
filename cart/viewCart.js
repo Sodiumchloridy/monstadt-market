@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function() {
             prodIdInput.name = "product_id";
             prodIdInput.value = item.prodId;
      
-            //<input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value=""></input>
+            //Quantity input field
             const quantityInput = document.createElement("input");
             quantityInput.type = "text";
             quantityInput.name = "quantity";
@@ -54,19 +54,31 @@ document.addEventListener("DOMContentLoaded", function() {
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
 
-            const increaseQttButton = document.createElement("i");
-            increaseQttButton.classList.add("fa-regular");
-            increaseQttButton.classList.add("fa-plus");
-            increaseQttButton.classList.add("increase-quantity");
+            //Create the increase quantity button
+            const increaseQttButton = document.createElement("button");
+            increaseQttButton.classList.add("quantity-button");
+            increaseQttButton.id = "increase-quantity";
+            increaseQttButton.setAttribute("aria-label", "Increase quantity");
+
+            //Create and append the icon element
+            const increaseIcon = document.createElement("i");
+            increaseIcon.classList.add("fa-regular", "fa-plus");
+            increaseQttButton.appendChild(increaseIcon);
             increaseQttButton.addEventListener('click', function () {
                 updateQuantity(1, quantityInput, item);
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
 
-            const decreaseQttButton = document.createElement("i");
-            decreaseQttButton.classList.add("fa-regular");
-            decreaseQttButton.classList.add("fa-minus");
-            decreaseQttButton.classList.add("decrease-quantity");
+            //Create the decrease quantity button
+            const decreaseQttButton = document.createElement("button");
+            decreaseQttButton.classList.add("quantity-button");
+            decreaseQttButton.id = "decrease-quantity";
+            decreaseQttButton.setAttribute("aria-label", "Decrease quantity");
+
+            //Create and append the icon element
+            const decreaseIcon = document.createElement("i");
+            decreaseIcon.classList.add("fa-regular", "fa-minus");
+            decreaseQttButton.appendChild(decreaseIcon);
             decreaseQttButton.addEventListener('click', function () {
                 updateQuantity(-1, quantityInput, item);
                 handleFormSubmission(addToCartForm, item, quantityInput);
