@@ -61,13 +61,17 @@ if (!isset($_SESSION['user_id'])) {
             <form id="add-to-cart-form" action="../cart/add_to_cart.php" method="post">
                 <!--Quantity -->
                 <label for="quantity">Quantity: </label>
-                <button type="button" id="decrease-quantity" aria-label="Decrease quantity">
-                    <i class="fa-regular fa-minus"></i>
-                </button>
-                <input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="1">
-                <button type="button" id="increase-quantity" aria-label="Increase quantity">
-                    <i class="fa-regular fa-plus"></i>
-                </button>
+                <span class="qty-container">
+                    <button type="button" class="quantity-button" id="decrease-quantity" aria-label="Decrease quantity">
+                        <i class="fa-regular fa-minus"></i>
+                    </button>
+
+                    <input type="text" id="quantity" name="quantity" inputmode="numeric" pattern="[0-9]+" autocomplete="off" value="1">
+
+                    <button type="button" class="quantity-button" id="increase-quantity" aria-label="Increase quantity">
+                        <i class="fa-regular fa-plus"></i>
+                    </button>
+                </span>
                 <div class="error" id="quantity-error"></div>
 
                 <!-- Product id -->

@@ -31,3 +31,52 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.qty-container{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-button {
+    box-sizing: border-box;
+    border: 1px solid #d4d4d4;
+    padding: 10px 13px;
+    font-size: 10px;
+    height: 38px;
+    width: 38px;
+    color: #212529;
+    background-color: #f8f9fa;
+
+    &:hover {
+        color: #0f1011;
+        background-color: #e2e6ea;
+        scale: 1.05;
+    }
+}
+
+#decrease-quantity {
+    margin-right: -1px;
+    border-top-left-radius: 13px;
+    border-bottom-left-radius: 13px;
+}
+
+input[inputmode="numeric"]{
+    box-sizing: border-box;
+    text-align: center;
+    padding: 6px 10px;
+    border: 1px solid #d4d4d4;
+    max-width: 80px;
+    height: 38px;
+
+    &:focus{
+        outline: none;
+        box-shadow: none;
+    }   
+}
+
+#increase-quantity {
+    margin-left: -1px;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+}
