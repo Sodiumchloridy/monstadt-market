@@ -20,7 +20,7 @@
         <div class="filter">
             <form id="filter-form" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <!--Input for category filter-->
-                <fieldset>
+                <fieldset class="category-filter">
                     <legend>Category</legend>
                     <?php
                     include('../config/config.php');
@@ -58,16 +58,14 @@
                 </fieldset>
 
                 <!--Input for min pirce and max price-->
-                <fieldset>
+                <fieldset class="price-filter">
                     <legend>Price</legend>
-                    <div class="price-filter">
-                        <input name="min" id="min" placeholder="Min" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
-                            value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
-                        <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
-                            value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
-                        <div id="price-filter-error" class="error"></div>
-                        <input id="price-filter-button" type="submit" value="Apply">
-                    </div>
+                    <input name="min" id="min" placeholder="Min" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
+                        value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                    <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
+                        value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
+                    <div id="price-filter-error" class="error"></div>
+                    <input id="price-filter-button" type="submit" value="Apply">
                 </fieldset>
 
                 <!--Hidden input field to store search query-->
