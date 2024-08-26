@@ -75,5 +75,13 @@ document.addEventListener("DOMContentLoaded", function() {
         updateBuyParams();
         updatePrice();
         event.preventDefault();
+
+        // Prevent form submission if buyParams is empty
+        if (!buyParamsInput.value || buyParamsInput.value === "[]") {
+            alert("Please select at least one item to proceed with checkout.");
+            event.preventDefault();
+        } else {
+            checkoutForm.submit();
+        }
     })
 })

@@ -23,7 +23,7 @@ session_start();
         <div class="checkout-summary">
             <p>Total: <span id="total-price"></span></p>
         </div>
-        <form id="checkout-form" action="checkout.php" method="POST">
+        <form id="checkout-form" action="../checkout/" method="POST">
             <input type="hidden" name="buyParams">
             <input type="submit" value="Checkout">
         </form>
@@ -37,6 +37,6 @@ session_start();
         console.log(cartItems);
     </script>
     <script src="viewCart.js"></script>
-    <script src="checkout.js" defer></script>
+    <script src="validate_checkout.js" defer></script>
 </body>
 </html>
