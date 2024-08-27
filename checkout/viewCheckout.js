@@ -2,8 +2,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const checkoutContainer = document.getElementById("checkout-container");
     const checkoutSummary = document.getElementById("checkout-summary");
 
+    const overlay = document.getElementById("payment-overlay");
+    const confirmButton = document.getElementById("confirm-payment");
+    const cancelButton = document.getElementById("cancel-payment");
+
+    const fireflyStab = document.querySelector('#payment-overlay .confirm-box #firefly-stab');
+
     if (checkoutItems.length === 0) {
-        checkoutContainer.innerHTML = "<p>Your cart is empty. <a href='../'>Add items</a></p>";
+        checkoutContainer.innerHTML = "<p>No items are selected for checkout. <a href='../cart/'>Go to cart</a></p>";
     } else {
         let totalAmount = 0;
         checkoutItems.forEach(item => {
@@ -43,5 +49,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display the total amount
         checkoutSummary.innerHTML = `<p>Total Amount: RM${totalAmount.toFixed(2)}</p><button id="proceed-payment">Proceed to Payment</button>`;
+
+        // Add click event for "Proceed to Payment" button to show overlay
+        document.getElementById("proceed-payment").addEventListener("click", function () {
+            overlay.classList.remove("hidden");
+        });
+
+        // Confirm button action (you can add your actual payment logic here)
+        confirmButton.addEventListener("click", function () {
+            window.alert("Proceeding to payment...");
+            overlay.classList.add("hidden");
+            // Add your payment processing code here.
+        });
+
+        cancelButton.addEventListener("click", function () {
+            fireflyStab.classList.add("show");
+            setTimeout(function () {
+                overlay.classList.add("hidden");
+            }, 1250); // Matches the duration of the animation
+        });
+
+        overlay.addEventListener("click", function(event){
+            if (event.target === overlay) {
+                overlay.classList.add("hidden");
+            }
+        })
+
     }
 });

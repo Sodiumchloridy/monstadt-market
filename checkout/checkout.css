@@ -6,3 +6,98 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.confirm-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.confirm-box h2 {
+    margin-bottom: 10px;
+}
+
+.image-container {
+    display: block;
+    position: relative;
+    width: 200px; /* Adjust size as needed */
+    height: 200px;
+    margin: 0 auto;
+}
+
+.image-container img {
+    position: absolute;
+    width: 100%; /* Ensure both images are the same size */
+    height: auto;
+}
+
+.confirm-actions {
+    margin-top: 20px;
+}
+
+.confirm-actions button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#confirm-payment {
+    background-color: #28a745; /* Green button */
+    color: white;
+}
+
+#cancel-payment {
+    background-color: #dc3545; /* Red button */
+    color: white;
+}
+
+.confirm-box img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: absolute; /* Position absolutely within the box */
+}
+
+#firefly-heart {
+    z-index: 1; /* Ensure it is beneath the stab image */
+}
+
+#firefly-stab {
+    top: 0; /* Start in the same position as the heart image */
+    left: 0;
+    opacity: 0;
+    z-index: 2; /* Ensure it appears on top */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation for showing the stab image */
+#firefly-stab.show {
+    opacity: 1;
+    scale: 1.1;
+}
+
+/* Hidden class to hide the overlay initially */
+.hidden {
+    display: none;
+}

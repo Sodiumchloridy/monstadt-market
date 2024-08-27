@@ -31,5 +31,21 @@ if (!isset($_SESSION['user_id'])) {
     </script>
 
     <script src="viewCheckout.js"></script>
+
+    <div id="payment-overlay" class="overlay hidden">
+        <div class="confirm-box">
+            <h2>Confirm Payment</h2>
+            <div class="image-container">
+                <img src="../default_images/firefly_heart.png" alt="firefly heart">
+                <img id="firefly-stab" src="../default_images/firefly_stab.png" class="hidden" alt="firefly stab">
+            </div>
+            <p>Are you sure you want to proceed to payment?</p>
+            <div class="confirm-actions">
+                <button id="confirm-payment">Yes, proceed</button>
+                <button id="cancel-payment">Cancel</button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
