@@ -53,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add click event for "Proceed to Payment" button to show overlay
         document.getElementById("proceed-payment").addEventListener("click", function () {
             overlay.classList.remove("hidden");
+            fireflyStab.classList.remove("show");
+            fireflyStab.classList.add("hidden");
         });
 
         // Confirm button action (you can add your actual payment logic here)
@@ -72,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
         overlay.addEventListener("click", function(event){
             if (event.target === overlay) {
                 overlay.classList.add("hidden");
+
+                fireflyStab.classList.add("show");
+                setTimeout(function () {
+                    overlay.classList.add("hidden");
+                }, 1250); // Matches the duration of the animatio
             }
         })
 
