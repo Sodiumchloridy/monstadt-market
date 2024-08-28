@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fireflyStab.classList.add("show");
             setTimeout(function () {
                 overlay.classList.add("hidden");
-            }, 1250); // Matches the duration of the animation
+            }, 1250); 
         });
 
         overlay.addEventListener("click", function(event){
@@ -78,9 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 fireflyStab.classList.add("show");
                 setTimeout(function () {
                     overlay.classList.add("hidden");
-                }, 1250); // Matches the duration of the animatio
+                }, 1250); 
             }
-        })
+        });
 
+        confirmButton.addEventListener("click", function (event) {
+            event.preventDefault();
+            document.getElementById("payment-form").submit();
+        });
     }
 });

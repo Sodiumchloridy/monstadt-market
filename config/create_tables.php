@@ -56,5 +56,39 @@ if (mysqli_query($conn, $sql)) {
     echo "Error creating table Cart: " . mysqli_error($conn);
 }
 
+//Create product table
+$sql = "CREATE TABLE IF NOT EXISTS Orders (
+    order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    u_id INT(6) UNSIGNED,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total_amount DECIMAL(10,2) NOT NULL,
+    shipping_address VARCHAR(255),
+    payment_method VARCHAR(50),
+    payment_status VARCHAR(50) DEFAULT 'Pending',
+    FOREIGN KEY (u_id) REFERENCES Users(u_id) ON DELETE CASCADE
+);";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Table Order created successfully <br>";
+} else {
+    echo "Error creating table Order: " . mysqli_error($conn);
+}
+
+$sql = "CREATE TABLE IF NOT EXISTS OrderItems (
+    order_item_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id INT(6) UNSIGNED,
+    prod_id INT(6) UNSIGNED,
+    quantity INT(6) NOT NULL,
+    price_at_purchase DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (prod_id) REFERENCES Product(prod_id) ON DELETE CASCADE
+);";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Table OrderItem created successfully <br>";
+} else {
+    echo "Error creating table OrderItem: " . mysqli_error($conn);
+}
+
 //Close connection
 mysqli_close($conn);
