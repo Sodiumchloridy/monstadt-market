@@ -41,7 +41,11 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <p>Are you sure you want to proceed to payment?</p>
             <div class="confirm-actions">
-                <button id="confirm-payment">Yes, proceed</button>
+                <form id="payment-form" method="post" action="checkout.php">
+                    <input type="hidden" name="confirm_payment" value="Confirm Payment">
+                    <input type="hidden" name="buyParams" value="<?php echo htmlspecialchars($_POST['buyParams']); ?>">
+                    <button type="submit" id="confirm-payment">Confirm Payment</button>
+                </form>
                 <button id="cancel-payment">Cancel</button>
             </div>
         </div>
