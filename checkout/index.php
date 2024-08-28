@@ -43,7 +43,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="confirm-actions">
                 <form id="payment-form" method="post" action="checkout.php">
                     <input type="hidden" name="confirm_payment" value="Confirm Payment">
-                    <input type="hidden" name="buyParams" value="<?php echo json_encode($checkoutItems); ?>">
+                    <input type="hidden" name="buyParams" value="<?php echo htmlspecialchars($_POST['buyParams']); ?>">
                     <button type="submit" id="confirm-payment">Confirm Payment</button>
                 </form>
                 <button id="cancel-payment">Cancel</button>

@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Confirm button action (you can add your actual payment logic here)
         confirmButton.addEventListener("click", function () {
-            window.alert("Proceeding to payment...");
             overlay.classList.add("hidden");
             // Add your payment processing code here.
         });

@@ -1,6 +1,5 @@
 <?php
 session_start();
-include("../config/config.php");
 
 // Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
@@ -13,6 +12,8 @@ $user_id = $_SESSION['user_id'];
 
 include('viewCheckoutItem.php');
 
+include("../config/config.php");
+
 // Begin transaction
 mysqli_begin_transaction($conn);
 
@@ -20,7 +21,7 @@ try {
     // Insert order into Orders table
     $shippingAddressQuery = "SELECT u_address FROM Users WHERE u_id = ?";
     $stmt = mysqli_prepare($conn, $shippingAddressQuery);
-    mysqli_stmt_bind_param($stmt, "i", $userId);
+    mysqli_stmt_bind_param($stmt, "i", $user_id);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $shippingAddress);
     mysqli_stmt_fetch($stmt);
@@ -32,7 +33,7 @@ try {
         INSERT INTO Orders (u_id, total_amount, shipping_address, payment_method)
         VALUES (?, ?, ?, 'Credit Card')";
     $stmt = mysqli_prepare($conn, $insertOrderQuery);
-    mysqli_stmt_bind_param($stmt, "ids", $userId, $totalAmount, $shippingAddress);
+    mysqli_stmt_bind_param($stmt, "ids", $user_id, $totalAmount, $shippingAddress);
     mysqli_stmt_execute($stmt);
     $orderId = mysqli_insert_id($conn); // Get the inserted order ID
     mysqli_stmt_close($stmt);
@@ -93,3 +94,13 @@ try {
 
 // Close connection
 mysqli_close($conn);
+?>
+
+<html>
+    <head>
+        <title>Checkout</title>
+    </head>
+    <body>
+        <h1> Checkout </h1>
+    </body>
+</html>
