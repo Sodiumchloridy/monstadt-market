@@ -6,11 +6,13 @@
 
     <div id="search-bar"> <!-- Search bar -->
         <form id="search-form" action="/monstadt-market/search" method="GET"> <!--Search bar and icon-->
-            <input type="text" name="search_query" placeholder="Search in Mondstadt Market..." maxlength="128">
+            <input type="text" id="search-input" name="search_query" placeholder="Search in Mondstadt Market..." maxlength="128" autocomplete="off">
             <button type="submit" title="search">
                 <i class="fa-solid fa-magnifying-glass fa-xl"></i>
             </button>
         </form>
+        <div id="suggestions"></div>
+        <script src="/monstadt-market/includes/suggestion.js"></script>
 
         <div id="cart"> <!-- Cart -->
             <a href="/monstadt-market/cart/index.php">
