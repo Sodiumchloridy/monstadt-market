@@ -130,6 +130,7 @@
 
 #suggestions div {
     color: black;
+    margin: 5px 0;
 }
 
 #search-bar:focus-within #suggestions {
