@@ -95,6 +95,7 @@ a {
     background: black;
     box-sizing: border-box;
     padding: 25px 10px;
+    overflow: clip;
 }
 
 .region-grid {
