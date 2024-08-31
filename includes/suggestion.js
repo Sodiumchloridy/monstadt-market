@@ -1,4 +1,6 @@
-document.getElementById('search-input').addEventListener('input', function () {
+const searchInput = document.getElementById('search-input');
+
+searchInput.addEventListener('input', function () {
     const query = document.getElementById('search-input').value;
 
     if (query.length > 0) { 
@@ -20,6 +22,10 @@ document.getElementById('search-input').addEventListener('input', function () {
                 });
             });
     } else {
-        document.getElementById('suggestions').innerHTML = ''; // Clear suggestions if query is too short
+        document.getElementById('suggestions').innerHTML = ''; 
     }
+});
+
+searchInput.addEventListener("blur", function(){
+    document.getElementById('suggestions').innerHTML = "";
 });
