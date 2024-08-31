@@ -75,6 +75,10 @@
     background-color: black;
 }
 
+#search-bar {
+    position: relative;
+}
+
 #search-bar form {
     flex: 1;
     margin: auto 0;
@@ -108,6 +112,28 @@
 #search-bar button:hover {
     color: white;
     background-color: black;
+}
+
+#suggestions {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 80%;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1;
+    display: none;
+    cursor: pointer;
+}
+
+#suggestions div {
+    color: black;
+}
+
+#search-bar:focus-within #suggestions {
+    display: block;
 }
 
 /* Auth Buttons */
