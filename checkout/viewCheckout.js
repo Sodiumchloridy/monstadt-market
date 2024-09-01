@@ -53,20 +53,21 @@ document.addEventListener("DOMContentLoaded", function () {
         // Add click event for "Proceed to Payment" button to show overlay
         document.getElementById("proceed-payment").addEventListener("click", function () {
             overlay.classList.remove("hidden");
-            fireflyStab.classList.remove("show");
-            fireflyStab.classList.add("hidden");
         });
 
         // Confirm button action (you can add your actual payment logic here)
-        confirmButton.addEventListener("click", function () {
+        confirmButton.addEventListener("click", function (event) {
             overlay.classList.add("hidden");
-            // Add your payment processing code here.
+            event.preventDefault();
+            document.getElementById("payment-form").submit();
         });
 
         cancelButton.addEventListener("click", function () {
             fireflyStab.classList.add("show");
             setTimeout(function () {
                 overlay.classList.add("hidden");
+                fireflyStab.classList.remove("show");
+                fireflyStab.classList.add("hidden");
             }, 1250); 
         });
 
@@ -75,13 +76,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 fireflyStab.classList.add("show");
                 setTimeout(function () {
                     overlay.classList.add("hidden");
+                    fireflyStab.classList.remove("show");
+                    fireflyStab.classList.add("hidden");
                 }, 1250); 
             }
-        });
-
-        confirmButton.addEventListener("click", function (event) {
-            event.preventDefault();
-            document.getElementById("payment-form").submit();
         });
     }
 });
