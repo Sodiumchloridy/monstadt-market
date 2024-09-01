@@ -30,12 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
             prodQuantity.textContent = `Quantity: `;
             prodQuantity.style.display = "inline";
             
-            // form elements for add to cart
+            // form for add to cart
             const addToCartForm = document.createElement("form");
             addToCartForm.action = "add_to_cart.php";
             addToCartForm.method = "post";
             addToCartForm.style.display = "inline";
 
+            //hidden input for storing product id
             const prodIdInput = document.createElement("input");
             prodIdInput.type = "hidden";
             prodIdInput.name = "product_id";
@@ -99,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const deleteForm = document.createElement("form");
             deleteForm.action = 'delete_from_cart.php';
             deleteForm.method = 'post';
-            //deleteForm.style.display = 'inline';
 
             const deleteProdIdInput = document.createElement("input");
             deleteProdIdInput.type = 'hidden';
