@@ -53,10 +53,6 @@ $userData = [
 
     </div>
     <?php include("../includes/footer.php"); ?>
-    <script>
-        const userData = <?php echo json_encode($userData); ?>;
-        console.log(userData);
-    </script>
     <script src="profile.js"></script>
 </body>
 </html>
