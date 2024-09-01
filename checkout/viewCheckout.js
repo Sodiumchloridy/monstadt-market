@@ -72,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         overlay.addEventListener("click", function(event){
             if (event.target === overlay) {
-                overlay.classList.add("hidden");
-
                 fireflyStab.classList.add("show");
                 setTimeout(function () {
                     overlay.classList.add("hidden");

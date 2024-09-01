@@ -22,7 +22,9 @@ try {
     $shippingAddressQuery = "SELECT u_address FROM Users WHERE u_id = ?";
     $stmt = mysqli_prepare($conn, $shippingAddressQuery);
     mysqli_stmt_bind_param($stmt, "i", $user_id);
-    mysqli_stmt_execute($stmt);
+    if (!mysqli_stmt_execute($stmt)) {
+        throw new Exception("Failed to get shippin address: " . mysqli_stmt_error($stmt));
+    }
     mysqli_stmt_bind_result($stmt, $shippingAddress);
     mysqli_stmt_fetch($stmt);
     mysqli_stmt_close($stmt);
@@ -34,7 +36,9 @@ try {
         VALUES (?, ?, ?, 'Credit Card')";
     $stmt = mysqli_prepare($conn, $insertOrderQuery);
     mysqli_stmt_bind_param($stmt, "ids", $user_id, $totalAmount, $shippingAddress);
-    mysqli_stmt_execute($stmt);
+    if (!mysqli_stmt_execute($stmt)) {
+        throw new Exception("Failed to insert into Order: " . mysqli_stmt_error($stmt));
+    }
     $orderId = mysqli_insert_id($conn); // Get the inserted order ID
     mysqli_stmt_close($stmt);
 
@@ -50,7 +54,9 @@ try {
             VALUES (?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $insertOrderItemsQuery);
         mysqli_stmt_bind_param($stmt, "iiid", $orderId, $prodId, $quantity, $priceAtPurchase);
-        mysqli_stmt_execute($stmt);
+        if (!mysqli_stmt_execute($stmt)) {
+            throw new Exception("Failed to insert item into OrderItem: " . mysqli_stmt_error($stmt));
+        }
         mysqli_stmt_close($stmt);
 
         // Update Product table
@@ -60,7 +66,9 @@ try {
             WHERE prod_id = ?";
         $stmt = mysqli_prepare($conn, $updateProductQuery);
         mysqli_stmt_bind_param($stmt, "iii", $quantity, $quantity, $prodId);
-        mysqli_stmt_execute($stmt);
+        if (!mysqli_stmt_execute($stmt)) {
+            throw new Exception("Failed to update item in product: " . mysqli_stmt_error($stmt));
+        }
         mysqli_stmt_close($stmt);
     }
 
@@ -71,8 +79,10 @@ try {
         $deleteCartItemQuery = "
             DELETE FROM Cart WHERE u_id = ? AND prod_id = ?";
         $stmt = mysqli_prepare($conn, $deleteCartItemQuery);
-        mysqli_stmt_bind_param($stmt, "ii", $userId, $prodId);
-        mysqli_stmt_execute($stmt);
+        mysqli_stmt_bind_param($stmt, "ii", $user_id, $prodId);
+        if (!mysqli_stmt_execute($stmt)) {
+            throw new Exception("Failed to delete item from Cart: " . mysqli_stmt_error($stmt));
+        }
         mysqli_stmt_close($stmt);
     }
 
