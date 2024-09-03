@@ -24,7 +24,12 @@ mysqli_stmt_bind_param($stmt, "sssss", $data["name"], $data["email"], $data["add
 header("Content-Type: application/json");
 if(mysqli_stmt_execute($stmt)){
     //return success response
+    $_SESSION['username'] = $data["name"];
+    $_SESSION['email'] = $data["email"];
+    $_SESSION['address'] = $data["address"];
+    $_SESSION['phone'] = $data["phone"];
     echo json_encode(["success" => true]);
+
 }else {
     //return error response
     die("Execute failed: (" . mysqli_stmt_errno($stmt) . ") " . mysqli_stmt_error($stmt));

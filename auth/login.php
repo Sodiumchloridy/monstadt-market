@@ -23,10 +23,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name'];
 
         // Check if the name exist in database
-        $stmt = mysqli_prepare($conn, "SELECT u_id, u_password, u_profile_pic, u_profile_pic_type FROM users WHERE u_username=?");
+        $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE u_username=?");
         mysqli_stmt_bind_param($stmt, "s", $name);
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $userId, $pass, $profilePic, $profilePicType);
+        mysqli_stmt_bind_result($stmt, $userId, $username, $pass, $email, $address, $phone, $profilePic, $profilePicType, $regDate);
         mysqli_stmt_fetch($stmt);
         mysqli_stmt_close($stmt);
 
@@ -54,8 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($nameErr) && empty($passErr) && $validName && $validPass) {
         $_SESSION['user_id'] = $userId;
         $_SESSION['username'] = $name;
+        $_SESSION['email'] = $email;
+        $_SESSION['address'] = $address;
+        $_SESSION['phone'] = $phone;
         $_SESSION['profile_pic'] = $profilePic;
         $_SESSION['profile_pic_type'] = $profilePicType;
+        $_SESSION['reg_date'] = $regDate;
 
         $redirectUrl = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '../index.php';
         unset($_SESSION['redirect_after_login']);
