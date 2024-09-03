@@ -40,7 +40,7 @@ $result = mysqli_stmt_get_result($stmt);
         echo '<div class="product-container">';
 
         $row = mysqli_fetch_assoc($result);
-        $prod_name = $row["prod_name"];
+        $prod_name = htmlspecialchars($row["prod_name"]);
         echo "<section class='product-col-image'>";
         echo "<img src='../images/" . $row['prod_img_name'] . "' alt='" . $row['prod_name'] . "'>";
         echo "<h1 align='center' data-content='$prod_name'>" . $row['prod_name'] . "</h1>";

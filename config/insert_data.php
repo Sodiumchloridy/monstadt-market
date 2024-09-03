@@ -5,7 +5,7 @@ include 'config.php';
 //Insert data for product
 $sql = "
 INSERT INTO `product` (`prod_id`, `prod_img_name`, `prod_name`, `prod_desc`, `prod_price`, `prod_region`, `prod_numAvailable`, `prod_numSold`) VALUES
-('1', 'Item_Pile_Em_Up.webp', 'Pile Em Up', 'A rich, meaty dish. Originally a Mondstadt dish made of steaks, potatoes, and cheese, it has since become synonymous with Ludi Harpastum.', '13.7', 'Mondstadt', '99', '300'),
+('1', 'Item_Pile_Em_Up.webp', 'Pile ''Em Up', 'A rich, meaty dish. Originally a Mondstadt dish made of steaks, potatoes, and cheese, it has since become synonymous with Ludi Harpastum.', '13.7', 'Mondstadt', '99', '300'),
 ('2', 'Item_Apple_Cider.webp', 'Apple Cider', 'A freshly squeezed, fashionable, and fruity non-alcoholic beverage. Said to have a strong sobering effect, tavern patrons often order this as the last drink of the night.', '15.3', 'Mondstadt', '99', '300'),
 ('3', 'Item_Barbatos_Ratatouille.webp', 'Barbatos Ratatouille', 'A simple chowder with a long history. After much careful stewing, the flavors of three different vegetables have been blended to perfection. Like this, it is not hard to imagine why someone once called it \"the best chowder I\'ve ever tasted.\"', '11.2', 'Mondstadt', '99', '300'),
 ('4', 'Item_Berry_Mint_Burst.webp', 'Berry & Mint Burst', 'A freshly squeezed, fashionable, and fruity non-alcoholic beverage. A refreshing burst of Mint with Berries to sweeten the deal, it has an exquisite aroma.', '19.5', 'Mondstadt', '99', '300'),
