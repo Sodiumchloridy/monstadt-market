@@ -64,10 +64,9 @@
                         value="<?= (isset($_GET['min']) && !empty($_GET['min'])) ? htmlspecialchars($_GET['min'], ENT_QUOTES, 'UTF-8') : '' ?>">
                     <input name="max" id="max" placeholder="Max" type="number" min="0" class="filter-price-input" pattern="[0-9]*"
                         value="<?= (isset($_GET['max']) && !empty($_GET['max'])) ? htmlspecialchars($_GET['max'], ENT_QUOTES, 'UTF-8') : '' ?>">
-                    <div id="price-filter-error" class="error"></div>
                     <input id="price-filter-button" type="submit" value="Apply">
+                    <div id="price-filter-error" class="error"></div>
                 </fieldset>
-
                 <!--Hidden input field to store search query-->
                 <?php if (isset($_GET['search_query'])): ?>
                     <input type="hidden" name="search_query" value="<?php echo htmlspecialchars($_GET['search_query']); ?>">

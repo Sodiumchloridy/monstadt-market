@@ -94,6 +94,7 @@ input[type="checkbox"]+label {
 /* Price filter */
 .price-filter {
     display: flex;
+    place-items: center;
     gap: 10px;
 }
 
@@ -133,4 +134,10 @@ input[type="checkbox"]+label {
 .price-filter>input[type="submit"]:hover {
     background-color: var(--lemon-yellow);
     color: black;
+}
+
+.price-filter .error {
+    color: red;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
