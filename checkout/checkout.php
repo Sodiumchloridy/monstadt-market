@@ -18,16 +18,20 @@ include("../config/config.php");
 mysqli_begin_transaction($conn);
 
 try {
-    // Insert order into Orders table
-    $shippingAddressQuery = "SELECT u_address FROM Users WHERE u_id = ?";
-    $stmt = mysqli_prepare($conn, $shippingAddressQuery);
-    mysqli_stmt_bind_param($stmt, "i", $user_id);
-    if (!mysqli_stmt_execute($stmt)) {
-        throw new Exception("Failed to get shippin address: " . mysqli_stmt_error($stmt));
+    if (!isset($_POST['address']) || empty($_POST['address'])){
+        // Insert order into Orders table
+        $shippingAddressQuery = "SELECT u_address FROM Users WHERE u_id = ?";
+        $stmt = mysqli_prepare($conn, $shippingAddressQuery);
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        if (!mysqli_stmt_execute($stmt)) {
+            throw new Exception("Failed to get shipping address: " . mysqli_stmt_error($stmt));
+        }
+        mysqli_stmt_bind_result($stmt, $shippingAddress);
+        mysqli_stmt_fetch($stmt);
+        mysqli_stmt_close($stmt);
+    } else {
+        $shippingAddress = trim(stripslashes(htmlspecialchars($_POST['address'])));
     }
-    mysqli_stmt_bind_result($stmt, $shippingAddress);
-    mysqli_stmt_fetch($stmt);
-    mysqli_stmt_close($stmt);
 
     $totalAmount = array_sum(array_column($checkoutItems, 'totalPrice'));
 

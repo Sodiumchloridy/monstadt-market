@@ -11,3 +11,7 @@ body {
 button {
     margin-top: 10px;
 }
+
+.placeholder-red::placeholder {
+    color:red;
+}
