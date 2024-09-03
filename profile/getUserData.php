@@ -31,7 +31,7 @@ if(mysqli_stmt_fetch($stmt)){
         "email" => $email, 
         "address" => $address, 
         "phone" => $phone, 
-        "profilePic" => $profilePicBase64, 
+        "profilePicBase64" => $profilePicBase64, 
         "profilePicType" => $profilePicType, 
         "regDate" => $regDate
     ];
