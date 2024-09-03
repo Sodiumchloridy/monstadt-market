@@ -45,13 +45,15 @@ $userData = [
         </div>
 
         <div class="profile-details">
-            <p><strong>Username:</strong> <span id="username"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
-            <p><strong>Address:</strong> <span id="address"></span></p>
-            <p><strong>Phone:</strong> <span id="phone"></span></p>
+            <p><strong>Username:</strong> <span id="username" class="editable"></span></p>
+            <p><strong>Email:</strong> <span id="email" class="editable"></span></p>
+            <p><strong>Address:</strong> <span id="address" class="editable"></span></p>
+            <p><strong>Phone:</strong> <span id="phone" class="editable"></span></p>
             <p><strong>Register Date:</strong> <span id="reg"></span></p>            
         </div>
 
+        <button id="editBtn">Edit</button>
+        <button id="saveBtn" style="display: none;">Save</button>
 
     </div>
     <?php include("../includes/footer.php"); ?>
