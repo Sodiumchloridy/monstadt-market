@@ -28,6 +28,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profile_picture'])){
 
         if(mysqli_stmt_execute($stmt)){
             $response['success'] = true;
+            $_SESSION['profile_pic'] = $imageData;
+            $_SESSION['profile_pic_type'] = $imgType;
         } else {
             $response['message'] = 'Failed to update profile picture in database';
         }
