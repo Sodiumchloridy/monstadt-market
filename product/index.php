@@ -28,6 +28,7 @@ $result = mysqli_stmt_get_result($stmt);
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
     <link rel="stylesheet" href="../styles/product.css">
     <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/color.css">
     <script defer src="validate_number.js"></script>
 </head>
 
@@ -46,8 +47,8 @@ $result = mysqli_stmt_get_result($stmt);
         echo "</section>";
 
         echo "<section class='product-col-details'>";
-        echo "<h1 align='center' data-content='$prod_name'>" . $row['prod_name'] . "</h1>";
-        echo "<p align='justify'>Description: " . $row['prod_desc'] . "</p>";
+        echo "<h1 data-content='$prod_name'>" . $row['prod_name'] . "</h1>";
+        echo "<p align='justify'>" . $row['prod_desc'] . "</p>";
         echo "<div class='details-grid'>";
         echo "<p>Price: " . $row['prod_price'] . "</p>";
         echo "<p>Region: " . $row['prod_region'] . "</p>";
@@ -58,8 +59,9 @@ $result = mysqli_stmt_get_result($stmt);
         <!-- action="../monstadt-market/cart/add_to_cart.php" -->
         <form id="add-to-cart-form" action="../cart/add_to_cart.php" method="post">
             <!--Quantity -->
-            <label for="quantity">Quantity: </label>
             <span class="qty-container">
+                <label for="quantity">Quantity</label>
+
                 <button type="button" class="quantity-button" id="decrease-quantity" aria-label="Decrease quantity">
                     <i class="fa-regular fa-minus"></i>
                 </button>
@@ -81,6 +83,7 @@ $result = mysqli_stmt_get_result($stmt);
         </form>
 
     <?php
+
         echo "</section>";
         echo '</div>';
     }

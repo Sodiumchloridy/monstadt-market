@@ -15,7 +15,7 @@
 <body>
     <?php include('../includes/header.php'); ?>
 
-    <main>
+    <main class="search-main">
         <!--Filter for product category/region-->
         <div class="filter">
             <form id="filter-form" method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
