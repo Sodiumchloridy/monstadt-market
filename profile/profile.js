@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function(){
         address.textContent = data.address;
         phone.textContent = data.phone;
         reg.textContent = data.regDate;
-        img.src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`
+        img.src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`;
         img.alt = "Image is loading...";
     })
     .catch(err => {
