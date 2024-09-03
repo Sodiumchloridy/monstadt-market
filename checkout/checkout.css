@@ -7,13 +7,20 @@ body {
     color: #333;
 }
 
+/*Payment method selection*/
+#payment-image img {
+    width: 50px;
+    height: auto;
+}
+
+/*Payment confirmation*/
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    background: rgba(0, 0, 0, 0.7); 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,14 +44,14 @@ body {
 .image-container {
     display: block;
     position: relative;
-    width: 200px; /* Adjust size as needed */
+    width: 200px;
     height: 200px;
     margin: 0 auto;
 }
 
 .image-container img {
     position: absolute;
-    width: 100%; /* Ensure both images are the same size */
+    width: 100%;
     height: auto;
 }
 
@@ -66,12 +73,12 @@ body {
 }
 
 #confirm-payment {
-    background-color: #28a745; /* Green button */
+    background-color: #28a745;
     color: white;
 }
 
 #cancel-payment {
-    background-color: #dc3545; /* Red button */
+    background-color: #dc3545;
     color: white;
 }
 
@@ -80,18 +87,18 @@ body {
     height: auto;
     display: block;
     margin: 0 auto;
-    position: absolute; /* Position absolutely within the box */
+    position: absolute;
 }
 
 #firefly-heart {
-    z-index: 1; /* Ensure it is beneath the stab image */
+    z-index: 1; 
 }
 
 #firefly-stab {
-    top: 0; /* Start in the same position as the heart image */
+    top: 0; 
     left: 0;
     opacity: 0;
-    z-index: 2; /* Ensure it appears on top */
+    z-index: 2; 
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -101,7 +108,6 @@ body {
     scale: 1.1;
 }
 
-/* Hidden class to hide the overlay initially */
 .hidden {
     display: none;
 }

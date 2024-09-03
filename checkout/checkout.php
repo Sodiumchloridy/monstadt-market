@@ -33,13 +33,19 @@ try {
         $shippingAddress = trim(stripslashes(htmlspecialchars($_POST['address'])));
     }
 
+    if (isset($_POST['paymentMethod']) && !empty($_POST['paymentMethod'])){
+        $paymentMethod = trim(stripslashes(htmlspecialchars($_POST['paymentMethod'])));
+    } else {
+        throw new Exception("Invalid payment method is provided");
+    }
+
     $totalAmount = array_sum(array_column($checkoutItems, 'totalPrice'));
 
     $insertOrderQuery = "
         INSERT INTO Orders (u_id, total_amount, shipping_address, payment_method)
-        VALUES (?, ?, ?, 'Credit Card')";
+        VALUES (?, ?, ?, ?)";
     $stmt = mysqli_prepare($conn, $insertOrderQuery);
-    mysqli_stmt_bind_param($stmt, "ids", $user_id, $totalAmount, $shippingAddress);
+    mysqli_stmt_bind_param($stmt, "idss", $user_id, $totalAmount, $shippingAddress, $paymentMethod);
     if (!mysqli_stmt_execute($stmt)) {
         throw new Exception("Failed to insert into Order: " . mysqli_stmt_error($stmt));
     }
