@@ -127,6 +127,6 @@ function validateEmail(email){
 }
 
 function validatePhone(phone){
-    const phoneRegex = /^\d{10}$/;
+    const phoneRegex = /^(\+?6?01)[02-46-9]-*[0-9]{7,8}$/;
     return phoneRegex.test(phone);
 }
