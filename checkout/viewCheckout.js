@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (checkoutItems.length === 0) {
         checkoutContainer.innerHTML = "<p>No items are selected for checkout. <a href='../cart/'>Go to cart</a></p>";
+        checkoutSummary.innerHTML = "";
     } else {
         let totalAmount = 0;
 
@@ -50,13 +51,9 @@ document.addEventListener("DOMContentLoaded", function () {
             itemDiv.appendChild(detailsDiv);
 
             checkoutContainer.appendChild(itemDiv);
-        });
 
-        //Display total amount
-        checkoutSummary.innerHTML = `
-        <h2> Checkout </h1>
-        <p>Total Amount: RM${totalAmount.toFixed(2)}</p><button id="proceed-payment">Proceed to Payment</button>
-        `;
+            document.getElementById("total-price").textContent = `Total Amount: RM${totalAmount.toFixed(2)}`;
+        });
 
         //Display form to proceed to payment
         document.getElementById("proceed-payment").addEventListener("click", function () {
