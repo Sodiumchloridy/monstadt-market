@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     //For payment address
     const addressRadioButtons = document.querySelectorAll("#payment-address input[type='radio']");
+    const paymentMethodInputs = document.querySelectorAll('input[name="payment-method"]');
     const customAddressInput = document.getElementById('address-input');
     const hiddenAddressInput = document.querySelector('input[name="address"]');
+    const hiddenPaymentMethodInput = document.querySelector('input[name="paymentMethod"]');
     const confirmButton = document.getElementById("confirm-payment");
     const proceedButton = document.getElementById("proceed-payment");
     const addressErrorDiv = document.getElementById("address-error");
+    const paymentErrorDiv = document.getElementById("payment-error");
 
     //Update address based on selection
     addressRadioButtons.forEach(function (button){
@@ -23,7 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
             customAddressInput.removeAttribute("disabled");
         }
     }
+
+    //Update payment method value
+    function setPaymentMethod(){
+        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+        hiddenPaymentMethodInput.value = selectedPaymentMethod.value;
+    }
     
+    //Remove error message of payment method
+    paymentMethodInputs.forEach((paymentInput) =>{
+        paymentInput.addEventListener("click", ()=>{
+            setPaymentMethod();
+            paymentErrorDiv.textContent ="";
+        })
+    });
+
     //Update address when address is filled in
     customAddressInput.addEventListener("input", () => updateAddressOnInput());
     function updateAddressOnInput(){
@@ -50,12 +67,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //Ensure payment method is selected
+    function validatePaymentMethod() {
+        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+        if (!selectedPaymentMethod) {
+            paymentErrorDiv.innerHTML = "Please select a payment method.";
+            return false;
+        }
+        paymentErrorDiv.innerHTML = "";
+        return true;
+    }
+
     //Submit the form to checkout
     confirmButton.addEventListener("click", function (event) {
         overlay.classList.add("hidden");
         event.preventDefault();
         //Validate if address field is empty
-        if (validateAddressField()) {
+        if (validateAddressField() && validatePaymentMethod()) {
             document.getElementById("payment-form").submit();
         }
     });
@@ -67,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Display form to proceed to payment
     proceedButton.addEventListener("click", function () {
-        if (validateAddressField()){
+        if (validateAddressField() && validatePaymentMethod()){
             overlay.classList.remove("hidden");
         }
     });

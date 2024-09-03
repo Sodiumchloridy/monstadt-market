@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             checkoutContainer.appendChild(itemDiv);
 
-            document.getElementById("total-price").textContent = `Total Amount: RM${totalAmount.toFixed(2)}`;
+            document.getElementById("total-price").textContent = `Amount: RM${totalAmount.toFixed(2)}`;
         });
     }
 });
