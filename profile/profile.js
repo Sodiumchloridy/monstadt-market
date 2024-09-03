@@ -3,20 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
     fetch("getUserData.php?")
     .then(response => response.json())
     .then(data => {
-        const username = document.getElementById("username");
-        const email = document.getElementById("email");
-        const address = document.getElementById("address");
-        const phone = document.getElementById("phone");
-        const reg = document.getElementById("reg");
-        const img = document.getElementById("profilePic");
-        
-        username.textContent = data.name;
-        email.textContent = data.email;
-        address.textContent = data.address;
-        phone.textContent = data.phone;
-        reg.textContent = data.regDate;
-        img.src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`;
-        img.alt = "Image is loading...";
+        document.getElementById("username").textContent = data.name;
+        document.getElementById("email").textContent = data.email;
+        document.getElementById("address").textContent = data.address;
+        document.getElementById("phone").textContent = data.phone;
+        document.getElementById("reg").textContent = data.regDate;
+        document.getElementById("profilePic").src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`;
+        document.getElementById("profilePic").alt = "Image is loading...";
     })
     .catch(err => {
         console.log(err);
@@ -33,6 +26,7 @@ document.getElementById("editBtn").addEventListener("click", function(){
         input.type = "text";
         input.value = field.textContent;
         input.className = "edit-input";
+        input.id = field.id;
         field.replaceWith(input); // replace the span with input element
     });
 
@@ -44,14 +38,51 @@ document.getElementById("editBtn").addEventListener("click", function(){
 document.getElementById("saveBtn").addEventListener("click", function(){
     //get all elements by edit-input class
     const editInput = document.querySelectorAll(".edit-input");
+    
+    let isValid = true;
 
-    //loop through each input field
+    //validation
+    editInput.forEach(input => {
+        if(!input.value.trim()) {
+            input.style.borderColor = 'red';
+            input.placeholder = 'Please enter a value';
+            input.classList.add('placeholder-red');
+            isValid = false;
+        }else{
+            input.style.borderColor = "";
+            input.placeholder = "";
+            input.classList.remove("placeholder-red");
+        }
+
+        //validate email
+        if(input.id === "email" && !validateEmail(input.value)){
+            input.style.borderColor = 'red';
+            input.placeholder = 'Please enter a valid email';
+            input.classList.add('placeholder-red');
+            isValid = false;
+        }
+
+        //validate phone
+        if(input.id === "phone" && !validatePhone(input.value)){
+            input.style.borderColor = 'red';
+            input.placeholder = 'Please enter a valid phone number';
+            input.classList.add('placeholder-red');
+            isValid = false;
+        }
+    });
+
+    //end this function if it is not valid
+    if(!isValid){
+        return;
+    }
+
     editInput.forEach(input => {
         let span = document.createElement("span");
         span.className = "editable";
         span.textContent = input.value;
+        span.id = input.id;
         input.replaceWith(span); //replace the input element with a span
-    });
+    })
 
     //show the edit button and hide the save button
     document.getElementById("saveBtn").style.display = "none";
@@ -76,22 +107,26 @@ function saveProfileData(){
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(updatedData)
     })
-    .then(response => response.text())
-    .then(text => {
-        console.log(JSON.stringify(updatedData));
-        console.log("Response text: " + text);
-        return JSON.parse(text);
-    })
+    .then(response => response.json())
     .then(data => {
         if(data.success){
             alert("Profile updated successfully");
         }else{
-            alert("There was a problem updating your profile.");
+            alert("Data.success: There was a problem updating your profile.");
         }
     })
     .catch(err => {
         console.error("Error: " + err);
-        alert("There was a problem updating your profile.");
+        alert("Caught Error: There was a problem updating your profile.");
     })
 }
 
+function validateEmail(email){
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function validatePhone(phone){
+    const phoneRegex = /^\d{10}$/;
+    return phoneRegex.test(phone);
+}
