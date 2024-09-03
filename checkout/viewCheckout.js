@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
         checkoutContainer.innerHTML = "<p>No items are selected for checkout. <a href='../cart/'>Go to cart</a></p>";
     } else {
         let totalAmount = 0;
+
+        const heading = document.createElement("h2");
+        heading.textContent = "Cart Items";
+        checkoutContainer.appendChild(heading);
+
         checkoutItems.forEach(item => {
             totalAmount += Number(item.totalPrice);
 
@@ -47,21 +52,25 @@ document.addEventListener("DOMContentLoaded", function () {
             checkoutContainer.appendChild(itemDiv);
         });
 
-        // Display the total amount
-        checkoutSummary.innerHTML = `<p>Total Amount: RM${totalAmount.toFixed(2)}</p><button id="proceed-payment">Proceed to Payment</button>`;
+        //Display total amount
+        checkoutSummary.innerHTML = `
+        <h2> Checkout </h1>
+        <p>Total Amount: RM${totalAmount.toFixed(2)}</p><button id="proceed-payment">Proceed to Payment</button>
+        `;
 
-        // Add click event for "Proceed to Payment" button to show overlay
+        //Display form to proceed to payment
         document.getElementById("proceed-payment").addEventListener("click", function () {
             overlay.classList.remove("hidden");
         });
 
-        // Confirm button action (you can add your actual payment logic here)
+        //Submit the form to checkout
         confirmButton.addEventListener("click", function (event) {
             overlay.classList.add("hidden");
             event.preventDefault();
             document.getElementById("payment-form").submit();
         });
 
+        //Animation when cancelling checkout
         cancelButton.addEventListener("click", function () {
             fireflyStab.classList.add("show");
             setTimeout(function () {
@@ -71,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 1250); 
         });
 
+        //Animation when cancelling checkout
         overlay.addEventListener("click", function(event){
             if (event.target === overlay) {
                 fireflyStab.classList.add("show");
