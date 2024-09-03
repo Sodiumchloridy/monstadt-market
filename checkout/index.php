@@ -18,8 +18,10 @@ if (!isset($_SESSION['user_id'])) {
 <body>
     <?php include('../includes/header.php'); ?>
 
+    <!-- Cart Items For Checkout-->
     <div id="checkout-container"></div>
 
+    <!-- Checkout information-->
     <div id="checkout-summary">
         <h2> Checkout </h1>
         <div id="payment-address">
@@ -31,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
                 $stmt = mysqli_prepare($conn, $shippingAddressQuery);
                 mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
                 if (!mysqli_stmt_execute($stmt)) {
-                    throw new Exception("Failed to get shippin address: " . mysqli_stmt_error($stmt));
+                    throw new Exception("Failed to get shipping address: " . mysqli_stmt_error($stmt));
                 }
                 mysqli_stmt_bind_result($stmt, $shippingAddress);
                 mysqli_stmt_fetch($stmt);
@@ -45,9 +47,10 @@ if (!isset($_SESSION['user_id'])) {
 
             <input type="radio" name="address-choice" id="custom-address" value="custom-address">
             <label for="custom-address">Enter your address: </label>
-            <input type="text" id="address-input" name="custom-address" disabled><br>
+            <input type="text" id="address-input" name="custom-address" disabled>
+            <div class="error" id="address-error"></div>
         
-            <a href="../profile/">Not your default address? Click here to change</a>
+            <a href="../profile/">Not your default address? Change here</a>
         </div>
         <div id="payment-method">
             <h3>Select payment method: </h3>
@@ -65,17 +68,14 @@ if (!isset($_SESSION['user_id'])) {
         <button id="proceed-payment">Proceed to Payment</button>
     </div>
 
-    <?php include('../includes/footer.php'); ?>
-
     <?php include('viewCheckoutItem.php'); //Get the data of checkoutItems as object?>
-
     <script>
         const checkoutItems = <?php echo json_encode($checkoutItems); ?>;
         console.log(checkoutItems);
     </script>
-
     <script src="viewCheckout.js"></script>
 
+    <!--Checkout confirmation-->
     <div id="payment-overlay" class="overlay hidden">
         <div class="confirm-box">
             <h2>Confirm Payment</h2>
@@ -94,6 +94,8 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+
+    <?php include('../includes/footer.php'); ?>
 
 </body>
 </html>
