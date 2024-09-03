@@ -1,30 +1,4 @@
-<?php 
-session_start();
-
-// connect to database
-include("../config/config.php");
-
-$stmt = mysqli_prepare($conn, "SELECT u_username, u_email, u_address, u_profile_pic, u_profile_pic_type FROM users WHERE u_id=?");
-mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $username, $email, $address, $profilePic, $profilePicType);
-mysqli_stmt_fetch($stmt);
-mysqli_stmt_close($stmt);
-
-//convert binary data of the profile pic to base64
-$profilePicBase64 = base64_encode($profilePic);
-
-//preparing user data as an associative array
-$userData = [
-    'username' => $username,
-    'email' => $email,
-    'address' => $address,
-    'profilePic' => $profilePicBase64,
-    'profilePicType' => $profilePicType
-];
-
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +14,11 @@ $userData = [
 
     <div class="profile-container">
         <h1>Your profile</h1>
-        <div class="profile-pic">
-            <img id="profilePic" src="" alt="Profile Picture" />
+        <div class="profile-picture-container">
+            <img id="profilePicture" class="profile-picture" src="" alt="Profile Picture" />
+            <div class="edit-icon" id="editIcon">✏️</div>
         </div>
+        <input type="file" id="fileInput" style="display: none;" accept="image/*">
 
         <div class="profile-details">
             <p><strong>Username:</strong> <span id="username" class="editable field"></span></p>
@@ -58,6 +34,7 @@ $userData = [
     </div>
     <?php include("../includes/footer.php"); ?>
     <script src="profile.js"></script>
+    <script src="profilePic.js"></script>
 </body>
 </html>
 

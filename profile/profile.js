@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById("address").textContent = data.address;
         document.getElementById("phone").textContent = data.phone;
         document.getElementById("reg").textContent = data.regDate;
-        document.getElementById("profilePic").src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`;
-        document.getElementById("profilePic").alt = "Image is loading...";
+        document.getElementById("profilePicture").src = `data: ${data.profilePicType};base64,${data.profilePicBase64}`;
+        document.getElementById("profilePicture").alt = "Image is loading...";
     })
     .catch(err => {
         console.log(err);
