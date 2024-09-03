@@ -45,11 +45,11 @@ $userData = [
         </div>
 
         <div class="profile-details">
-            <p><strong>Username:</strong> <span id="username" class="editable"></span></p>
-            <p><strong>Email:</strong> <span id="email" class="editable"></span></p>
-            <p><strong>Address:</strong> <span id="address" class="editable"></span></p>
-            <p><strong>Phone:</strong> <span id="phone" class="editable"></span></p>
-            <p><strong>Register Date:</strong> <span id="reg"></span></p>            
+            <p><strong>Username:</strong> <span id="username" class="editable field"></span></p>
+            <p><strong>Email:</strong> <span id="email" class="editable field"></span></p>
+            <p><strong>Address:</strong> <span id="address" class="editable field"></span></p>
+            <p><strong>Phone:</strong> <span id="phone" class="editable field"></span></p>
+            <p><strong>Register Date:</strong> <span id="reg" class="field"></span></p>            
         </div>
 
         <button id="editBtn">Edit</button>

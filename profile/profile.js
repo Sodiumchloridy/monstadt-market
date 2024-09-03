@@ -60,6 +60,38 @@ document.getElementById("saveBtn").addEventListener("click", function(){
     saveProfileData();
 });
 
-function saveProfileData(){
 
+function saveProfileData(){
+    //gather all updated values
+    const updatedDataElements = document.querySelectorAll(".editable");
+    const updatedData = {
+        name: updatedDataElements[0].textContent,
+        email: updatedDataElements[1].textContent,
+        address: updatedDataElements[2].textContent,
+        phone: updatedDataElements[3].textContent
+    }
+
+    fetch("saveProfileData.php",{
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(updatedData)
+    })
+    .then(response => response.text())
+    .then(text => {
+        console.log(JSON.stringify(updatedData));
+        console.log("Response text: " + text);
+        return JSON.parse(text);
+    })
+    .then(data => {
+        if(data.success){
+            alert("Profile updated successfully");
+        }else{
+            alert("There was a problem updating your profile.");
+        }
+    })
+    .catch(err => {
+        console.error("Error: " + err);
+        alert("There was a problem updating your profile.");
+    })
 }
+
