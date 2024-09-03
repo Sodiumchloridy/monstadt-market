@@ -40,16 +40,18 @@ $userData = [
 
     <div class="profile-container">
         <h1>Your profile</h1>
+        <div class="profile-pic">
+            <img id="profilePic" src="" alt="Profile Picture" />
+        </div>
 
         <div class="profile-details">
             <p><strong>Username:</strong> <span id="username"></span></p>
             <p><strong>Email:</strong> <span id="email"></span></p>
             <p><strong>Address:</strong> <span id="address"></span></p>
+            <p><strong>Phone:</strong> <span id="phone"></span></p>
+            <p><strong>Register Date:</strong> <span id="reg"></span></p>            
         </div>
 
-        <div class="profile-pic">
-            <img id="profilePic" src="" alt="Profile Picture" />
-        </div>
 
     </div>
     <?php include("../includes/footer.php"); ?>
