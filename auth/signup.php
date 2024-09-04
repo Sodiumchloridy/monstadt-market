@@ -197,38 +197,38 @@ function validatePostcode($postcode) {
                 <!-- Name input -->
                 <label for="name">Name</label>
                 <div>
-                    <input type="text" name="name" placeholder="Username" value="<?php echo htmlspecialchars($name) ?>">
+                    <input type="text" name="name" placeholder="Username" value="<?php echo htmlspecialchars($name) ?>" maxlength="30">
                     <div class="error"><?php echo $nameErr; ?></div>
                 </div>
 
                 <!-- Password input -->
                 <label for="password">Password</label>
                 <div id="passwordParent">
-                    <input type="password" name="password" id="password" placeholder="Password" value="<?php echo htmlspecialchars($pass) ?>">
+                    <input type="password" name="password" id="password" placeholder="Password" value="<?php echo htmlspecialchars($pass) ?>" maxlength="30">
                     <div class="error"><?php echo $passErr ?></div>
                 </div>
 
                 <!-- Email input -->
                 <label for="email">Email</label>
                 <div>
-                    <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email) ?>">
+                    <input type="email" name="email" placeholder="Email" value="<?php echo htmlspecialchars($email) ?>" maxlength="100">
                     <div class="error"><?php echo $emailErr ?></div>
                 </div>
 
                 <!-- Telephone input -->
                 <label for="phone">Phone</label>
                 <div>
-                    <input type="tel" name="phone" placeholder="Phone" value="<?php echo htmlspecialchars($phone) ?>">
+                    <input type="tel" name="phone" placeholder="Phone" value="<?php echo htmlspecialchars($phone) ?>" maxlength="20">
                     <div class="error"><?php echo $phoneErr ?></div>
                 </div>
 
                 <!-- Address input -->
                 <label for="address">Address</label>
                 <div>
-                    <input type="text" name="unit" placeholder="Unit" value="<?php echo htmlspecialchars($unit) ?>">
+                    <input type="text" name="unit" placeholder="Unit" value="<?php echo htmlspecialchars($unit) ?>" maxlength="50">
                     <div class="error"><?php echo $unitErr ?></div>
 
-                    <input type="text" name="street" placeholder="Street" value="<?php echo htmlspecialchars($street) ?>">
+                    <input type="text" name="street" placeholder="Street" value="<?php echo htmlspecialchars($street) ?>" maxlength="150">
                     <div class="error"><?php echo $streetErr ?></div>
 
                     <input type="text" name="poskod" placeholder="Poskod" value="<?php echo htmlspecialchars($poskod) ?>">

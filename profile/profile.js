@@ -31,6 +31,7 @@ document.getElementById("editBtn").addEventListener("click", function(){
         input.value = field.textContent;
         input.className = "edit-input";
         input.id = field.id;
+        input.maxLength = 30;
         if(input.id === "state"){
             input.style.display = "none";
         }
