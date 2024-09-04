@@ -1,10 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+:root {
+    --lemon-yellow: #ffcc00;
+    --charcoal: #333333;
+    --guyabano-gray: #f8f8f8;
+    --checkout-item-img-width: 300px;
+}
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--guyabano-gray);
+    color: var(--charcoal);
+}
+
+/*
+* Checkout container
+*/
+#checkout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    padding: 20px clamp(35px, 10vw, 10vw);
+    gap: 20px;
+}
+
+#checkout-container>h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.checkout-item {
+    display: flex;
+}
+
+.checkout-item-img {
+    flex-shrink: 0;
+    position: relative;
+    width: var(--checkout-item-img-width);
+    height: var(--checkout-item-img-width);
+    overflow: clip;
+    border-radius: 99999px;
+}
+
+.checkout-item-img img {
+    position: relative;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.checkout-item-img .img-background {
+    position: absolute;
+    inset: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--lemon-yellow);
+}
+
+@media (max-width: 768px) {
+    .checkout-item-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .checkout-item-img .img-background {
+        font-size: 7rem;
+    }
+}
+
+.checkout-item-img .img-background::after {
+    content: attr(data-content);
+    position: absolute;
+    inset: 0;
+    -webkit-text-stroke: 4px white;
+    color: transparent;
+    z-index: 2;
+}
+
+.checkout-item-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.checkout-item-details>h3 {
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: clip;
+}
+
+.checkout-item-details>p {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+
+/*
+* Checkout section
+*/
+#checkout-summary>h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
 }
 
 /*Payment method selection*/
@@ -20,7 +127,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,14 +198,14 @@ body {
 }
 
 #firefly-heart {
-    z-index: 1; 
+    z-index: 1;
 }
 
 #firefly-stab {
-    top: 0; 
+    top: 0;
     left: 0;
     opacity: 0;
-    z-index: 2; 
+    z-index: 2;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -110,4 +217,19 @@ body {
 
 .hidden {
     display: none;
+}
+
+#proceed-payment {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 40px;
+}
+
+#proceed-payment:hover {
+    background-color: var(--lemon-yellow);
+    color: black;
 }

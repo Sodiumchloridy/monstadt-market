@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
             img.src = `../images/${item.prodImgName}`;
             img.alt = item.prodName;
             imgDiv.appendChild(img);
+            const imgBackground = document.createElement("div");
+            imgBackground.classList.add("img-background");
+            imgBackground.innerText = "CAUTION HOT! 注意！";
+            imgBackground.setAttribute("data-content", "CAUTION HOT! 注意！");
+            imgDiv.appendChild(imgBackground);
+
 
             const detailsDiv = document.createElement("div");
             detailsDiv.classList.add("checkout-item-details");
