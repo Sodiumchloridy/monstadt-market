@@ -1,5 +1,6 @@
 <header id="websiteHeader">
     <link rel="stylesheet" href="/monstadt-market/styles/header.css">
+
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
         <h2 data-value="MONSTADT MARKET" id="name">Monstadt Market</h2>
     </a>
@@ -94,4 +95,6 @@
             shuffleText(name);
         }
     </script>
+    <!-- testing google translate api -->
+    <div id="google_translate_element"></div> 
 </header>
