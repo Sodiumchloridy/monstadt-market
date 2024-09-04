@@ -56,8 +56,42 @@ if (!isset($_SESSION['user_id'])) {
 
             <input type="radio" name="address-choice" id="custom-address" value="custom-address">
             <label for="custom-address">Enter your address: </label>
-            <input type="text" id="address-input" name="custom-address" disabled>
-            <div class="error" id="address-error"></div>
+            
+            <div id="address-input-field">
+                <label for="unit-input">Unit: </label>
+                <input type="text" id="unit-input" name="unit" placeholder="Unit" disabled>
+                <div class="error" id="unit-error"></div>
+
+                <label for="street-input">Street: </label>
+                <input type="text" id="street-input" name="street" placeholder="Street" disabled>
+                <div class="error" id="street-error"></div>
+
+                <label for="postcode-input">Postcode: </label>
+                <input type="text" id="postcode-input" name="postcode" placeholder="Postcode" disabled>
+                <div class="error" id="postcode-error"></div>
+
+                <label for="stateSelect">State: </label>
+                <select id="stateSelect" disabled>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="Johor" >Johor</option>
+                    <option value="Kedah" >Kedah</option>
+                    <option value="Kelantan" >Kelantan</option>
+                    <option value="Kuala Lumpur" >Kuala Lumpur</option>
+                    <option value="Labuan" >Labuan</option>
+                    <option value="Melaka" >Melaka</option>
+                    <option value="Negeri Sembilan" >Negeri Sembilan</option>
+                    <option value="Pahang" >Pahang</option>
+                    <option value="Penang" >Penang</option>
+                    <option value="Perak" >Perak</option>
+                    <option value="Perlis" >Perlis</option>
+                    <option value="Putrajaya" >Putrajaya</option>
+                    <option value="Sabah" >Sabah</option>
+                    <option value="Sarawak" >Sarawak</option>
+                    <option value="Selangor" >Selangor</option>
+                    <option value="Terengganu">Terengganu</option>
+                </select>
+                <div class="error" id="state-error"></div>
+            </div>
         
             <a href="../profile/">Not your default address? Change here</a>
         </div>
