@@ -158,17 +158,13 @@ a#logo {
 }
 
 #auth-button-group a:first-child {
-    border-radius: 15px 0 0 15px;
+    border-radius: 20px 0 0 20px;
     border-right: black solid 2px;
 }
 
 #auth-button-group a:last-child {
     border-left: none;
-    border-radius: 0 15px 15px 0;
-}
-
-#signout-button a {
-    border-radius: 15px;
+    border-radius: 0 20px 20px 0;
 }
 
 #auth-button-group a:hover {
@@ -176,8 +172,29 @@ a#logo {
     color: white;
 }
 
+#profile-button {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    overflow: clip;
+    margin-right: 10px;
+}
+
+#profile-button img {
+    width: 40px;
+    height: auto;
+    object-fit: cover;
+}
+
+#signout-button a {
+    border-radius: 20px;
+}
+
 #signout-button a:hover {
-    border-color: firebrick;
-    background-color: firebrick;
+    border-color: tomato;
+    background-color: tomato;
     color: white;
 }

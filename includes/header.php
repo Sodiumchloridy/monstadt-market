@@ -25,17 +25,16 @@
 
     <?php
     if (isset($_SESSION['username'])) {
-
+        $username = htmlspecialchars($_SESSION['username']);
         // user is logged in, display personalized content
         echo "
-            <div>
+            <button id='profile-button' title='$username'>
             <a href='/monstadt-market/profile/index.php'>
                 <img src='data:" .
             htmlspecialchars($_SESSION['profile_pic_type']) .
             ";base64," . base64_encode($_SESSION['profile_pic']) .
-            "' width='20px'/>" .
-            htmlspecialchars($_SESSION['username']) .
-            "</a></div>";
+            "'/>" .
+            "</a></button>";
         echo "
             <div id='signout-button'>
                 <a href='/monstadt-market/auth/logout.php'> Logout </a>
