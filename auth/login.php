@@ -2,7 +2,8 @@
 session_start();
 
 if(isset($_SESSION['user_id'])){
-    die("You already logged in");
+    header("Location: ../index.php");
+    exit();
 }
 
 $name = $pass = "";
@@ -23,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $name = $_POST['name'];
 
         // Check if the name exist in database
-        $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE u_username=?");
+        $stmt = mysqli_prepare($conn, "SELECT * FROM users WHERE BINARY u_username=?");
         mysqli_stmt_bind_param($stmt, "s", $name);
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $userId, $username, $pass, $email, $address, $phone, $profilePic, $profilePicType, $regDate);
@@ -102,6 +103,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </main>
     <?php include("../includes/footer.php"); ?>
+    <script src="script.js"></script>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'},
+                    'google_translate_element'
+                );
+            } 
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>
