@@ -26,45 +26,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nameErr = "Duplicated name. Please try another username.";
         }
     }
+
+    //validate password
     if (empty($_POST['password'])) {
         $passErr = "Password is required";
     } else {
         $pass = test_input($_POST['password']);
     }
+
+    //validate email
     if (empty($_POST['email'])) {
         $emailErr = "Email is required";
     } else {
         $email = test_input($_POST['email']);
     }
+
+    //validate phone
     if (empty($_POST['phone'])) {
         $phoneErr = "Phone is required";
+    } else if(!validatePhone($_POST['phone'])) {
+        $phoneErr = "Invalid phone format";
     } else {
         $phone = test_input($_POST['phone']);
     }
+
+    //validate unit
     if (empty($_POST['unit'])) {
         $unitErr = "Unit is required";
+        $addressErr[] = $unitErr;
+    } else if(!validateUnit($_POST['unit'])){
+        $unitErr = "Invalid unit format";
         $addressErr[] = $unitErr;
     } else {
         $unit = test_input($_POST['unit']);
     }
+
+    //validate street
     if (empty($_POST['street'])) {
         $streetErr = "Street is required";
         $addressErr[] = $streetErr;
+    } else if(!validateStreet($_POST['street'])){
+        $streetErr = "Invalid street format";
+        $addressErr[] = $unitErr;
     } else {
         $street = test_input($_POST['street']);
     }
+
+    //validate postcode
     if (empty($_POST['poskod'])) {
         $poskodErr = "Poskod is required";
+        $addressErr[] = $poskodErr;
+    } else if(!validatePostcode($_POST['poskod'])) {
+        $poskodErr = "Invalid postcode format";
         $addressErr[] = $poskodErr;
     } else {
         $poskod = test_input($_POST['poskod']);
     }
+
+    //validate state
     if (empty($_POST['state'])) {
         $stateErr = "State is required";
         $addressErr[] = $stateErr;
     } else {
         $state = test_input($_POST['state']);
     }
+
+
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $imgTmpPath = $_FILES['image']['tmp_name'];
         $imgData = file_get_contents($imgTmpPath);
@@ -88,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $street = test_input($_POST['street']);
         $poskod = test_input($_POST['poskod']);
         $state = test_input($_POST['state']);
-        $address = "$unit $street $poskod $state";
+        $address = "$unit, $street, $poskod, $state";
 
         $stmt = mysqli_prepare($conn, "INSERT INTO users (u_username, u_password, u_email, u_address, u_phone, u_profile_pic, u_profile_pic_type) VALUES (?, ?, ?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($stmt, "sssssss", $name, $hashedPass, $email, $address, $phone, $imgData, $imgType);
@@ -115,6 +142,29 @@ function test_input($data)
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
+}
+
+function validatePhone($phone) {
+    $phoneRegex = '/^(\+?6?01)[01-46-9]-*[0-9]{7,8}$/';
+    return preg_match($phoneRegex, $phone) === 1;
+}
+
+function validateUnit($unit) {
+    // Assuming unit format is like "A-1-2" or "1-2-3" or just "123"
+    $pattern = '/^([A-Za-z0-9]-?)+$/';
+    return preg_match($pattern, $unit) === 1;
+}
+
+function validateStreet($street) {
+    // Basic validation: non-empty string with letters, numbers, spaces, and common punctuation
+    $pattern = '/^[A-Za-z0-9\s\.,\'-]+$/';
+    return preg_match($pattern, $street) === 1 && strlen($street) >= 5;
+}
+
+function validatePostcode($postcode) {
+    // Malaysian postcodes are 5 digits
+    $pattern = '/^\d{5}$/';
+    return preg_match($pattern, $postcode) === 1;
 }
 ?>
 

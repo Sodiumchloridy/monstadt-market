@@ -1,30 +1,4 @@
-<?php 
-session_start();
-
-// connect to database
-include("../config/config.php");
-
-$stmt = mysqli_prepare($conn, "SELECT u_username, u_email, u_address, u_profile_pic, u_profile_pic_type FROM users WHERE u_id=?");
-mysqli_stmt_bind_param($stmt, "i", $_SESSION['user_id']);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_bind_result($stmt, $username, $email, $address, $profilePic, $profilePicType);
-mysqli_stmt_fetch($stmt);
-mysqli_stmt_close($stmt);
-
-//convert binary data of the profile pic to base64
-$profilePicBase64 = base64_encode($profilePic);
-
-//preparing user data as an associative array
-$userData = [
-    'username' => $username,
-    'email' => $email,
-    'address' => $address,
-    'profilePic' => $profilePicBase64,
-    'profilePicType' => $profilePicType
-];
-
-?>
-
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,15 +14,47 @@ $userData = [
 
     <div class="profile-container">
         <h1>Your profile</h1>
-        <div class="profile-pic">
-            <img id="profilePic" src="" alt="Profile Picture" />
+        <div class="profile-picture-container">
+            <img id="profilePicture" class="profile-picture" src="" alt="Profile Picture" />
+            <div class="edit-icon" id="editIcon">✏️</div>
         </div>
+        <input type="file" id="fileInput" style="display: none;" accept="image/*">
 
         <div class="profile-details">
-            <p><strong>Username:</strong> <span id="username" class="editable field"></span></p>
-            <p><strong>Email:</strong> <span id="email" class="editable field"></span></p>
-            <p><strong>Address:</strong> <span id="address" class="editable field"></span></p>
-            <p><strong>Phone:</strong> <span id="phone" class="editable field"></span></p>
+            <p><strong>Username:</strong> <span id="username" class="editable"></span></p>
+            <p><strong>Email:</strong> <span id="email" class="editable"></span></p>
+            <p><strong>Phone:</strong> <span id="phone" class="editable"></span></p>
+
+            <strong>Address:</strong>
+            <p>Unit:<span id="unit" class="editable"></span></p>
+            <p>Street:<span id="street" class="editable"></span></p>
+            <p>Postcode:<span id="postcode" class="editable"></span></p>
+            <p>
+                State:
+                <span id="state" class="editable"></span>
+                <select id="stateSelect" style="display: none;">
+                    <option value="" disabled >Select State</option>
+                    <option value="Johor" >Johor</option>
+                    <option value="Kedah" >Kedah</option>
+                    <option value="Kelantan" >Kelantan</option>
+                    <option value="Kuala Lumpur" >Kuala Lumpur</option>
+                    <option value="Labuan" >Labuan</option>
+                    <option value="Melaka" >Melaka</option>
+                    <option value="Negeri Sembilan" >Negeri Sembilan</option>
+                    <option value="Pahang" >Pahang</option>
+                    <option value="Penang" >Penang</option>
+                    <option value="Perak" >Perak</option>
+                    <option value="Perlis" >Perlis</option>
+                    <option value="Putrajaya" >Putrajaya</option>
+                    <option value="Sabah" >Sabah</option>
+                    <option value="Sarawak" >Sarawak</option>
+                    <option value="Selangor" >Selangor</option>
+                    <option value="Terengganu">Terengganu</option>
+                    </select>
+            </p>
+
+
+
             <p><strong>Register Date:</strong> <span id="reg" class="field"></span></p>            
         </div>
 
@@ -58,6 +64,6 @@ $userData = [
     </div>
     <?php include("../includes/footer.php"); ?>
     <script src="profile.js"></script>
+    <script src="profilePic.js"></script>
 </body>
 </html>
-
