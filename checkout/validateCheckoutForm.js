@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    //For payment address
     const addressRadioButtons = document.querySelectorAll("#payment-address input[type='radio']");
     const paymentMethodInputs = document.querySelectorAll('input[name="payment-method"]');
 
@@ -14,11 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const proceedButton = document.getElementById("proceed-payment");
     const paymentErrorDiv = document.getElementById("payment-error");
 
+    //Address input
     //Update address based on selection
     addressRadioButtons.forEach(function (button){
-        button.addEventListener("change", () => setPaymentAddressSource());
+        button.addEventListener("change", () => setAddressSource());
     });
-    function setPaymentAddressSource(){
+    function setAddressSource(){
         const selectedAddress = document.querySelector('#payment-address input[type="radio"]:checked');
         if (selectedAddress.value === "default-address"){
             disableAddressField();
@@ -45,12 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
         customAddressStateSelect.removeAttribute('disabled');
     }
 
-    //Update payment method value
-    function setPaymentMethod(){
-        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
-        hiddenPaymentMethodInput.value = selectedPaymentMethod.value;
-    }
-
     //Update address value
     function setAddressValue(){
         const unit = customAddressUnitInput.value.trim();
@@ -61,6 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
         hiddenAddressInput.value = `${unit} ${street} ${postcode} ${state}`;
     }
     
+    //Payment method input
+    //Update payment method value
+    function setPaymentMethod(){
+        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
+        hiddenPaymentMethodInput.value = selectedPaymentMethod.value;
+    }
+
     //Remove error message of payment method
     paymentMethodInputs.forEach((paymentInput) =>{
         paymentInput.addEventListener("click", ()=>{
@@ -69,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     });
 
+    //Address validation
     //Update address when address is filled in and clear error message
     customAddressUnitInput.addEventListener("input", () => {
         updateAddressOnInput();
@@ -165,6 +167,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    //Payment method validation
     //Ensure payment method is selected
     function validatePaymentMethod() {
         const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
@@ -176,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return true;
     }
 
+    //Validate form before submission
     //Submit the form to checkout
     confirmButton.addEventListener("click", function (event) {
         overlay.classList.add("hidden");
@@ -193,6 +197,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cancelButton = document.getElementById("cancel-payment");
     const fireflyStab = document.querySelector('#payment-overlay .confirm-box #firefly-stab');
 
+    //Validate form again before showing confirmation
     //Display form to proceed to payment
     proceedButton.addEventListener("click", function () {
         let isValidAddress = validateAddressField();
