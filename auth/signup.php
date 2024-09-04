@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if(isset($_SESSION['user_id'])){
+    header("Location: ../index.php");
+    exit();
+}
+
 $name = $pass = $email = $phone = $address = $unit = $street = $poskod = $state = $message = $result = "";
 $nameErr = $passErr = $emailErr = $phoneErr = $unitErr = $streetErr = $poskodErr = $stateErr = "";
 $addressErr = [];
