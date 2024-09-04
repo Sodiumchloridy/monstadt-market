@@ -8,6 +8,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--guyabano-gray);
+    min-height: 70vh;
 }
 
 @media (max-width: 768px) {
@@ -26,6 +27,19 @@ body {
     padding: 20px;
     flex-direction: column;
     box-sizing: border-box;
+}
+
+#cart-container>p,
+#cart-container>a {
+    white-space: wrap;
+    font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-weight: bold;
+}
+
+#cart-container>a:hover {
+    color: aqua;
+    text-decoration: none;
 }
 
 #cart-container h1 {

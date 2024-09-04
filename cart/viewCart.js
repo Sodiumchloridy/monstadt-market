@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartContainer = document.getElementById("cart-container");
 
     if (cartItems.length === 0) {
-        cartContainer.innerHTML = "<p>Your cart is empty</p><a href='../'>Add items</a>";
+        cartContainer.innerHTML = "<p align='center'>Your cart is currently empty. <a href='../'>Add items</a></p>";
     } else {
         cartItems.forEach(item => {
             const cartItemDiv = document.createElement("div");
