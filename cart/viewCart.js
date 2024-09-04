@@ -1,7 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const cartContainer = document.getElementById("cart-container");
 
-    if(cartItems.length === 0) {
+    if (cartItems.length === 0) {
         cartContainer.innerHTML = "<p>Your cart is empty</p><a href='../'>Add items</a>";
     } else {
         cartItems.forEach(item => {
@@ -21,15 +21,11 @@ document.addEventListener("DOMContentLoaded", function() {
             img.alt = item.prodName;
 
             const prodName = document.createElement("p");
-            prodName.textContent = `Product: ${item.prodName}`;
-            
-            const prodPrice = document.createElement("p");
-            prodPrice.textContent = `Price: ${item.prodPrice}`;
+            prodName.textContent = `${item.prodName}`;
 
-            const prodQuantity = document.createElement("p");
-            prodQuantity.textContent = `Quantity: `;
-            prodQuantity.style.display = "inline";
-            
+            const prodPrice = document.createElement("p");
+            prodPrice.textContent = `$${item.prodPrice}`;
+
             // form for add to cart
             const addToCartForm = document.createElement("form");
             addToCartForm.action = "add_to_cart.php";
@@ -41,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             prodIdInput.type = "hidden";
             prodIdInput.name = "product_id";
             prodIdInput.value = item.prodId;
-     
+
             //Quantity input field
             const quantityInput = document.createElement("input");
             quantityInput.type = "text";
@@ -108,14 +104,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const deleteButton = document.createElement("button");
             deleteButton.type = 'submit';
-            deleteButton.innerHTML = '<i class="fa-duotone fa-solid fa-trash" style="--fa-primary-color: #ff0000; --fa-secondary-color: #ff0000;"></i>';
+            deleteButton.classList.add('delete-button');
+            deleteButton.innerHTML = '<i class="fa-duotone fa-solid fa-trash"></i>';
 
             deleteForm.appendChild(deleteProdIdInput);
             deleteForm.appendChild(deleteButton);
 
             cartDetailsDiv.appendChild(prodName)
             cartDetailsDiv.appendChild(prodPrice);
-            cartDetailsDiv.appendChild(prodQuantity);
             cartDetailsDiv.appendChild(addToCartForm);
             cartDetailsDiv.appendChild(deleteForm);
 
@@ -128,9 +124,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 
-    
+
     //Prevent text input in number field
-    function validate_number(quantityInput, item){
+    function validate_number(quantityInput, item) {
         const maxAvailable = item.prodMaxAvailable;
         let currentValue = Number(quantityInput.value);
 
@@ -144,12 +140,12 @@ document.addEventListener("DOMContentLoaded", function() {
         } else if (currentValue === 0) {
             quantityInput.value = 1;
         }
-    }; 
+    };
 
     function handleFormSubmission(form, item, quantityInput) {
         if (validate_form_submission(quantityInput, item)) {
             const difference = quantityInput.value - item.prodQuantity;
-            if (difference !== 0){
+            if (difference !== 0) {
                 quantityInput.value = quantityInput.value - item.prodQuantity;
                 form.submit();
             }
@@ -157,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     //Validate number input
-    function validate_form_submission(quantityInput, item){
+    function validate_form_submission(quantityInput, item) {
         let quantity = Number(quantityInput.value);
 
         //Set quantity to 1 if it is not a number or is 0

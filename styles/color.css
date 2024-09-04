@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url(https://db.onlinewebfonts.com/c/1fb76dea69c399df3b51de3e7a319a34?family=ICA+Rubrik);
+
 :root {
     --primary-color: #ee4d2d;
     --guyabano-gray: rgb(248, 248, 248);
@@ -5,4 +8,5 @@
     --lemon-yellow: rgb(255, 222, 0);
     --silver-polish: rgb(192, 192, 192);
     --off-white: #F2F0EF;
+    --white-smoke: #f4f4f4;
 }

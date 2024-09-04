@@ -9,6 +9,7 @@ session_start();
     <title>Cart</title>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
     <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="/monstadt-market/styles/color.css">
 </head>
 
 <body>
@@ -37,7 +38,7 @@ session_start();
         console.log(cartItems);
     </script>
     <script src="viewCart.js"></script>
-    <script src="validate_checkout.js" defer></script>
+    <script defer src="validate_checkout.js" defer></script>
 </body>
 
 </html>

@@ -30,8 +30,9 @@
 }
 
 /* Logo */
-#logo {
+a#logo {
     flex: 20%;
+    text-decoration: none;
 }
 
 #logo h2 {
