@@ -11,9 +11,12 @@
 </head>
 
 <body>
-
     <?php include("../includes/header.php"); ?>
-
+    <div class="background">
+        <h1>亓才子</h1>
+        <h1>QI CAI JIE</h1>
+        <h1>亓才子</h1>
+    </div>
     <div class="profile-container">
         <h1>My profile</h1>
         <div class="profile-picture-container">

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
 :root {
     --lemon-yellow: rgb(255, 222, 0);
     --dark-charcoal: rgb(51, 51, 51);
@@ -5,12 +7,63 @@
 }
 
 body {
+    position: relative;
     margin: 0;
     background-color: gainsboro;
 }
 
 button {
     margin-top: 10px;
+}
+
+/*
+Background
+*/
+
+.background {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: clip;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background>h1 {
+    position: relative;
+    white-space: nowrap;
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    font-size: 18rem;
+    -webkit-text-stroke: black 2px;
+    color: transparent;
+    animation: background-scroll 10s infinite alternate ease-in-out;
+}
+
+@keyframes background-scroll {
+    from {
+        left: -100%;
+
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+.background>h1:nth-child(1) {
+    background: linear-gradient(120deg, red 0%, blue 100%);
+    background-clip: text;
+    -webkit-text-stroke: transparent;
+}
+
+.background>h1:nth-child(3) {
+    background: linear-gradient(200deg, white 50%, orangered 50%);
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 8px transparent;
 }
 
 .profile-container {
@@ -108,7 +161,20 @@ button {
 
 .profile-details .field-group p {
     color: var(--label-color);
-    margin: 0;
+    margin: 0 20px 0 0;
+}
+
+.profile-details .field-group input,
+.profile-details .field-group select {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100%;
+    max-width: 300px;
+    width: 100%;
+    padding: 5px 10px;
+    color: black;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
 #address-title {
