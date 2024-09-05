@@ -88,14 +88,12 @@ Cart details
     .cart-item .product-details {
         box-sizing: border-box;
         margin: 0;
-        border-radius: 20px;
         padding: 15px;
         position: absolute;
         bottom: 0;
         right: 0;
         width: 50%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.1);
     }
 }
 
@@ -184,14 +182,12 @@ Cart details
     border-radius: 25px;
     cursor: pointer;
     color: red;
-    border: solid black 2px;
     background-color: white;
 }
 
 .cart-item .delete-button:hover {
     color: white;
     border: none;
-    border: solid red 2px;
     background-color: red;
 }
 

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help & Support - Monstadt Market</title>
     <link rel="stylesheet" href="help.css">
 </head>
+
 <body>
+    <?php include("../includes/header.php"); ?>
     <header>
-        <?php include("../includes/header.php"); ?>
-        <a href="../"><h1>Monstadt Market</h1></a>
-        
         <h2>Help & Support</h2>
         <p>Your go-to guide for using our Monstadt Market marketplace.</p>
     </header>
@@ -91,4 +91,5 @@
     </section>
     <?php include("../includes/footer.php"); ?>
 </body>
+
 </html>

@@ -1,53 +1,59 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
     margin: 0;
     padding: 0;
 }
 
-.container {
+.help-page {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.help-page .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.left-side, .right-side {
+.help-page .left-side,
+.help-page .right-side {
     background-color: #e0e0e0;
     padding: 30px;
     margin: 10px;
     border-radius: 8px;
 }
 
-.left-side {
+.help-page .left-side {
     width: 300px;
 }
 
-.right-side {
+.help-page .right-side {
     width: 400px;
 }
 
-h1,h2 {
+.help-page h1,
+.help-page h2 {
     color: #000;
 }
 
-p {
+.help-page p {
     color: #333;
 }
 
-form {
+.help-page form {
     display: flex;
     flex-direction: column;
 }
 
-input, textarea {
+.help-page input,
+.help-page textarea {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
 }
 
-button {
+.help-page button {
     padding: 10px;
     background-color: white;
     color: black;
@@ -56,10 +62,10 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.help-page button:hover {
     background-color: white;
 }
 
-div.error{
+.help-page div.error {
     color: red;
 }
