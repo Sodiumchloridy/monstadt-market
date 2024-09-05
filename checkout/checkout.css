@@ -1,33 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/1fb76dea69c399df3b51de3e7a319a34?family=ICA+Rubrik);
+
+:root {
+    --lemon-yellow: #ffcc00;
+    --charcoal: #333333;
+    --guyabano-gray: #f8f8f8;
+    --checkout-item-img-width: 300px;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: var(--guyabano-gray);
+    color: var(--charcoal);
 }
 
-/*Payment method selection*/
-#payment-image img {
-    width: 50px;
+/*
+* Checkout container
+*/
+#checkout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;
+    padding: 20px clamp(8px, 10vw, 10vw);
+    gap: 20px;
+}
+
+#checkout-container>h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.checkout-item {
+    display: flex;
+}
+
+.checkout-item-img {
+    flex-shrink: 0;
+    position: relative;
+    width: var(--checkout-item-img-width);
+    height: var(--checkout-item-img-width);
+    overflow: clip;
+    border-radius: 99999px;
+}
+
+.checkout-item-img img {
+    position: relative;
+    width: 100%;
     height: auto;
+    z-index: 1;
 }
 
-/*Payment confirmation*/
-.overlay {
+.checkout-item-img .img-background {
+    position: absolute;
+    inset: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 8rem;
+    font-weight: 700;
+    color: var(--lemon-yellow);
+}
+
+@media (max-width: 768px) {
+    .checkout-item-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .checkout-item-img .img-background {
+        font-size: 3rem;
+    }
+
+    .checkout-item-img .img-background::after {
+        display: none;
+    }
+}
+
+.checkout-item-img .img-background::after {
+    content: attr(data-content);
+    position: absolute;
+    inset: 0;
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+    z-index: 2;
+    animation: pulse 3s infinite cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.checkout-item-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.checkout-item-details>h3 {
+    margin: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: clip;
+}
+
+.checkout-item-details>p {
+    margin: 0;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+
+/*
+* Checkout section
+*/
+#checkout-summary {
+    margin: clamp(36px, 10vw, 48px) clamp(8px, 10vw, 48px);
+    padding: clamp(36px, 10vw, 48px) clamp(8px, 10vw, 48px);
+    background-color: white;
+    border-radius: 25px;
+    border: var(--charcoal) 1px solid;
+}
+
+#checkout-summary>h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 3rem;
+    margin: 0;
+}
+
+#checkout-summary .separator {
+    height: 0.8px;
+    background-color: var(--charcoal);
+    margin: 20px calc(-1 * clamp(8px, 10vw, 48px));
+}
+
+/*
+Payment address
+*/
+#payment-address {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#payment-address>h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+#payment-address label {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+    color: var(--charcoal);
+
+}
+
+#payment-address #address-input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+#payment-address #address-input-field .field-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    #payment-address #address-input-field .field-group {
+        flex-direction: column;
+    }
+
+    #payment-address #address-input-field input,
+    #payment-address #address-input-field select {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+}
+
+#payment-address #address-input-field label {
+    /* Inherits properties from #payment-address label */
+    color: gray;
+}
+
+#payment-address #address-input-field input,
+#payment-address #address-input-field select {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100%;
+    max-width: 300px;
+    width: 100%;
+    padding: 5px 10px;
+    color: black;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+}
+
+#payment-address #address-input-field .error {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
+    margin-bottom: 10px;
+}
+
+#payment-address>a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.25rem;
+}
+
+#payment-address>a:hover {
+    color: red;
+}
+
+/*
+Payment method selection
+*/
+#payment-method>h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+}
+
+#payment-image .payment-item {
+    display: flex;
+    align-items: center;
+}
+
+#payment-image .payment-item+.payment-item {
+    margin-top: 10px;
+}
+
+#payment-image img {
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#checkout-summary #price-display h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+#total-price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+    color: gray;
+}
+
+#proceed-payment {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 40px;
+}
+
+#proceed-payment:hover {
+    background-color: var(--lemon-yellow);
+    color: black;
+}
+
+/*
+Payment confirmation overlay
+*/
+#payment-overlay .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
 }
 
-.confirm-box {
+.overlay .confirm-box {
+    box-sizing: border-box;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -37,11 +305,11 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.confirm-box h2 {
+.overlay .confirm-box h2 {
     margin-bottom: 10px;
 }
 
-.image-container {
+.overlay .image-container {
     display: block;
     position: relative;
     width: 200px;
@@ -49,17 +317,17 @@ body {
     margin: 0 auto;
 }
 
-.image-container img {
+.overlay .image-container img {
     position: absolute;
     width: 100%;
     height: auto;
 }
 
-.confirm-actions {
+.overlay .confirm-actions {
     margin-top: 20px;
 }
 
-.confirm-actions button {
+.overlay .confirm-actions button {
     padding: 10px 20px;
     margin: 0 10px;
     border: none;
@@ -68,7 +336,7 @@ body {
     font-size: 16px;
 }
 
-.confirm-actions form {
+.overlay .confirm-actions form {
     display: inline-block;
 }
 
@@ -82,7 +350,7 @@ body {
     color: white;
 }
 
-.confirm-box img {
+.overlay .confirm-box img {
     width: 200px;
     height: auto;
     display: block;
@@ -90,20 +358,20 @@ body {
     position: absolute;
 }
 
-#firefly-heart {
-    z-index: 1; 
+.overlay #firefly-heart {
+    z-index: 1;
 }
 
-#firefly-stab {
-    top: 0; 
+.overlay #firefly-stab {
+    top: 0;
     left: 0;
     opacity: 0;
-    z-index: 2; 
+    z-index: 2;
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 /* Animation for showing the stab image */
-#firefly-stab.show {
+.overlay #firefly-stab.show {
     opacity: 1;
     scale: 1.1;
 }

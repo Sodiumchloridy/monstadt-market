@@ -18,7 +18,7 @@ include("../config/config.php");
 mysqli_begin_transaction($conn);
 
 try {
-    if (!isset($_POST['address']) || empty($_POST['address'])){
+    if (!isset($_POST['address']) || empty($_POST['address'])) {
         // Insert order into Orders table
         $shippingAddressQuery = "SELECT u_address FROM Users WHERE u_id = ?";
         $stmt = mysqli_prepare($conn, $shippingAddressQuery);
@@ -33,7 +33,7 @@ try {
         $shippingAddress = trim(stripslashes(htmlspecialchars($_POST['address'])));
     }
 
-    if (isset($_POST['paymentMethod']) && !empty($_POST['paymentMethod'])){
+    if (isset($_POST['paymentMethod']) && !empty($_POST['paymentMethod'])) {
         $paymentMethod = trim(stripslashes(htmlspecialchars($_POST['paymentMethod'])));
     } else {
         throw new Exception("Invalid payment method is provided");
@@ -103,7 +103,6 @@ try {
     alert("Payment successful! Thank you for your purchase.");
     window.location.href = "../";
     </script>';
-
 } catch (Exception $e) {
     mysqli_rollback($conn);
     echo '<script>
@@ -117,10 +116,13 @@ mysqli_close($conn);
 ?>
 
 <html>
-    <head>
-        <title>Checkout</title>
-    </head>
-    <body>
-        <h1> Checkout </h1>
-    </body>
+
+<head>
+    <title>Checkout</title>
+</head>
+
+<body>
+    <h1> Checkout </h1>
+</body>
+
 </html>

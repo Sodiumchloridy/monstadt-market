@@ -24,6 +24,12 @@ document.addEventListener("DOMContentLoaded", function () {
             img.src = `../images/${item.prodImgName}`;
             img.alt = item.prodName;
             imgDiv.appendChild(img);
+            const imgBackground = document.createElement("div");
+            imgBackground.classList.add("img-background");
+            imgBackground.innerText = "CAUTION HOT!";
+            imgBackground.setAttribute("data-content", "CAUTION HOT!");
+            imgDiv.appendChild(imgBackground);
+
 
             const detailsDiv = document.createElement("div");
             detailsDiv.classList.add("checkout-item-details");
@@ -46,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             checkoutContainer.appendChild(itemDiv);
 
-            document.getElementById("total-price").textContent = `Amount: RM${totalAmount.toFixed(2)}`;
+            document.getElementById("total-price").textContent = `RM${totalAmount.toFixed(2)}`;
         });
     }
 });
