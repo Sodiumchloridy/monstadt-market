@@ -1,3 +1,9 @@
+:root {
+    --lemon-yellow: #ffcc00;
+    --charcoal: #333333;
+    --guyabano-gray: #f8f8f8;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,44 +11,132 @@ body {
 
 .help-page {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background: url("https://fastcdn.hoyoverse.com/content-v2/nap/114225/d9664f1281ca4dc8d057cbafb4df7ca9_754884677841569119.jpg");
+    background-size: 300%;
+    background-position: 0% 0%;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-blend-mode: lighten;
+    animation: pan-image 15s linear infinite;
+    background-repeat: no-repeat;
 }
 
+@keyframes pan-image {
+    0% {
+        background-position: 30% 42%;
+        background-size: 200%;
+    }
+
+    20% {
+        background-position: 36% 35%;
+        background-size: 200%;
+    }
+
+    20.0001% {
+        /* -- View 2 -- */
+        background-position: 60% 85%;
+        background-size: 500%;
+    }
+
+    40% {
+        background-position: 49% 81%;
+        background-size: 500%;
+    }
+
+    40.0001% {
+        /* -- View 3 -- */
+        background-position: 76% 42%;
+        background-size: 300%;
+    }
+
+    60% {
+        background-position: 68% 33%;
+        background-size: 300%;
+    }
+
+    60.0001% {
+        /* -- View 4 -- */
+        background-position: 0% 0%;
+        background-size: 300%;
+    }
+
+    80% {
+        background-position: 15% 4%;
+        background-size: 300%;
+    }
+
+    80.0001% {
+        /* -- View 5 -- */
+        background-position: 42% 60%;
+        background-size: 300%;
+    }
+
+    100% {
+        background-position: 30% 60%;
+        background-size: 300%;
+    }
+}
+
+
 .help-page .container {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 80vh;
+}
+
+@media (max-width: 768px) {
+    .help-page {
+        object-fit: cover
+    }
+
+    .help-page .container {
+        flex-direction: column;
+    }
 }
 
 .help-page .left-side,
 .help-page .right-side {
-    background-color: #e0e0e0;
+    box-sizing: border-box;
     padding: 30px;
     margin: 10px;
     border-radius: 8px;
+    background-color: white;
+    margin: 20px;
+    width: 100%;
 }
 
 .help-page .left-side {
-    width: 300px;
+    max-width: 300px;
 }
 
 .help-page .right-side {
-    width: 400px;
+    max-width: 400px;
 }
 
 .help-page h1,
 .help-page h2 {
+    margin: 0;
     color: #000;
+    font-size: clamp(2rem, 3vw, 3rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .help-page p {
     color: #333;
+    font-size: clamp(1rem, 3vw, 1.25rem);
 }
 
 .help-page form {
     display: flex;
     flex-direction: column;
+}
+
+.help-page label {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-bottom: 10px;
 }
 
 .help-page input,
@@ -54,16 +148,18 @@ body {
 }
 
 .help-page button {
-    padding: 10px;
-    background-color: white;
-    color: black;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 30px;
+    background-color: black;
+    color: white;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 40px;
 }
 
 .help-page button:hover {
-    background-color: white;
+    background-color: var(--lemon-yellow);
+    color: black;
 }
 
 .help-page div.error {
