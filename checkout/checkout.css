@@ -306,6 +306,13 @@ Payment confirmation overlay
 
 .overlay .confirm-box h2 {
     margin-bottom: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+}
+
+.overlay .confirm-box p {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
 }
 
 .overlay .image-container {
@@ -342,11 +349,13 @@ Payment confirmation overlay
 #confirm-payment {
     background-color: #28a745;
     color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 #cancel-payment {
     background-color: #dc3545;
     color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .overlay .confirm-box img {
