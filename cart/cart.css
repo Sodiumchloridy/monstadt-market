@@ -182,6 +182,7 @@ Cart details
     border-radius: 25px;
     cursor: pointer;
     color: red;
+    border: none;
     background-color: white;
 }
 

@@ -200,7 +200,7 @@ input[inputmode="numeric"] {
     }
 }
 
-.product-col-details form>input[type="submit"] {
+.product-col-details #add-to-cart-form input[type="submit"] {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     padding: 15px 40px;
@@ -211,7 +211,7 @@ input[inputmode="numeric"] {
     cursor: pointer;
 }
 
-.product-col-details form>input[type="submit"]:hover {
+.product-col-details #add-to-cart-form input[type="submit"]:hover {
     background: var(--lemon-yellow);
     color: black;
 }
