@@ -20,6 +20,7 @@ footer h1 {
     gap: 1rem;
     justify-content: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 .footer-container a {
@@ -30,4 +31,9 @@ footer h1 {
 
 .footer-container a:hover {
     text-decoration: underline;
+}
+
+#websiteFooter>p {
+    text-align: center;
+    width: 100%;
 }
