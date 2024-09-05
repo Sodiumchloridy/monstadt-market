@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
             prodIdInput.name = "product_id";
             prodIdInput.value = item.prodId;
 
+            //Div for quantity container
+            const qtyContainer = document.createElement("div");
+            qtyContainer.classList.add("qty-container");
+
             //Quantity input field
             const quantityInput = document.createElement("input");
             quantityInput.type = "text";
@@ -53,8 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Create the increase quantity button
             const increaseQttButton = document.createElement("button");
-            increaseQttButton.classList.add("quantity-button");
-            increaseQttButton.id = "increase-quantity";
+            increaseQttButton.classList.add("quantity-button", "increase-quantity");
             increaseQttButton.setAttribute("aria-label", "Increase quantity");
 
             //Create and append the icon element
@@ -69,8 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             //Create the decrease quantity button
             const decreaseQttButton = document.createElement("button");
-            decreaseQttButton.classList.add("quantity-button");
-            decreaseQttButton.id = "decrease-quantity";
+            decreaseQttButton.classList.add("quantity-button", "decrease-quantity");
             decreaseQttButton.setAttribute("aria-label", "Decrease quantity");
 
             //Create and append the icon element
@@ -83,10 +85,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 handleFormSubmission(addToCartForm, item, quantityInput);
             });
 
+            qtyContainer.appendChild(decreaseQttButton);
+            qtyContainer.appendChild(quantityInput);
+            qtyContainer.appendChild(increaseQttButton);
+
             addToCartForm.appendChild(prodIdInput);
-            addToCartForm.appendChild(decreaseQttButton);
-            addToCartForm.appendChild(quantityInput);
-            addToCartForm.appendChild(increaseQttButton);
+            addToCartForm.appendChild(qtyContainer);
             addToCartForm.addEventListener('submit', (event) => {
                 event.preventDefault();
                 handleFormSubmission(addToCartForm, item, quantityInput);
@@ -166,8 +170,6 @@ document.addEventListener("DOMContentLoaded", function () {
         //Display error if quantity > Max available
         if (quantityInput > item.prodMaxAvailable) {
             quantityInput.value = item.prodMaxAvailable;
-            //const errorMessageDiv = document.getElementById('quantity-error');
-            //errorMessageDiv.textContent = "Quantity has exceeded the number available.";
             return false;
         }
         return true;
@@ -186,10 +188,8 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (newValue > item.prodMaxAvailable) {
             newValue = item.prodMaxAvailable; //Maximum quantity should not exceed the available stock
         } else {
-            //errorMessageDiv.textContent = "";
+            quantityInput.value = newValue;
         }
-        //Update the quantity input field
-        quantityInput.value = newValue;
     }
 
 })

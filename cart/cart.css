@@ -230,3 +230,60 @@ Cart details
     background-color: var(--lemon-yellow);
     color: black;
 }
+
+/*Quantity button*/
+.qty-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qty-container .quantity-button {
+    display: grid;
+    place-items: center;
+    border: 1px solid #d4d4d4;
+    padding: 10px 15px;
+    font-size: 10px;
+    height: 38px;
+    width: 38px;
+    color: black;
+    background-color: #f8f9fa;
+    cursor: pointer;
+
+    &:hover {
+        color: #0f1011;
+        background-color: #e2e6ea;
+    }
+}
+
+.qty-container .quantity-button>i {
+    height: auto;
+    width: auto;
+    color: black;
+}
+
+.qty-container .increase-quantity {
+    margin-left: -1px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.qty-container .decrease-quantity {
+    margin-right: -1px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.qty-container input[inputmode="numeric"] {
+    box-sizing: border-box;
+    text-align: center;
+    padding: 6px 10px;
+    border: 1px solid #d4d4d4;
+    width: 80px;
+    height: 38px;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+}
