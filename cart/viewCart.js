@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             qtyContainer.appendChild(quantityInput);
             qtyContainer.appendChild(increaseQttButton);
 
+
             addToCartForm.appendChild(prodIdInput);
             addToCartForm.appendChild(qtyContainer);
             addToCartForm.addEventListener('submit', (event) => {
@@ -119,6 +120,11 @@ document.addEventListener("DOMContentLoaded", function () {
             cartDetailsDiv.appendChild(addToCartForm);
             cartDetailsDiv.appendChild(deleteForm);
 
+            const backgroundText = document.createElement("h1");
+            backgroundText.innerText = `${item.prodName} ${item.prodName}`;
+            backgroundText.classList.add("background-text");
+
+            cartItemDiv.appendChild(backgroundText);
             cartItemDiv.appendChild(checkbox);
             cartItemDiv.appendChild(img);
             cartItemDiv.appendChild(cartDetailsDiv);

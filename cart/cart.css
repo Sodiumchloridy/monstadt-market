@@ -75,12 +75,26 @@ body {
     width: auto;
     height: auto;
     object-fit: contain;
+    z-index: 1;
+}
+
+.cart-item .background-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: clamp(6rem, 8vw, 12rem) !important;
+    color: orange;
+    opacity: 0.2;
 }
 
 /*
 Cart details
 */
 .cart-item .product-details {
+    position: relative;
+    z-index: 1;
     margin: auto 20px;
 }
 
@@ -158,7 +172,7 @@ Cart details
 }
 
 .cart-item input[type="checkbox"]:checked {
-    filter: hue-rotate(120deg);
+    filter: hue-rotate(45deg);
 }
 
 .cart-item .product-details p {
@@ -242,10 +256,10 @@ Cart details
     display: grid;
     place-items: center;
     border: 1px solid #d4d4d4;
-    padding: 10px 15px;
+    padding: 5px;
     font-size: 10px;
-    height: 38px;
-    width: 38px;
+    height: 30px;
+    width: 30px;
     color: black;
     background-color: #f8f9fa;
     cursor: pointer;
@@ -275,12 +289,14 @@ Cart details
 }
 
 .qty-container input[inputmode="numeric"] {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin: clamp(5px, 2vw, 20px) 0;
     box-sizing: border-box;
     text-align: center;
-    padding: 6px 10px;
+    padding: 5px 10px;
     border: 1px solid #d4d4d4;
-    width: 80px;
-    height: 38px;
+    max-width: 80px;
+    height: 30px;
 
     &:focus {
         outline: none;
