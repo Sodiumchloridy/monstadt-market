@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
             imgDiv.appendChild(img);
             const imgBackground = document.createElement("div");
             imgBackground.classList.add("img-background");
-            imgBackground.innerText = "CAUTION HOT! 注意！";
-            imgBackground.setAttribute("data-content", "CAUTION HOT! 注意！");
+            imgBackground.innerText = "CAUTION HOT!";
+            imgBackground.setAttribute("data-content", "CAUTION HOT!");
             imgDiv.appendChild(imgBackground);
 
 
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             checkoutContainer.appendChild(itemDiv);
 
-            document.getElementById("total-price").textContent = `Amount: RM${totalAmount.toFixed(2)}`;
+            document.getElementById("total-price").textContent = `RM${totalAmount.toFixed(2)}`;
         });
     }
 });

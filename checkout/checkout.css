@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import url(https://db.onlinewebfonts.com/c/1fb76dea69c399df3b51de3e7a319a34?family=ICA+Rubrik);
 
 :root {
     --lemon-yellow: #ffcc00;
@@ -9,7 +10,6 @@
 
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: var(--guyabano-gray);
@@ -23,7 +23,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 80vh;
-    padding: 20px clamp(35px, 10vw, 10vw);
+    padding: 20px clamp(8px, 10vw, 10vw);
     gap: 20px;
 }
 
@@ -69,7 +69,11 @@ body {
     }
 
     .checkout-item-img .img-background {
-        font-size: 7rem;
+        font-size: 3rem;
+    }
+
+    .checkout-item-img .img-background::after {
+        display: none;
     }
 }
 
@@ -77,9 +81,24 @@ body {
     content: attr(data-content);
     position: absolute;
     inset: 0;
-    -webkit-text-stroke: 4px white;
+    -webkit-text-stroke: 1px white;
     color: transparent;
     z-index: 2;
+    animation: pulse 3s infinite cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 .checkout-item-details {
@@ -109,114 +128,139 @@ body {
 /*
 * Checkout section
 */
+#checkout-summary {
+    margin: clamp(36px, 10vw, 48px) clamp(8px, 10vw, 48px);
+    padding: clamp(36px, 10vw, 48px) clamp(8px, 10vw, 48px);
+    background-color: white;
+    border-radius: 25px;
+    border: var(--charcoal) 1px solid;
+}
+
 #checkout-summary>h2 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 3rem;
+    margin: 0;
 }
 
-/*Payment method selection*/
-#payment-image img {
-    width: 50px;
-    height: auto;
+#checkout-summary .separator {
+    height: 0.8px;
+    background-color: var(--charcoal);
+    margin: 20px calc(-1 * clamp(8px, 10vw, 48px));
 }
 
-/*Payment confirmation*/
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
+/*
+Payment address
+*/
+#payment-address {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.confirm-box {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    max-width: 400px;
+#payment-address>h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+}
+
+#payment-address label {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+    color: var(--charcoal);
+
+}
+
+#payment-address #address-input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+#payment-address #address-input-field .field-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    #payment-address #address-input-field .field-group {
+        flex-direction: column;
+    }
+
+    #payment-address #address-input-field input,
+    #payment-address #address-input-field select {
+        max-width: 100%;
+        margin-top: 10px;
+    }
+}
+
+#payment-address #address-input-field label {
+    /* Inherits properties from #payment-address label */
+    color: gray;
+}
+
+#payment-address #address-input-field input,
+#payment-address #address-input-field select {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    height: 100%;
+    max-width: 300px;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    color: black;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    box-sizing: border-box;
 }
 
-.confirm-box h2 {
+#payment-address #address-input-field .error {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: red;
     margin-bottom: 10px;
 }
 
-.image-container {
-    display: block;
-    position: relative;
-    width: 200px;
-    height: 200px;
-    margin: 0 auto;
+#payment-address>a {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.25rem;
 }
 
-.image-container img {
-    position: absolute;
-    width: 100%;
-    height: auto;
+#payment-address>a:hover {
+    color: red;
 }
 
-.confirm-actions {
-    margin-top: 20px;
+/*
+Payment method selection
+*/
+#payment-method>h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
 }
 
-.confirm-actions button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+#payment-image .payment-item {
+    display: flex;
+    align-items: center;
 }
 
-.confirm-actions form {
-    display: inline-block;
+#payment-image .payment-item+.payment-item {
+    margin-top: 10px;
 }
 
-#confirm-payment {
-    background-color: #28a745;
-    color: white;
+#payment-image img {
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: 10px;
 }
 
-#cancel-payment {
-    background-color: #dc3545;
-    color: white;
+#checkout-summary #price-display h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0;
 }
 
-.confirm-box img {
-    width: 200px;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    position: absolute;
-}
-
-#firefly-heart {
-    z-index: 1;
-}
-
-#firefly-stab {
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: 2;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-/* Animation for showing the stab image */
-#firefly-stab.show {
-    opacity: 1;
-    scale: 1.1;
-}
-
-.hidden {
-    display: none;
+#total-price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.5rem;
+    color: gray;
 }
 
 #proceed-payment {
@@ -232,4 +276,106 @@ body {
 #proceed-payment:hover {
     background-color: var(--lemon-yellow);
     color: black;
+}
+
+/*
+Payment confirmation overlay
+*/
+#payment-overlay .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay .confirm-box {
+    box-sizing: border-box;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.overlay .confirm-box h2 {
+    margin-bottom: 10px;
+}
+
+.overlay .image-container {
+    display: block;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.overlay .image-container img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+
+.overlay .confirm-actions {
+    margin-top: 20px;
+}
+
+.overlay .confirm-actions button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.overlay .confirm-actions form {
+    display: inline-block;
+}
+
+#confirm-payment {
+    background-color: #28a745;
+    color: white;
+}
+
+#cancel-payment {
+    background-color: #dc3545;
+    color: white;
+}
+
+.overlay .confirm-box img {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+}
+
+.overlay #firefly-heart {
+    z-index: 1;
+}
+
+.overlay #firefly-stab {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 2;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Animation for showing the stab image */
+.overlay #firefly-stab.show {
+    opacity: 1;
+    scale: 1.1;
+}
+
+.hidden {
+    display: none;
 }
