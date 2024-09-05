@@ -187,9 +187,9 @@ document.addEventListener("DOMContentLoaded", function () {
             newValue = 1; //Minimum quantity is 1
         } else if (newValue > item.prodMaxAvailable) {
             newValue = item.prodMaxAvailable; //Maximum quantity should not exceed the available stock
-        } else {
-            quantityInput.value = newValue;
         }
+
+        quantityInput.value = newValue;
     }
 
 })

@@ -56,7 +56,7 @@ if (mysqli_query($conn, $sql)) {
     echo "Error creating table Cart: " . mysqli_error($conn);
 }
 
-//Create product table
+//Create Orders table
 $sql = "CREATE TABLE IF NOT EXISTS Orders (
     order_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     u_id INT(6) UNSIGNED,
