@@ -95,6 +95,5 @@
             shuffleText(name);
         }
     </script>
-    <!-- testing google translate api -->
-    <div id="google_translate_element"></div> 
+
 </header>
