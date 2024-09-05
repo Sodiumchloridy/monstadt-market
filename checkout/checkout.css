@@ -22,7 +22,6 @@ body {
 #checkout-container {
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
     padding: 20px clamp(8px, 10vw, 10vw);
     gap: 20px;
 }
