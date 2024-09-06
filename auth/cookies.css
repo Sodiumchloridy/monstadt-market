@@ -1,0 +1,30 @@
+#accept-cookies-btn, #decline-cookies-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* Accept Button Style */
+#accept-cookies-btn {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    transition: background-color 0.3s ease;
+}
+
+#accept-cookies-btn:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+/* Decline Button Style */
+#decline-cookies-btn {
+    background-color: #f44336; /* Red background */
+    color: white; /* White text */
+    transition: background-color 0.3s ease;
+}
+
+#decline-cookies-btn:hover {
+    background-color: #e53935; /* Darker red on hover */
+}

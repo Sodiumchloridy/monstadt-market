@@ -6,7 +6,12 @@ if(isset($_SESSION['user_id'])){
     exit();
 }
 
-$name = $pass = "";
+// $name = $pass = "";
+$name = isset($_COOKIE['username']) ? $_COOKIE['username'] : "";
+$pass = isset($_COOKIE['password']) ? $_COOKIE['password'] : "";
+
+
+
 $nameErr = $passErr = "";
 $validName = $validPass = false;
 
@@ -62,6 +67,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['profile_pic_type'] = $profilePicType;
         $_SESSION['reg_date'] = $regDate;
 
+        // Set cookies for username and password only if the user accepted the cookie policy with expiry time of 30days
+        if (isset($_COOKIE['cookie_consent']) && $_COOKIE['cookie_consent'] === "yes") {
+            setcookie("username", $name, time() + (30 * 24 * 60 * 60), "/");
+            setcookie("password", $_POST['password'], time() + (30 * 24 * 60 * 60), "/");
+        }
+
         $redirectUrl = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '../index.php';
         unset($_SESSION['redirect_after_login']);
         header("Location: $redirectUrl");
@@ -82,6 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/error.css">
     <link rel="stylesheet" href="../styles/loginForm.css">
+    <link rel="stylesheet" href="cookies.css">
 </head>
 
 <body>
@@ -90,11 +102,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" id="loginForm">
             <h2>Log In</h2>
             <!-- Name input -->
-            <input type="text" name="name" placeholder="Username">
+            <input type="text" name="name" placeholder="Username" value="<?php echo $name;?>">
             <div class="error"> <?php echo $nameErr; ?> </div>
             <br>
             <!-- Password input -->
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" placeholder="Password" value="<?php echo $pass;?>">
             <div class="error"> <?php echo $passErr; ?> </div>
             <br>
             <input type="submit" value="Login" id="submit-button">
@@ -102,6 +114,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <image src="../default_images/anya-peek.png" alt="anya peeking" id="anya">
         </form>
     </main>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner" style="display:none; position: fixed; bottom: 0; background: #f1f1f1; width: 100%; padding: 10px; text-align: center; border-top: 1px solid #ccc;">
+        <p>This website uses cookies to improve your experience. Do you accept cookies?</p>
+        <button id="accept-cookies-btn">Accept</button>
+        <button id="decline-cookies-btn">Decline</button>
+    </div>
+
+    <script>
+        // Show the cookie consent banner if the user hasn't made a choice yet
+        if (!document.cookie.includes("cookie_consent")) {
+            document.getElementById('cookie-consent-banner').style.display = 'block';
+        }
+
+        document.getElementById('accept-cookies-btn').addEventListener('click', function () {
+            document.cookie = "cookie_consent=yes; path=/; max-age=" + 30*24*60*60; // Set consent cookie for 30 days
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+        });
+
+        document.getElementById('decline-cookies-btn').addEventListener('click', function () {
+            document.cookie = "cookie_consent=no; path=/; max-age=" + 30*24*60*60;
+            document.getElementById('cookie-consent-banner').style.display = 'none';
+        });
+    </script>
+
     <?php include("../includes/footer.php"); ?>
 </body>
 
