@@ -1,30 +1,54 @@
-#accept-cookies-btn, #decline-cookies-btn {
-    padding: 10px 20px;
+:root {
+    --lemon-yellow: #FFD700;
+    --charcoal-black: #333;
+}
+
+#cookie-consent-banner {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    background: black;
+    width: 100%;
+    padding: 0 10px 30px;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+}
+
+#accept-cookies-btn,
+#decline-cookies-btn {
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
-    margin: 0 10px;
 }
 
 /* Accept Button Style */
 #accept-cookies-btn {
-    background-color: #4CAF50; /* Green background */
-    color: white; /* White text */
-    transition: background-color 0.3s ease;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 6px 30px;
+    background-color: var(--lemon-yellow);
+    color: black;
+    border: 2px solid var(--lemon-yellow);
 }
 
 #accept-cookies-btn:hover {
-    background-color: #45a049; /* Darker green on hover */
+    background-color: transparent;
+    color: var(--lemon-yellow);
+    border: 2px solid var(--lemon-yellow);
 }
 
 /* Decline Button Style */
 #decline-cookies-btn {
-    background-color: #f44336; /* Red background */
-    color: white; /* White text */
-    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    background: transparent;
 }
 
-#decline-cookies-btn:hover {
-    background-color: #e53935; /* Darker red on hover */
+#decline-cookies-btn i {
+    aspect-ratio: 1/1;
+    font-size: 1.75rem;
+    color: white;
 }

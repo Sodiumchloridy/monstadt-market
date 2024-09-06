@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['user_id'])){
+if (isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
     exit();
 }
@@ -99,11 +99,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="post" id="loginForm">
             <h2>Log In</h2>
             <!-- Name input -->
-            <input type="text" name="name" placeholder="Username" value="<?php echo $name;?>">
+            <input type="text" name="name" placeholder="Username" value="<?php echo $name; ?>">
             <div class="error"> <?php echo $nameErr; ?> </div>
             <br>
             <!-- Password input -->
-            <input type="password" name="password" placeholder="Password" value="<?php echo $pass;?>">
+            <input type="password" name="password" placeholder="Password" value="<?php echo $pass; ?>">
             <div class="error"> <?php echo $passErr; ?> </div>
             <br>
             <input type="submit" value="Login" id="submit-button">
@@ -112,10 +112,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
     </main>
     <!-- Cookie Consent Banner -->
-    <div id="cookie-consent-banner" style="display:none; position: fixed; bottom: 0; background: #f1f1f1; width: 100%; padding: 10px; text-align: center; border-top: 1px solid #ccc;">
+    <div id="cookie-consent-banner">
         <p>This website uses cookies to improve your experience. Do you accept cookies?</p>
-        <button id="accept-cookies-btn">Accept</button>
-        <button id="decline-cookies-btn">Decline</button>
+        <button id="accept-cookies-btn" onclick="acceptCookie()">Accept</button>
+        <button id="decline-cookies-btn" onclick="declineCookie()">
+            <i class="fa-solid fa-x"></i>
+            z</button>
     </div>
 
     <script>
@@ -124,15 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             document.getElementById('cookie-consent-banner').style.display = 'block';
         }
 
-        document.getElementById('accept-cookies-btn').addEventListener('click', function () {
-            document.cookie = "cookie_consent=yes; path=/; max-age=" + 30*24*60*60; // Set consent cookie for 30 days
+        function acceptCookie() {
+            document.cookie = "cookie_consent=yes; path=/; max-age=" + 30 * 24 * 60 * 60; // Set consent cookie for 30 days
             document.getElementById('cookie-consent-banner').style.display = 'none';
-        });
+        }
 
-        document.getElementById('decline-cookies-btn').addEventListener('click', function () {
-            document.cookie = "cookie_consent=no; path=/; max-age=" + 30*24*60*60;
+        function declineCookie() {
+            document.cookie = "cookie_consent=no; path=/; max-age=" + 30 * 24 * 60 * 60;
             document.getElementById('cookie-consent-banner').style.display = 'none';
-        });
+        }
     </script>
 
     <?php include("../includes/footer.php"); ?>
