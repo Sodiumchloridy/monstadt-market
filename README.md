@@ -69,15 +69,16 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 
 ### Checkout Page
 ![Checkout Page](screenshots/checkout.png)
+![Confirm payment](screenshots/payment.png)
 
 ### About Page
-
+![About Page](screenshots/about.png)
 
 ### Contact Us Page
-
+![Contact Us Page](screenshots/contact.png)
 
 ### Help Page
-
+![Help Page](screenshots/help.png)
 
 ### Footer
 ![Footer](screenshots/footer.png)
