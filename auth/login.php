@@ -6,11 +6,8 @@ if(isset($_SESSION['user_id'])){
     exit();
 }
 
-// $name = $pass = "";
 $name = isset($_COOKIE['username']) ? $_COOKIE['username'] : "";
 $pass = isset($_COOKIE['password']) ? $_COOKIE['password'] : "";
-
-
 
 $nameErr = $passErr = "";
 $validName = $validPass = false;
