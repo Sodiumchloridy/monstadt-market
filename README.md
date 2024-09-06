@@ -22,7 +22,6 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 - **Backend**: PHP (with MySQL)
 - **Frontend**: HTML5, CSS3, JavaScript (AJAX)
 - **Database**: MySQL
-- **Frameworks**: Bootstrap for responsive design
 
 ## System setup
 
