@@ -15,6 +15,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 - **User Profile**: Users can review their user profile and change the user profile information.
 - **Help**: Provide necessary guidance to user for using Monstadt Market marketplace.
 - **Contact Us**: Provide contact information, including phone number and location, fostering responsiveness to user inquiries and feedback.
+- **Search Filter** - Users can search the product and perform product filtering based on region and price range.
 
 ## Technologies Used
 
@@ -44,10 +45,39 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 
 ### Home Page
 ![Home Page](screenshots/homepage1.png)
-![Home Page](screenshots/homepage2.png)
+![Product Listing](screenshots/homepage2.png)
+
+### Sign Up Page
+![Sign up Page](screenshots/signup.png)
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### User Profile Page
+![User Profile Page](screenshots/profile.png)
+![Edit Profile](screenshots/editprofile.png)
+
+### Search Function
+![Search Function](screenshots/search.png)
+
+### Product Page
+![Product Page](screenshots/product1.png)
+![Product Page](screenshots/product2.png)
 
 ### Cart Page
 ![Cart Page](screenshots/cartpage.png)
+
+### Checkout Page
+![Checkout Page](screenshots/checkout.png)
+
+### About Page
+
+
+### Contact Us Page
+
+
+### Help Page
+
 
 ### Footer
 ![Footer](screenshots/footer.png)
