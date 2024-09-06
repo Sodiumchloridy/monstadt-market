@@ -43,7 +43,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 ## Screenshots
 
 ### Home Page
-![Home Page](screenshots/homepage1.png)
+![Home Page](screenshots/homepage1.gif)
 ![Product Listing](screenshots/homepage2.png)
 
 ### Sign Up Page
@@ -53,18 +53,18 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 ![Login Page](screenshots/login.png)
 
 ### User Profile Page
-![User Profile Page](screenshots/profile.png)
+![User Profile Page](screenshots/profile.gif)
 ![Edit Profile](screenshots/editprofile.png)
 
 ### Search Function
-![Search Function](screenshots/search.png)
+![Search Function](screenshots/search.gif)
 
 ### Product Page
 ![Product Page](screenshots/product1.png)
 ![Product Page](screenshots/product2.png)
 
 ### Cart Page
-![Cart Page](screenshots/cartpage.png)
+![Cart Page](screenshots/cartpage.gif)
 
 ### Checkout Page
 ![Checkout Page](screenshots/checkout.png)
@@ -74,7 +74,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 ![About Page](screenshots/about.png)
 
 ### Contact Us Page
-![Contact Us Page](screenshots/contact.png)
+![Contact Us Page](screenshots/contact.gif)
 
 ### Help Page
 ![Help Page](screenshots/help.png)
