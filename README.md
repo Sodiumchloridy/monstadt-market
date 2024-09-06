@@ -48,7 +48,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 
 ### Home Page
 ![Home Page](screenshots/homepage1.gif)
-![Product Listing](screenshots/homepage2.png)
+![Product Listing](screenshots/homepage2.gif)
 
 ### Sign Up Page
 ![Sign up Page](screenshots/signup.png)
@@ -71,11 +71,11 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 ![Cart Page](screenshots/cartpage.gif)
 
 ### Checkout Page
-![Checkout Page](screenshots/checkout.png)
+![Checkout Page](screenshots/checkout.gif)
 ![Confirm payment](screenshots/payment.png)
 
 ### About Page
-![About Page](screenshots/about.png)
+![About Page](screenshots/about.gif)
 
 ### Contact Us Page
 ![Contact Us Page](screenshots/contact.gif)
