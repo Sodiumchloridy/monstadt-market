@@ -25,6 +25,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 
 ## Requirements
 - [Wampserver](https://wampserver.aviatechno.net/)
+- Internet access to load in dependencies
 
 ## System setup
 
