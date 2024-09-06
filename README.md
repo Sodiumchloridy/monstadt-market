@@ -23,6 +23,10 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 - **Frontend**: HTML5, CSS3, JavaScript (AJAX)
 - **Database**: MySQL
 
+## Requirements
+- [Wampserver](https://wampserver.aviatechno.net/)
+- Internet access to load in dependencies
+
 ## System setup
 
 1. **Set up the Database**:
