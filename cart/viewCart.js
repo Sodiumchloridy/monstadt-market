@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const deleteButton = document.createElement("button");
             deleteButton.type = 'submit';
             deleteButton.classList.add('delete-button');
-            deleteButton.innerHTML = '<i class="fa-duotone fa-solid fa-trash"></i>';
+            deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>';
 
             deleteForm.appendChild(deleteProdIdInput);
             deleteForm.appendChild(deleteButton);

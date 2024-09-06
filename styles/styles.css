@@ -51,8 +51,9 @@ a {
     position: relative;
     width: 100%;
     height: auto;
-    object-fit: cover;
     display: block;
+    animation: pan-image 22s infinite linear;
+    background-repeat: no-repeat;
 }
 
 .banner>h1 {

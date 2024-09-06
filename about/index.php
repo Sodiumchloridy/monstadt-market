@@ -15,28 +15,33 @@ session_start();
 
 <body>
     <?php include("../includes/header.php"); ?>
-    <main class="container">
+    <div class="background-text">
+        <h1>MONDSTADT MARKET</h1>
+    </div>
+    <div class="background">
+    </div>
+    <main class="about-us-container">
         <header>
             <h1>About Us</h1>
         </header>
 
         <section>
-            <p><span class="highlight">Welcome to Mondstadt Market!</span></p>
+            <p>Welcome to Mondstadt Market!</p>
             <p>Nestled in the heart of Mondstadt, our market is a haven for adventurers, locals, and travelers alike. Inspired by the spirit of freedom that defines our beloved city, Mondstadt Market is more than just a marketplace—it's a community.</p>
         </section>
 
         <section>
             <h2>Our Story</h2>
-            <p>Founded by a group of passionate merchants and artisans, Mondstadt Market began as a small gathering of vendors, each bringing their unique crafts and wares. Over time, it grew into the vibrant hub it is today, a place where people come together to share stories, trade goods, and celebrate the rich culture of Mondstadt.</p>
+            <p>Founded by a group of passionate merchants and artisans, Mondstadt Market began as a small gathering of vendors, each bringing their unique crafts and wares. Over time, it grew into the vibrant hub it is today, a place where people come together to share stories, trade goods, and celebrate the <mark>rich culture of Mondstadt.</mark></p>
         </section>
 
         <section>
             <h2>Our Values</h2>
             <p>At Mondstadt Market, we believe in the power of community, creativity, and tradition. Our market is built on the principles of:</p>
             <ul>
-                <li><span class="highlight">Quality Craftsmanship:</span> Every item you find here is crafted with care and passion, reflecting the skills and traditions of our artisans.</li>
-                <li><span class="highlight">Local Sourcing:</span> We are committed to supporting local farmers, craftsmen, and producers. When you shop with us, you’re not just buying a product—you’re supporting the Mondstadt community.</li>
-                <li><span class="highlight">Sustainability:</span> We strive to operate in harmony with nature, ensuring that our practices are environmentally friendly and sustainable.</li>
+                <li>Quality Craftsmanship: Every item you find here is crafted with care and passion, reflecting the skills and traditions of our artisans.</li>
+                <li>Local Sourcing: We are committed to supporting local farmers, craftsmen, and producers. When you shop with us, you’re not just buying a product—you’re supporting the Mondstadt community.</li>
+                <li>Sustainability: We strive to operate in harmony with nature, ensuring that our practices are environmentally friendly and sustainable.</li>
             </ul>
         </section>
 
