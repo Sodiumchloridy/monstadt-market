@@ -117,7 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button id="accept-cookies-btn" onclick="acceptCookie()">Accept</button>
         <button id="decline-cookies-btn" onclick="declineCookie()">
             <i class="fa-solid fa-x"></i>
-            z</button>
+        </button>
     </div>
 
     <script>
