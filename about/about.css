@@ -32,7 +32,7 @@ body {
     height: 60vh;
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    animation: pan-image 20s infinite;
+    animation: pan-image 15s infinite;
 }
 
 @media (max-width: 768px) {
