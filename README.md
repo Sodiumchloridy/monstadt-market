@@ -28,11 +28,13 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 - Internet access to load in dependencies
 
 ## System setup
+1. **Environment Setup**:
+   - Place the files in the appropriate directory in the wampserver folders under `../wamp64/www/`
 
-1. **Set up the Database**:
+2. **Set up the Database**:
    - Run the setup.php file under config folder by entering (http://localhost/monstadt-market/config/setup.php)
 
-2. **Run the application**
+3. **Run the application**
    - Run the index.php file under monstadt-market by entering (http://localhost/monstadt-market/)
 
 ## Usage
