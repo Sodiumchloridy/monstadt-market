@@ -1,71 +1,91 @@
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    color: #333;
+:root {
+    --primary-color: #333;
 }
 
-header {
-    background-color: #007BFF;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.help-page {
+    color: #333;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.help-page h2,
+.help-page h3 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.help-page h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.help-page h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.help-page header {
+    background-color: var(--primary-color);
     color: #fff;
     padding: 20px;
     text-align: center;
 }
 
-header h1 {
+.help-page header h1 {
     margin: 0;
-    font-size: 2.5em;
+    font-size: 2.5rem;
 }
 
-header p {
-    font-size: 1.2em;
+.help-page header p {
+    font-size: 1.2rem;
 }
 
-nav {
+.help-page nav {
     background-color: #f4f4f4;
     padding: 10px;
     text-align: center;
     border-bottom: 1px solid #ccc;
 }
 
-nav ul {
+.help-page nav ul {
     list-style-type: none;
     padding: 0;
 }
 
-nav ul li {
+.help-page nav ul li {
     display: inline;
     margin: 0 15px;
 }
 
-nav ul li a {
+.help-page nav ul li a {
     text-decoration: none;
-    color: #007BFF;
+    color: var(--primary-color);
     font-weight: bold;
 }
 
-nav ul li a:hover {
+.help-page nav ul li a:hover {
     text-decoration: underline;
 }
 
-section {
+.help-page section {
     padding: 20px;
 }
 
-section h2 {
-    color: #007BFF;
-    border-bottom: 2px solid #007BFF;
+.help-page section h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-section h3 {
+.help-page section h3 {
     color: #333;
     margin-bottom: 10px;
 }
 
-footer {
+.help-page footer {
     background-color: #f4f4f4;
     color: #333;
     text-align: center;
@@ -74,12 +94,12 @@ footer {
     margin-top: 20px;
 }
 
-footer p {
+.help-page footer p {
     margin: 0;
 }
 
 @media (max-width: 768px) {
-    nav ul li {
+    .help-page nav ul li {
         display: block;
         margin: 10px 0;
     }
