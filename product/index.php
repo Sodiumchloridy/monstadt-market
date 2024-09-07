@@ -25,7 +25,7 @@ $result = mysqli_stmt_get_result($stmt);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mondstadt Market </title>
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
+
     <link rel="stylesheet" href="product.css">
     <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="../styles/color.css">
@@ -86,7 +86,7 @@ $result = mysqli_stmt_get_result($stmt);
         echo "</section>";
         echo '</div>';
     }
-    
+
     //Footer
     include('../includes/footer.php');
     ?>

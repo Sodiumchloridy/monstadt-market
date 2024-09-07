@@ -1,4 +1,5 @@
 <header id="websiteHeader">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css" crossorigin="anonymous" referrerpolicy="no-referrer" /> <!-- Fontawesome icons -->
     <link rel="stylesheet" href="/monstadt-market/styles/header.css">
 
     <a href="/monstadt-market/" id="logo"> <!-- Logo of the Market -->
