@@ -1,7 +1,3 @@
-Here's an updated `README.md` file with the name **Monstadt Market**:
-
----
-
 # 🛒 Monstadt Market
 
 **Monstadt Market** is an online marketplace that allows users to browse, add items to their cart, and purchase a variety of products with ease. Built using PHP and MySQL for backend operations, this project offers a seamless shopping experience, with front-end interactions managed via HTML, CSS, JavaScript, and AJAX.
@@ -15,7 +11,7 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 - **User Profile**: Users can review their user profile and change the user profile information.
 - **Help**: Provide necessary guidance to user for using Monstadt Market marketplace.
 - **Contact Us**: Provide contact information, including phone number and location, fostering responsiveness to user inquiries and feedback.
-- **Search Filter** - Users can search the product and perform product filtering based on region and price range.
+- **Search** - Users can search the product and perform product filtering based on region and price range.
 
 ## Technologies Used
 
@@ -36,15 +32,6 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 
 3. **Run the application**
    - Run the index.php file under monstadt-market by entering (http://localhost/monstadt-market/)
-
-## Usage
-
-1. **User Features**:
-   - Browse available products on the homepage.
-   - Sign up or log in to your account to add items to the cart.
-   - View and manage items in the cart, including updating quantities.
-   - Proceed to checkout to finalize your purchase.
-   - Access the user profile page to view and edit.
 
 ## Screenshots
 
@@ -88,8 +75,5 @@ Here's an updated `README.md` file with the name **Monstadt Market**:
 ### Footer
 ![Footer](screenshots/footer.png)
 
-## Future Enhancements
-
-- Product reviews and ratings from users.
-- Integration with payment gateways for seamless transactions.
-- Personalized recommendations based on user activity.
+## Contributors
+[![](https://contrib.rocks/image?repo=sodiumchloridy/monstadt-market)](https://github.com/sodiumchloridy/monstadt-market/graphs/contributors)
