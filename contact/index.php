@@ -82,7 +82,6 @@ function test_input($data)
         </div>
     </main>
 
-    <script src="script.js"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({

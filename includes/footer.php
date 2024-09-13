@@ -9,7 +9,6 @@
     <!-- Google translate api -->
     <div id="google_translate_element"></div>
     <p>Copyright &#169; MONSTADT MARKET. All rights reserved.</p>
-    <script src="script.js"></script>
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
