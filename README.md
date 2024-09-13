@@ -1,20 +1,7 @@
 # 🛒 Monstadt Market
-
 **Monstadt Market** is an online marketplace that allows users to browse, add items to their cart, and purchase a variety of products with ease. Built using PHP and MySQL for backend operations, this project offers a seamless shopping experience, with front-end interactions managed via HTML, CSS, JavaScript, and AJAX. This project is built for the course UECS2194 WEB APPLICATION DESIGN as part of the assignment task.
 
-## Features
-
-- **User Registration and Login**: Secure user authentication with account management features.
-- **Product Listings**: Showcase products with detailed descriptions, prices, and images.
-- **Shopping Cart**: Dynamically add, update, and remove products from the shopping cart.
-- **Checkout System**: Users can review their cart, apply any available discounts, and proceed to checkout.
-- **User Profile**: Users can review their user profile and change the user profile information.
-- **Help**: Provide necessary guidance to user for using Monstadt Market marketplace.
-- **Contact Us**: Provide contact information, including phone number and location, fostering responsiveness to user inquiries and feedback.
-- **Search** - Users can search the product and perform product filtering based on region and price range.
-
 ## Technologies Used
-
 - **Backend**: PHP (with MySQL)
 - **Frontend**: HTML5, CSS3, JavaScript (AJAX)
 - **Database**: MySQL
