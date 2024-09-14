@@ -21,6 +21,7 @@
    - Run the index.php file under monstadt-market by entering (http://localhost/monstadt-market/)
 
 ## Screenshots
+.gif playback is available for some images
 
 ### Home Page
 ![Home Page](screenshots/homepage1.gif)
