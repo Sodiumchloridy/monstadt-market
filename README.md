@@ -1,4 +1,9 @@
+> [!NOTE]
+> This project is academic coursework for UECS2194 Web Application Development module.
+
 # 🛒 Monstadt Market
+![image](https://github.com/user-attachments/assets/3980f705-e8e8-4a3f-9ddf-690b73454745)
+
 **Monstadt Market** is an online marketplace that allows users to browse, add items to their cart, and purchase a variety of products with ease. Built using PHP and MySQL for backend operations, this project offers a seamless shopping experience, with front-end interactions managed via HTML, CSS, JavaScript, and AJAX. This project is built for the course UECS2194 WEB APPLICATION DESIGN as part of the assignment task.
 
 ## Technologies Used
